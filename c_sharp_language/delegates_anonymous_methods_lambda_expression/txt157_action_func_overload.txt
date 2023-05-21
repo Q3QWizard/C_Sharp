@@ -1,0 +1,26 @@
+Overload c# 6.0
+---------------
+
+The process in which the compiler overload has been improved in c# 6.0. It's little bit smarter when choosing which
+overload is more appropriate for certain arguments.
+
+In ealier version of vs-2013 following code will generate an compiler time error
+
+private static void TEst_OverloadResolution()
+{
+	int paymentToAgent = ProcessPayment(CalculateFunction);
+	
+	Console.WriteLine(paymentToAgent);
+	Console.Read();
+}
+
+private static void ProcessPayment(Action action){}
+
+private static int ProcessPayment(Func<int> item){ return item(); }
+
+public static int CalculateFunction()
+{
+	return 1000;
+}
+
+This error raised because before c# 6.0 the return type is not considered when use in like this context. But in c# 6.0 correct it.

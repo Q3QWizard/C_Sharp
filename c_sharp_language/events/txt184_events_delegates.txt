@@ -1,0 +1,112 @@
+using System;
+
+namespace MyApp
+{
+
+    public delegate void myEventHandler(string value);
+
+    class EventPublisher
+    {
+        private string theVal;
+
+        public event myEventHandler valueChanged;
+
+        public string val
+        {
+            set
+            {
+                this.theVal = value;
+                // when the value changed, fire the event
+                this.valueChanged(theVal);
+            }
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            EventPublisher obj = new EventPublisher();
+            obj.valueChanged += obj_valueChanged;
+
+            obj.valueChanged += delegate (string val)
+            {
+                Console.WriteLine("The value changed to {0}", val);
+            };
+
+            MyClass myClass = new MyClass();
+            myClass.valueChanged += delegate (string val)
+            {
+                Console.WriteLine("The value changed to {0} 11111", val);
+            };
+
+            myClass.objChanged += delegate (object sender, objChangedEventArgs e)
+            {
+                Console.WriteLine("{0} had the {1} property changed ", sender.GetType(), e.PropChanged);
+            };
+
+            myClass.Val = "dfd";
+
+
+
+            string str;
+
+            do
+            {
+                Console.WriteLine("Enter a value: ");
+                str = Console.ReadLine();
+                if (!str.Equals("exit"))
+                {
+                    obj.val = str;
+                }
+            } while (!str.Equals("exit"));
+            Console.WriteLine("Goodbye");
+        }
+
+        class objChangedEventArgs : EventArgs
+        {
+            public string PropChanged;
+        }
+
+
+        class MyClass
+        {
+            private string theVal;
+
+            public event myEventHandler valueChanged;
+            public event EventHandler<objChangedEventArgs> objChanged;
+
+            public string Val
+            {
+                set
+                {
+                    this.theVal = value;
+                    this.valueChanged(theVal);
+                    this.objChanged(this, new objChangedEventArgs() { PropChanged = theVal });
+                }
+            }
+        }
+
+        static void obj_valueChanged(string value)
+        {
+            Console.WriteLine("The value changed to {0}", value);
+        }
+    }
+
+    /*
+     Events
+
+    Events are realy usefull for broadcasting messages to and receving messages from other parts of your programe or even the
+    operating system or other programes.
+
+    This enables your application to communicate asyncronously that is without having to wait for the other end point with other parts of the system.
+
+    Event can switch on and off as needed.
+
+    you can create custom events
+
+    You use deletegate sysntax to declare the event handler signature.
+    Then in the class for your object you use the keyword event instead of delegate to declare an event.
+     */
+}

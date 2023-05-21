@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        MyGenericClass<string, int> myGenericClass = new MyGenericClass<string, int>("hello", 5);
+
+        myGenericClass.GenericMethod("how do you do",5);
+
+        Console.ReadLine();
+    }
+}
+
+class MyGenericClass<T, U> where T : class where U : struct
+{
+    private T genericVariable;
+    private U genericVariable2;
+
+    public MyGenericClass(T value, U value2)
+    {
+        genericVariable = value;
+        genericVariable2 = value2;
+    }
+
+    public T GenericMethod(T genericParameter, U genericParameter2)
+    {
+        Console.WriteLine("Generic Parameter 1 type: {0}, value {1}", typeof(T).ToString(), genericParameter);
+        Console.WriteLine("Generic Parameter 2 type: {0}, value {1}", typeof(U).ToString(), genericVariable2);
+        return genericParameter;
+    }
+}

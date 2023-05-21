@@ -1,0 +1,25 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+
+    }
+
+    public static void Add(int FN, int SN, int TN)
+    {
+        Console.WriteLine("Sum = {0}", FN + SN + TN);
+    }
+
+    public static int Add(int FN, int SN, int TN)   // error
+    {
+        Console.WriteLine("Sum = {0}", FN + SN + TN);
+        return FN + SN + TN;
+    }
+}
+
+/*
+ * The return type of a function is not include in the method signature.
+ * And you cannot overload a method by the return type.
+ */

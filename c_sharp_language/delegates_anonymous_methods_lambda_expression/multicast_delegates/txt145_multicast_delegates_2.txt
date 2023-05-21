@@ -1,0 +1,39 @@
+using System;
+
+public delegate void SampleDelegate();
+
+public class Program
+{
+    public static void Main()
+    {
+        SampleDelegate del = new SampleDelegate(sampleMethodOne);
+        del += sampleMethodTwo;
+        del += sampleMethodThree;
+        del();
+
+        Console.WriteLine();
+
+        del -= sampleMethodOne;
+        del();
+        
+
+
+        Console.ReadLine();
+    }
+
+    public static void sampleMethodOne()
+    {
+        Console.WriteLine("SampleMethodOne Invoked");
+    }
+
+    public static void sampleMethodTwo()
+    {
+        Console.WriteLine("SampleMethodTwo Invoked");
+    }
+
+    public static void sampleMethodThree()
+    {
+        Console.WriteLine("SampleMethodThree Invoked");
+    }
+
+}

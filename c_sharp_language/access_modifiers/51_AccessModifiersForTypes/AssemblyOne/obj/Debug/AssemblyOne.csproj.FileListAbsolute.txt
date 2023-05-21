@@ -1,0 +1,5 @@
+D:\Projects\51_AccessModifiersForTypes\AssemblyOne\bin\Debug\AssemblyOne.dll
+D:\Projects\51_AccessModifiersForTypes\AssemblyOne\bin\Debug\AssemblyOne.pdb
+D:\Projects\51_AccessModifiersForTypes\AssemblyOne\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\51_AccessModifiersForTypes\AssemblyOne\obj\Debug\AssemblyOne.dll
+D:\Projects\51_AccessModifiersForTypes\AssemblyOne\obj\Debug\AssemblyOne.pdb

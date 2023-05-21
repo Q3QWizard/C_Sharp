@@ -1,0 +1,33 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        /*int? TicketsOnSale = 0;
+
+        int AvailableTickets;
+
+        if (TicketsOnSale == null)
+        {
+            AvailableTickets = 0;
+        }
+        else
+        {
+            AvailableTickets = (int)TicketsOnSale;
+        }
+        Console.WriteLine("AvailableTickets = {0}", AvailableTickets);
+        Console.ReadLine();*/
+
+        //We can replace the above code with following code
+
+        //Null Coalescing operator (??)
+
+        int? TicketsOnSale = null;
+
+        int AvailableTickets = TicketsOnSale ?? 0;
+
+        Console.WriteLine("AvailableTickets = {0}", AvailableTickets);
+        Console.ReadLine();
+    }
+}

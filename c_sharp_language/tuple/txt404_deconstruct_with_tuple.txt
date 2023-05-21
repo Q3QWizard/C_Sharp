@@ -1,0 +1,30 @@
+You can also provide a similar deconstruction for any type in .NET. You write a Deconstruct method as a member of the 
+class. That Deconstruct method provides a set of out arguments for each of the properties you want to extract. 
+Consider this Point class that provides a deconstructor method that extracts the X and Y coordinates:
+
+using System;
+using System.Collections;
+
+public class Program
+{
+    public static void Main()
+    {
+        Point p = new Point(10, 15);
+        var(x, y) = p;
+
+        Console.WriteLine(x);
+        Console.WriteLine(y);
+    }
+}
+
+public class Point
+{
+    public Point(double x, double y) 
+        => (X, Y) = (x, y);
+
+    public double X { get; }
+    public double Y { get; }
+
+    public void Deconstruct(out double x, out double y) =>
+        (x, y) = (X, Y);
+}

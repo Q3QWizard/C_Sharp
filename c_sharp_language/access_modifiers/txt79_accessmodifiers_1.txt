@@ -1,0 +1,51 @@
+using System;
+
+public class Customer
+{
+    private int _id;
+
+    public int ID
+    {
+        get { return _id; }
+        set { _id = value; }
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Customer c = new Customer();
+        //c.    // when you type c. the intelisence will not give the private _id member. It will only give the public ID property.
+        
+
+    }
+}
+
+/*
+Private, Public & Protected.
+
+There are 5 different access modifiers in C#
+
+	1. Private
+	2. Protected
+	3. Internal
+	4. Protected Internal
+	5. Public
+	
+Private members are available only with in the containing type, where as public members
+are available any where. There is no restriction.
+
+Protected members are available, with in the containing type and to the types that derive
+from the containing type.
+
+Access Modifiers		Accessibility																	
+
+																										
+Private 		-		Only with in the containing class.												
+
+public 			-		Any where, No restriction.														
+																										
+Protected		-		With in the containing types and the types derived from the containing type.	
+																										
+*/

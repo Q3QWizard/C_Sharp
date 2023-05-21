@@ -1,0 +1,6 @@
+All of the expressions of the for statement are optional; for example, the following statement is used to write an infinite loop:
+
+for (; ; )
+{
+    // ...
+}

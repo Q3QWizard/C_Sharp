@@ -1,0 +1,53 @@
+
+Ex1-
+
+static private string name = "Tom"
+
+static public Name
+{
+	get { return name; }
+}
+
+c#6 way
+-------
+
+static public string Name => "Tom"
+
+----------------------------------------------------------------------------------------------------------------------
+Ex2
+
+static public string GetFullName(string fname, string lname)
+{
+	return string.Format("{0}{1}", fname, lname);
+}
+
+c#6 way
+-------
+static public string GetFullName(string fname, string lname) => $"{fname} {lname}";
+
+----------------------------------------------------------------------------------------------------------------------
+Ex3
+
+static public PrintFullName(string fname, string lname)
+{
+	Console.WriteLine(string.Format("{0} {1}", fname, lname));
+}
+
+c#6 way
+-------
+static public void PrintFullName(string fname, string lname) => Console.WriteLine($"{fname} {lname}");
+----------------------------------------------------------------------------------------------------------------------
+Ex4
+
+static public Comedian PrintComedianName(string fname, string lname)
+{
+	return new Comedian(fname, lname);
+}
+
+c#6 way
+-------
+
+static public Comedian PrintComedianName(string fname, lname) => new Comedian(fname, lname);
+
+
+

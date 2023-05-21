@@ -1,0 +1,30 @@
+using System;
+using System.Collections;
+using static System.Console;
+
+public class Program
+{
+    public static void Main()
+    {
+        WriteLine("hello");
+        Read();
+    }
+}
+
+class Writer
+{
+    public void StartTest(string statement)
+    {
+        WriteLine(statement);
+    }
+
+    private void WriteLine(string statement)
+    {
+        Console.WriteLine(statement);
+    }
+}
+
+/*
+The compiler will alway choose an instance method before a static
+*/
+

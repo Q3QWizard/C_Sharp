@@ -1,0 +1,26 @@
+using System;
+
+namespace Example
+{
+    class ProgrammingExample
+    {
+        static void Main(string[] args)
+        {
+            // For loop with an incrementing counter
+            for (int counter = 0; counter < 10; counter++)
+            {
+                Console.WriteLine("Counter: {0}", counter);
+            }
+
+            Console.WriteLine("\n");
+
+            // For loop with a decrementing counter
+            for (int i = 10; i > 0; i--)
+            {
+                Console.WriteLine("Counter: {0}", i);
+            }
+
+            Console.ReadLine();
+        }
+    }
+}

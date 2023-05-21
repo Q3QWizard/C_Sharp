@@ -1,0 +1,9 @@
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyOne\bin\Debug\AssemblyOne.dll
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyOne\bin\Debug\AssemblyOne.pdb
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyOne\obj\Debug\AssemblyOne.dll
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyOne\obj\Debug\AssemblyOne.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyOne\bin\Debug\AssemblyOne.dll
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyOne\bin\Debug\AssemblyOne.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyOne\obj\Debug\ResolveAssemblyReference.cache
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyOne\obj\Debug\AssemblyOne.dll
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyOne\obj\Debug\AssemblyOne.pdb

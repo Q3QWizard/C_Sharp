@@ -1,0 +1,15 @@
+All the parts spread across different files, must use the partial keyword.
+
+All the parts spread across different files, must have the same access modifiers.
+
+If any of the parts declared abstract, then the entire type is considered abstract
+
+If any of the parts declared sealed, then the entire type is considered sealed.
+
+If any of the parts inherit a class, then the entire type inherit that class.
+
+C# does not support multiple class inheritance. Different parts of the partial class must not specify different base classes.
+
+Different parts of the partial class can specify different base interfaces, and the final type implements all the interfaces listed by all the partial declaration
+
+Any members that are declared in a partial definition are available to all the other parts of the partial class.

@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Linq_2_4v
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] Numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            string[] Countries = { "India", "USA", "UK" };
+
+            int? result = null;
+
+            foreach (int i in Numbers)
+            {
+                if (!result.HasValue || i < result)
+                {
+                    result = i;
+                }
+            }
+
+            Console.WriteLine(result);
+
+
+            // find least even numbers in the array
+
+            int? evenNumberResult = null;
+            foreach (int i in Numbers)
+            {
+                if (i % 2 == 0)
+                {
+                    if (!evenNumberResult.HasValue || i < result)
+                    {
+                        evenNumberResult = i;
+                    }
+                }
+
+            }
+            Console.WriteLine("least even numbers in the array is - " + evenNumberResult);
+
+            // largest number in the array
+
+            int? largestNumberResult = null;
+            foreach (int i in Numbers)
+            {
+                if (!largestNumberResult.HasValue || i > largestNumberResult)
+                {
+                    largestNumberResult = i;
+                }
+            }
+            Console.WriteLine("larges number in the array is - " + largestNumberResult);
+
+
+            // sum of all the number is the array
+            int sumOfAll = 0;
+            foreach (int i in Numbers)
+            {
+                sumOfAll = sumOfAll + i;
+            }
+            Console.WriteLine("sum of all numbers is " + sumOfAll);
+
+            // count of all number in array
+            int countOfNumbers = 0;
+            foreach (int i in Numbers)
+            {
+                countOfNumbers++;
+            }
+            Console.WriteLine("count of all numbers in array - " + countOfNumbers);
+
+            //average of all numbers in array
+            double averageOfNumbers = 0;
+            int av_countOfNumbers = 0;
+            int av_sumOfNumbers = 0;
+            foreach (int i in Numbers)
+            {
+                av_countOfNumbers++;
+                av_sumOfNumbers = av_sumOfNumbers + i;
+            }
+            averageOfNumbers = av_sumOfNumbers / av_countOfNumbers;
+            Console.WriteLine("Average of numbers in array - " + averageOfNumbers);
+
+            // min length country character count
+            int? minLenCountry = null;
+
+            foreach (string str in Countries)
+            {
+                if (!minLenCountry.HasValue || str.Length < minLenCountry)
+                {
+                    minLenCountry = str.Length;
+                }
+            }
+            Console.WriteLine("min length countries characters - " + minLenCountry);
+            Console.Read();
+        }
+    }
+}

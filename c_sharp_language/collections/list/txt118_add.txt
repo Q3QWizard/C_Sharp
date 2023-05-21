@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+class Program
+{
+    static void Main()
+    {
+        List<int> lstInt = new List<int>();
+
+        lstInt.Add(5);
+
+        foreach (int i in lstInt)
+        {
+            Console.WriteLine(i);
+        }
+
+        Console.Read();
+
+    }
+}
+
+/*
+Add(<T> item)
+*/

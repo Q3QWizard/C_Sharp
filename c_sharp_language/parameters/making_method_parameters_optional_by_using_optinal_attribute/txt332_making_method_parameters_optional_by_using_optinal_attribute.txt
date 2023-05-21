@@ -1,0 +1,47 @@
+using System;
+using System.Runtime.InteropServices;
+
+public class Program
+{
+    public static void Main()
+    {
+        AddNumbers(10, secondNum: 20, restOfNumbers: new int[] { 40, 60, 21 });
+
+        Console.ReadLine();
+    }
+
+
+    public static void AddNumbers([Optional]int firstNum, int secondNum, [Optional] int[] restOfNumbers, string test = "")
+
+    {
+        int result = firstNum + secondNum;
+
+        if (restOfNumbers != null)
+        {
+            foreach (int i in restOfNumbers)
+            {
+                result += i;
+            }
+
+        }
+
+        Console.WriteLine("Sum = " + result);
+    }
+
+
+}
+
+/*
+    Optional Parameters
+
+There are 4 ways that can be used to make method parameters optional
+
+    1. Use parameter arrays
+    2. Method overloading
+    3. Specify parameter defaults
+    4. User OptionalAttriubute that is present in System.Runtime.InteropServices namespace
+
+    named arguments must appear after the positional arguments
+    
+    Note : A parameter array must be the last parameter in a formal parameter list.
+*/

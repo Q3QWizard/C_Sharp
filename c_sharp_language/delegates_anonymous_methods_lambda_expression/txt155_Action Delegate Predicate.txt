@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+public class Program
+{
+   static string myDelMethod(int age)
+    {
+        return age.ToString();
+    }
+
+   static void testAction()
+   {
+       Console.WriteLine("This is a action delegate and this doesn't return any value");
+   }
+
+    public static void Main()
+    {
+        Action act = testAction;
+        Action act1 = () => { Console.WriteLine("hooooo"); };
+        act1();
+        act();
+
+        Func<int, string, string> foo = (x,s) => { return x.ToString() + " " + s +  "Hello func"; };
+
+        Console.WriteLine(foo(1, "soooo"));
+
+        Predicate<string> prd = s => { return true; };
+
+        prd("");
+
+        List<string> myList = new List<string> { "Des", "Vid", "Kid" };
+
+        var result = from name in myList where name == "Des" select name;
+
+        Console.WriteLine(result.ToString());
+        Console.ReadLine();
+    }
+
+}
+
+/*
+ Action delegate
+    Action delegate may take parameters but does not return any value.
+
+Predicate delegate
+    Predicate will always take an input and always return bool
+    
+Func delegate
+    Func delegate will always will return a value but may or may not take input parameters
+
+ 
+  */
+ 

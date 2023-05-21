@@ -1,0 +1,42 @@
+public interface IBuffer<T>
+{
+	bool IsEmpty();
+	void Write(T value);
+
+	T Read();
+}
+
+public class Buffer<T> : IBuffer<T>
+{
+	Queue<T> _queue = new Queue<T>();
+	
+	public virtual T Read(){ return _queue.Dequeue(); }
+	
+	public virtual void Write(T value)
+	{ _queue.Enqueue(value); }
+	
+	public bool IsEmpty()
+	{ return _queue.count == 0 }
+}
+
+public class CircularBuffer<T> : Buffer<T>
+{
+	private int _capacity;
+	
+	public CircularBuffer(int capacity = 10)
+	{
+		_capacity = capacity;
+	}
+	
+	public override void Write(T Value)
+	{
+		base.Write(value);
+		
+		if(_queue.Count > _capacity)
+		{
+			_queue.Dequeue();
+		}
+	}
+	
+	public bool IsFull { get {return _queue.Count == _capacity; }}
+}

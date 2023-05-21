@@ -1,0 +1,26 @@
+Dynamic
+-------
+
+c# is not a dynamically typed even though you can have dynamic types. It's statically typed dynamic type.
+
+ExpandoObject is the object that use with the dynamic keyword (contextual keyword) in order to add properties and
+method dynamically
+	contextual keyword - is used to provide a specific meaning in the code, but it is not a reserved word in c#
+	
+Dynamics are eveluated at runtime
+
+dynamic person = new ExpandoObject();
+person.Name = "Fill";
+person.Age = 24;
+
+ExpandoObject implements the interface Dictionary<string, object> with this we can do following.
+
+dynamic person = new ExpandoObject();
+var dictionary = (IDictionary<string, object>)person;
+
+dictionary.Add("Name", "Fill");
+dictionary.Add("Age", 24);
+
+This is how you add dynamic properties. But how about adding method?
+
+dictionary.Add("Shout", new Action(() => { Console.WriteLine("Heloooooo");}));

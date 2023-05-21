@@ -1,0 +1,45 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace App
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            B b = new B();
+
+        }
+    }
+
+    class A
+    {
+        private int private_variable = 10;
+        public int public_variable = 15;
+
+        private void public_method()
+        {
+
+        }
+
+        public void public_method()
+        {
+
+        }
+    }
+
+    class B : A
+    {
+        public void Method()
+        { 
+            
+        }
+    }
+}
+
+/*
+ In inheritance only parent classs's public method are accessible from the child class instance
+ */

@@ -1,0 +1,24 @@
+Another way to acheive this Buffer class to work with doubles and strings is to give its own implementation to it.
+
+class MyClassStr
+{
+	private int _start = 0;
+	public int BufferProperty  { get; set; }
+
+	private string[] _bufferArray;
+
+	public Buffer(int capacity)
+	{
+		_bufferArray = new string[capacity];
+	}
+
+	public void Write(string value)
+	{ _bufferArray[0] = value; }
+
+	public string Read()
+	{ return _bufferArray[0]; }
+}
+
+Like this way we can implement a class for double also. But making classes like this is not a good idea for maintaining the code.
+
+Instead what we have to do is parameterize the datatype of the class. So we don't have to create seperate classes for everything.

@@ -1,0 +1,86 @@
+using System;
+using System.Collections;
+
+public class Program
+{
+    public static void Main()
+    {
+        ArrayList alEmp = new ArrayList();
+        alEmp.Add(new Employee() { Id = 5, Name = "E5" });
+        alEmp.Add(new Employee() { Id = 2, Name = "E2" });
+        alEmp.Add(new Employee() { Id = 1, Name = "E1" });
+        alEmp.Add(new Employee() { Id = 4, Name = "E4" });
+        alEmp.Add(new Employee() { Id = 3, Name = "E3" });
+
+        alEmp.Sort();
+
+        foreach (Employee emp in alEmp)
+        {
+            Console.WriteLine(emp);
+        }
+
+        IEnumerator en = alEmp.GetEnumerator();
+        while (en.MoveNext())
+        {
+            Employee e = (Employee)en.Current;
+            Console.WriteLine(e);
+        }
+  
+
+        Console.ReadLine();
+    }
+}
+
+class Employee : IComparable
+{
+    public int Id;
+    public string Name;
+    public override string ToString()
+    {
+        return Id + " " + Name;
+    }
+
+    public int CompareTo(object obj)
+    {
+        Employee other = (Employee)obj;
+        if (this.Id < other.Id)
+        {
+            return -1; // if current object id is smaller than the other objects id return -1
+        }
+        else if (this.Id > other.Id)
+        {
+            return 1;   //  if the current object is greater than the other object return 1
+        }
+        else
+        {
+            return 0;   // if the current object and the other object are the same return 0;
+        }
+    }
+}
+
+
+
+// In object data type automatically ToString() will be called.
+
+/*
+ 
+ IEnumerable
+        Has method | GetEnumerator()    | Return IEnumerator
+ IEnumerator
+        Has method | MoveNext()         | Return bool
+        object Current;
+        void Reset;
+        
+ public class ArrayList : IList, ICollection, IEnumerable, ICloneable
+ * 
+ * foreach has implicit implementation for the Enumerator.
+ * foreach internally uses ienumerator objects.
+ * forach only can be use in those objects which implements the Ienumerable.
+ * 
+ * 
+ * 
+ * Unless an object is comparable with another object we cannot do sorting.
+ */
+
+
+/*What is IEnumerable,IComparable And IComparer Interfaces in C#*/

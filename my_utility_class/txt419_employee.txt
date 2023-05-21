@@ -1,0 +1,76 @@
+class Employee
+{
+    public int EmployeeID { get; set; }
+    public string EmployeeName { get; set; }
+
+    private string _gender;
+
+    public string Gender
+    {
+        get { return _gender; }
+
+        set
+        {
+            if (!(value == "M" || value == "F" || value == "U"))
+            {
+                throw new Exception("only M for male, F for female, U for unknown is allowd");
+            }
+
+            this._gender = value;
+        }
+    }
+    public DateTime DOB { get; set; }
+    public int Salary { get; set; }
+    public string City { get; set; }
+
+    private static List<Employee> employees;
+
+    public static List<Employee> GetEmployees()
+    {
+        employees = new List<Employee>()
+            {
+                new Employee() { EmployeeID = 101, EmployeeName = "Sally", DOB = new DateTime(1980, 2, 25), Gender = "F", City = "Matara", Salary = 45000 },
+                new Employee() { EmployeeID = 102, EmployeeName = "Roku", DOB = new DateTime(1990, 12, 25), Gender = "M", City = "Matara", Salary = 35000 },
+                new Employee() { EmployeeID = 103, EmployeeName = "Leema", DOB = new DateTime(1984, 7, 15), Gender = "U", City = "Colombo", Salary = 45000 },
+                new Employee() { EmployeeID = 104, EmployeeName = "Sonik", DOB = new DateTime(1997, 3, 5), Gender = "M", City = "Galle", Salary = 65000 },
+                new Employee() { EmployeeID = 105, EmployeeName = "Rithu", DOB = new DateTime(1996, 4, 18), Gender = "F", City = "Jaffna", Salary = 30000 },
+                new Employee() { EmployeeID = 106, EmployeeName = "Nalin", DOB = new DateTime(1972, 8, 17), Gender = "M", City = "Galle", Salary = 67250 },
+                new Employee() { EmployeeID = 107, EmployeeName = "Nilu", DOB = new DateTime(1991, 6, 13), Gender = "F", City = "Tangalle", Salary = 76500},
+                new Employee() { EmployeeID = 108, EmployeeName = "Nimal", DOB = new DateTime(1979, 5, 25), Gender = "M", City = "Kandy", Salary = 49000},
+                new Employee() { EmployeeID = 109, EmployeeName = "Shamil", DOB = new DateTime(1992, 11, 29), Gender = "M", City = "Trinco", Salary = 56000},
+                new Employee() { EmployeeID = 110, EmployeeName = "Chamil", DOB = new DateTime(1998, 12, 25), Gender = "M", City = "Kandy", Salary = 30000 },
+            };
+
+        return employees;
+    }
+
+    public override string ToString()
+    {
+        return "EmployeeID" + " -> " + this.EmployeeID + " | " + "EmployeeName" + "->" + this.EmployeeName + " | " + "Gender" + " -> " + this.Gender + " | " + "DOB" + "->" + this.DOB + " | " + "City" + " -> " + this.City + " | " + "Salary" + " -> " + this.Salary;
+    }
+
+    public string ToString(Func<Employee, string> delEmpFrmt)
+    {
+        return delEmpFrmt(this);
+    }
+
+    public Employee this[int EmployeeID]
+    {
+        get
+        {
+            List<Employee> emp1 = employees.Where(emp => emp.EmployeeID == EmployeeID).ToList();
+
+            if (emp1.Count != 1)
+            {
+                throw new Exception("There is are multiple or there are no items with " + EmployeeID);
+            }
+
+            return emp1[0];
+        }
+    }
+
+    //public string ToString(Del_EmployeeFormat delEmpFrmt)
+    //{
+    //    return delEmpFrmt(this);
+    //}
+}

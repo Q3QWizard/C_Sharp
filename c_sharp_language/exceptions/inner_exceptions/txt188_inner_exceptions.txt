@@ -1,0 +1,71 @@
+using System;
+using System.IO;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            try
+            {
+                Console.WriteLine("Enter first number : ");
+                int fn = Int32.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter second number : ");
+                int sn = Int32.Parse(Console.ReadLine());
+
+                int result = fn / sn;
+
+                Console.WriteLine("The reslut is : {0}", result);
+
+                Console.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                string logfilepath = @"G:\Desitha\WorkBench\c#\PragimTech\C# txt\411_InnerExceptions\sample_log_file\log.txt";
+
+                if (File.Exists(logfilepath))
+                {
+                    StreamWriter sw = new StreamWriter(logfilepath);
+                    sw.Write(ex.GetType().Name);
+                    sw.WriteLine();
+                    sw.Write(ex.StackTrace);
+                    sw.Close();
+                }
+                else
+                {
+                    throw new FileNotFoundException("The required log file not found!", ex);
+                }
+            }
+        }
+
+        catch (Exception exc)
+        {
+            if (exc.InnerException != null)
+            {
+                Console.WriteLine("Inner Exception : " + exc.InnerException.GetType().Name);
+            }
+            Console.WriteLine("Current Exception : " + exc.GetType().Name);
+            
+
+            Console.ReadLine();
+        }
+
+    }
+}
+
+/*
+
+ Inner Exception
+
+The InnerException property returns the Exception instance that caused the current exception.
+
+To retain the original exception pass it as a parameter to the constructor, of the current exception
+
+Always check if inner exception is not null before accessing any property of the inner exception
+object, else, you may get Null Reference Exception.
+
+To get type InnerException use GetType()method 
+
+*/

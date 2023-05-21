@@ -1,0 +1,170 @@
+C# - SortedList
+
+The SortedList collection stores key-value pairs in the ascending order of key by default. SortedList class implements IDictionary & ICollection interfaces, so elements can be accessed both by key and index.
+
+C# includes two types of SortedList, generic SortedList and non-generic SortedList. Here, we will learn about non-generic SortedList.
+
+Add elements in SortedList
+----------------------------
+
+Use the Add() method to add key-value pairs into a SortedList.
+
+Add() method signature: void Add(object key, object value)
+
+Key cannot be null but value can be null. Also, datatype of all keys must be same, so that it can compare otherwise it will throw runtime exception.
+
+SortedList sortedList1 = new SortedList();
+sortedList1.Add(3, "Three");
+sortedList1.Add(4, "Four");
+sortedList1.Add(1, "One");
+sortedList1.Add(5, "Five");
+sortedList1.Add(2, "Two");
+
+SortedList sortedList2 = new SortedList();
+sortedList2.Add("one", 1);
+sortedList2.Add("two", 2);
+sortedList2.Add("three", 3);
+sortedList2.Add("four", 4);
+    
+SortedList sortedList3 = new SortedList();
+sortedList3.Add(1.5, 100);
+sortedList3.Add(3.5, 200);
+sortedList3.Add(2.4, 300);
+sortedList3.Add(2.3, null);
+sortedList3.Add(1.1, null);
+
+Note
+----
+
+SortedList collection sorts the elements everytime you add the elements. So if you debug the above example, you will find keys in ascending order even if they are added randomly,
+
+Object Initializer Syntax to initialize the SortedList
+ ------------------------------------------------------
+
+SortedList sortedList = new SortedList()
+{
+    {3, "Three"},
+    {4, "Four"},
+    {1, "One"},
+    {5, "Five"},
+    {2, "Two"}
+};
+
+Note
+----
+SortedList key can be of any data type, but you cannot add keys of different data types in the same SortedList. The key type of the first key-value pair remains the same for all other key-value pairs. The following example will throw run time exception because we are trying to add the second item with a string key:
+
+Key of different datatypes throws exception:
+--------------------------------------------
+
+SortedList sortedList = new SortedList();
+
+sortedList.Add(3, "Three");
+sortedList.Add("Four", "Four"); // Throw exception: InvalidOperationException
+sortedList.Add(1, "One");
+sortedList.Add(8, "Five");
+sortedList.Add(2, "Two");
+
+Access SortedList
+-----------------
+
+SortedList can be accessed by index or key. Unlike other collection, SortedList requires key instead of index to access a value for that key.
+
+SortedList sortedList = new SortedList()
+                            {
+                                {"one", 1},
+                                {"two", 2},
+                                {"three", 3},
+                                {"four", "Four"}
+                            }
+
+int i = (int) sortedList["one"];
+int j = (int) sortedList["two"];
+string str = (string) sortedList["four"];
+
+Console.WriteLine(i);
+Console.WriteLine(j);
+Console.WriteLine(str);
+
+Accessing Values using For Loop
+-------------------------------
+
+SortedList sortedList = new SortedList()
+                            {
+                                {3, "Three"},
+                                {4, "Four"},
+                                {1, "One"},
+                                {5, "Five"},
+                                {2, "Two"}
+                            };
+for (int i = 0; i < sortedList.Count; i++)
+{
+    Console.WriteLine("key: {0}, value: {1}", 
+        sortedList.GetKey(i), sortedList.GetByIndex(i));
+}
+
+The foreach statement can also be used to access the SortedList collection. SortedList includes key-value pairs. So, the type of element would be DictionaryEntry rather than the type of a key or a value.
+
+SortedList sortedList = new SortedList()
+                            {
+                                {3, "Three"},
+                                {4, "Four"},
+                                {1, "One"},
+                                {5, "Five"},
+                                {2, "Two"}
+                            };
+foreach(DictionaryEntry kvp in sortedList )
+    Console.WriteLine("key: {0}, value: {1}", kvp.Key , kvp.Value );
+
+Remove elements from SortedList
+-------------------------------
+
+Use the Remove() or RemoveAt() method to remove elements from a SortedList.
+
+Remove() signature: void Remove(object key)
+
+RemoveAt() signature: void RemoveAt(int index)
+
+SortedList sortedList = new SortedList();
+sortedList.Add("one", 1);
+sortedList.Add("two", 2);
+sortedList.Add("three", 3);
+sortedList.Add("four", 4);
+    
+sortedList.Remove("one");//removes element whose key is 'one'
+sortedList.RemoveAt(0);//removes element at zero index i.e first element: four
+
+foreach(DictionaryEntry kvp in sortedList )
+    Console.WriteLine("key: {0}, value: {1}", kvp.Key , kvp.Value );
+
+Check for an existing key in SortedList
+----------------------------------------
+
+The Contains() & ContainsKey() methods determine whether the specified key exists in the SortedList collection or not.
+
+Contains() signature: bool Contains(object key)
+
+ContainsKey() signature: bool ContainsKey(object key)
+
+The ContainsValue() method determines whether the specified value exists in the SortedList or not.
+
+ContainValue() signature: bool ContainValue(object value)
+
+SortedList sortedList = new SortedList();
+                            {
+                                {3, "Three"},
+                                {4, "Four"},
+                                {1, "One"},
+                                {8, "Eight"},
+                                {2, "Two"}
+                            };
+sortedList.Contains(2); // returns true
+sortedList.Contains(4); // returns true
+sortedList.Contains(6); // returns false
+
+sortedList.ContainsKey(2); // returns true
+sortedList.ContainsKey(6); // returns false
+
+sortedList.ContainsValue("One"); // returns true
+sortedList.ContainsValue("Ten"); // returns false
+

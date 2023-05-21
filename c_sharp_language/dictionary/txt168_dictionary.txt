@@ -1,0 +1,98 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Dictionary<Customer, Customer> cc = new Dictionary<Customer, Customer>();
+
+        Customer customer1 = new Customer() { ID = 101, Name = "Mark", Salary = 50000 };
+        Customer customer2 = new Customer() { ID = 102, Name = "Pam", Salary = 65000 };
+        Customer customer3 = new Customer() { ID = 103, Name = "Jhone", Salary = 35000 };
+        Customer customer4 = new Customer() { ID = 103, Name = "Jhone", Salary = 35000 };
+
+        // creating a dictionary
+        Dictionary<int, Customer> dictionaryCustomer = new Dictionary<int, Customer>();
+
+        // adding items to dictionary
+        dictionaryCustomer.Add(customer1.ID, customer1);
+        dictionaryCustomer.Add(customer2.ID, customer2);
+        dictionaryCustomer.Add(customer3.ID, customer3);
+        
+        // adding a key that is already exist in a dictionary will throw Exception
+        // ArgumentException
+        //dictionaryCustomer.Add(customer1.ID, customer1);
+
+        // retreiving items from dictionary
+        Customer cust101 = dictionaryCustomer[101];
+        Console.WriteLine(cust101.ID + " " + cust101.Name + " " + cust101.Salary);
+
+        // loop through dictionary
+        Console.WriteLine();
+        Console.WriteLine("Loop through dictionary");
+        foreach (KeyValuePair<int, Customer> c in dictionaryCustomer)
+        {
+            Console.WriteLine("ID = " + c.Key);
+            Console.WriteLine("Name = " + c.Value.Name);
+            Console.WriteLine();
+        }
+
+        //loop through only keys in dictionary
+        Console.WriteLine("Looping through keys");
+        foreach (int key in dictionaryCustomer.Keys)
+        {
+            Console.WriteLine(key);
+        }
+
+        //loop through only values in dictionary
+        Console.WriteLine();
+        Console.WriteLine("Looping through keys");
+        foreach (Customer c in dictionaryCustomer.Values)
+        {
+            Console.WriteLine(c.ID + " " + c.Name + " " + c.Salary);
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Check a key exists in a dictionary"); // like this we can check for the value also
+        Console.WriteLine(dictionaryCustomer.ContainsKey(101));
+
+        // if we try to access a dictionary via a key that doesn't exist a runtime exception wil be thorwn
+        // so it is good practice to check for the existance of the key before retriving 
+
+        if (dictionaryCustomer.ContainsKey(101))
+        {
+            Console.WriteLine(dictionaryCustomer[101].ID + " " + dictionaryCustomer[101].Name + " " + dictionaryCustomer[101].Salary);
+        }
+
+        Console.WriteLine();
+        // ContainsValue only check if the object refer to the same,
+        if (dictionaryCustomer.ContainsValue(customer3))
+        {
+            Console.WriteLine("dictionary contains coustomer4");
+        }
+
+        Console.ReadLine();
+    }
+}
+
+public class Customer
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public int Salary { get; set; }
+}
+
+/*
+ Dictionary in c#
+ * 
+ * A dictionary is a collection of (key, value) pairs.
+ * 
+ * Dictionary class presetn in System.Collection.Generic namespace
+ * 
+ * When creating a dictionary, we need to specify the type for key and value
+ * 
+ * Dictionary provides, fast lookup for values using keys
+ * 
+ * Keys in the dictionary must be unique.
+ */

@@ -1,0 +1,31 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        var result3 = new Result<int, string>() { Data = 25, Data2 = "Helloooo" };
+
+        ResultPrinter resultprinter = new ResultPrinter();
+        resultprinter.print(result3);
+
+        Console.ReadLine();
+    }
+}
+
+public class Result<T, U>
+{
+    public bool Success { get; set; }
+    public T Data { get; set; }
+    public U Data2 { get; set; }
+}
+
+public class ResultPrinter
+{
+    public void print<T, U>(Result<T, U> result)
+    {
+        Console.WriteLine(result.Data);
+        Console.WriteLine(result.Data2);
+    }
+}
+

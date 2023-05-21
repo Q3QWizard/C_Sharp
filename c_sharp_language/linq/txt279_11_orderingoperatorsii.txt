@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Student
+{
+    public int StudentID { get; set; }
+    public string Name { get; set; }
+    public int TotalMarks { get; set; }
+
+    public static List<Student> GetAllStudents()
+    {
+        List<Student> lstStudents = new List<Student> 
+            { 
+                new Student { Name = "Tom", StudentID = 101, TotalMarks = 88},
+                new Student { Name = "Jack", StudentID = 102, TotalMarks = 98},
+                new Student { Name = "Sam", StudentID = 103, TotalMarks = 78},
+                new Student { Name = "Tim", StudentID = 104, TotalMarks = 68},
+                new Student { Name = "Jim", StudentID = 104, TotalMarks = 68},
+                new Student { Name = "Pim", StudentID = 104, TotalMarks = 68},
+            };
+
+        return lstStudents;
+    }
+}
+class Program
+{
+    public static void Main()
+    {
+        IEnumerable<Student> result = Student.GetAllStudents().OrderBy(s => s.TotalMarks).OrderBy(s => s.Name);
+
+        foreach (Student s in result)
+        {
+            Console.WriteLine(s.TotalMarks + "\t" + s.Name + "\t" + s.StudentID);
+        }
+
+        Console.WriteLine();
+
+        IEnumerable<Student> result1 = Student.GetAllStudents().OrderBy(s => s.TotalMarks).ThenBy(s => s.Name).ThenByDescending(s => s.StudentID);
+        foreach (Student s in result1)
+        {
+            Console.WriteLine(s.TotalMarks + "\t" + s.Name + "\t" + s.StudentID);
+        }
+
+        IEnumerable<Student> studentR = Student.GetAllStudents();
+        IEnumerable<Student> result2 = studentR.Reverse();
+        Console.ReadLine();
+    }
+}

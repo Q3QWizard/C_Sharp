@@ -1,0 +1,19 @@
+Static methods can not overriden. They can however be hidden using the new keyword.
+
+Mostly overriding methods means you reference a base type and want to call derived method.
+
+Method overriding is possible only in derived classes.
+A method must be a non-virtual or static method for override.
+Both the override method and the virtual method must have the same access level modifiers.
+
+class A
+{
+	public static void MyMethod() => Console.Write("Base class static method");
+}
+
+class B : A{}
+
+svm
+{
+	B.MyMeth();
+}

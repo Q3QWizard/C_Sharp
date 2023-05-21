@@ -1,0 +1,21 @@
+In c# there are 5 different access modifiers
+
+	1. Private
+	2. Public 
+	3. Protected
+	4. Internal
+	5. Protected Internal
+	
+You can use all 5 access modifiers with type members, but types allows only
+internal and public access modifiers. It is a compile time error to use private,
+protected and protected internal access modifiers with types
+
+Access Modifiers				Accessibility
+
+private							Only with in the containing class (Default for type members)
+
+public 							Anywhere, No restrictions.
+
+protected						With in the containing type and the types derived from the containing type
+
+Internal 						Anywhere with in the containing assembly, and from with in a derived class in any other assembly

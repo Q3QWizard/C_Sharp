@@ -1,0 +1,13 @@
+Advantages of multithreading
+
+1. To maintain a responsive interface
+2. To make efficient use of processor time while waiting for I/O operations to complete
+3. To split large, CPU-bound tasks to be processed simultaneously on a machine that has multiple processors/ cores
+
+Disadvantages of multithreading
+
+1. On a single processor/ core machine threading affects performance negatively as there is overhead involved with context-switching
+
+2. Have to write more lines of code to accomplish the same task.
+
+3. Multithreaded applications are difficult to write, understand, debug and maintain

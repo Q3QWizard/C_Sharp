@@ -1,0 +1,86 @@
+using System;
+using System.Data.SqlClient;
+using System.Data;
+
+public class Program
+{
+    public static void Main()
+    { 
+        // ---------Createing connection object-----------
+        SqlConnection con_obj = new SqlConnection();
+        con_obj.ConnectionString = "Data Source=DESITHA-PC; Initial Catalog=PragimTech; User ID=sa; Password=qwert;";
+        con_obj.Open();
+        con_obj.Close();
+
+        // --------Creating command object---------
+
+        /*
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = con_obj;
+        cmd.CommandText = "INSERT INTO dbo.EmpDetails ( Id ,Name ,Gender ,Salary ,DepId ,Email ,City ,BirthDay) VALUES ('" + 11 + "','Desitha1', 'Male', '" + 500000 + "', '" + 1 + "', 'Desitha1@gmail.com', 'Matara', '1982-09-01 12:02:36.2600000' )";
+
+        con_obj.Open();
+        cmd.ExecuteNonQuery();
+        con_obj.Close();
+         */
+
+        //-------------------------------Stored Procedures-----------------------------------------
+
+        //SqlCommand cmd2 = new SqlCommand();
+        //cmd2.Connection = con_obj;
+        //cmd2.CommandType = CommandType.StoredProcedure;
+        //cmd2.CommandText = "sp_Save_Employee";
+
+        //cmd2.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int, 5, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Default, 13));
+        //cmd2.Parameters.Add(new SqlParameter("@Name", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Default, "Desitha3"));
+        //cmd2.Parameters.Add(new SqlParameter("@Gender", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Default, "Male"));
+        //cmd2.Parameters.Add(new SqlParameter("@Salary", SqlDbType.Int, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Default, 500000));
+        //cmd2.Parameters.Add(new SqlParameter("@DepId", SqlDbType.Int, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Default, 1));
+        //cmd2.Parameters.Add(new SqlParameter("@Email", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Default, "Deistha3@gmail.com"));
+        //cmd2.Parameters.Add(new SqlParameter("@City", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Default, "Matara"));
+
+        //con_obj.Open();
+        //cmd2.ExecuteNonQuery();
+        //con_obj.Close();
+
+        // ----SqlDataAdapter ------
+
+        /*
+        DataSet ds = new DataSet();
+
+        SqlCommand cmd1 = new SqlCommand();
+        cmd1.Connection = con_obj;
+        cmd1.CommandText = "SELECT[Id],[Name],[Gender],[Salary],[DepId],[Email],[City],[AutoId],[BirthDay] FROM [PragimTech].[dbo].[EmpDetails]";
+
+        SqlDataAdapter da = new SqlDataAdapter(cmd1);
+        da.Fill(ds);
+         */
+
+        //------------------------------- SqlDataReader -----------------------------------------
+
+
+    //    SqlDataReader dr;
+
+    //    SqlCommand cmd = new SqlCommand();
+    //    cmd.Connection=con_obj;
+    //    cmd.CommandText = "SELECT[Name],[Salary] FROM [PragimTech].[dbo].[EmpDetails]";
+
+    //    con_obj.Open();
+
+    //    dr = cmd.ExecuteReader();
+
+    //    if (dr.HasRows)
+    //    {
+    //        while (dr.Read())
+    //        {
+    //            Console.WriteLine(dr[0] + " " + dr[1]);
+    //        }
+    //    }
+    //    con_obj.Close();
+    }
+}
+
+public class Connection
+{ 
+        
+}

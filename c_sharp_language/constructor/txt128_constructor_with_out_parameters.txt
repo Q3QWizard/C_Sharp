@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DotNetCoreDemo
+{
+    public class OverrideStatic
+    {
+
+        
+        static void Main(string[] args)
+        {
+            bool flag = false;
+
+            ClassA a = new ClassA(out flag);
+
+            B b = new B();
+        }
+    }
+
+    public class ClassA
+    {
+        public ClassA(out bool success)
+        {
+            success = true;
+        }
+    }
+
+    public class B : ClassA
+    {
+        private static bool success;
+
+        // call the constructor from ClassA but without the out-param
+        public B()
+            : base(out success)
+        {
+        }
+    }
+}

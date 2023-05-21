@@ -1,0 +1,44 @@
+using System;
+
+public class Program
+{
+
+    public static void Main()
+    {
+        MyClass myclass = new MyClass();
+        //myclass.      // cannot acces the mydele via myclass ref variable, because i think delegate in considerd as a type, but it can be accessed via class name like a static variable
+
+        MyClass.mydele de = new MyClass.mydele(printname);
+
+        myclass.myevent += printname;
+
+
+        myclass.myevent();              // uncomment this and see
+
+        Console.ReadLine();
+    }
+
+    public static void printname()
+    {
+        Console.WriteLine("My name is desitha");
+    }
+
+}
+    public class MyClass
+    {
+        public delegate void mydele();
+
+        public  mydele myevent;
+
+        public void invokeMethod(MyClass my)
+        {
+            my.myevent();
+        }
+    }
+    /*
+     Events can only be risen from inside the class. If you could do that, it would defeat the purpose of events (being able to rise status changes from inside the class). I think you are misunderstanding the function of events - an event is defined inside a class and others can subscribe to it by doing
+
+    obj.AfterSearch += handler; (where handler is a method according to the signature of AfterSearch). One is able to subscribe to the event from the outside just fine, but it can only be risen from inside the class defining it.
+     */
+
+/*if i delete the evetn keyword then that will be an delegate it can be accessed from the  that class ref variable*/

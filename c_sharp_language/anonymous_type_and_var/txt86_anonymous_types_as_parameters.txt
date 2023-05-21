@@ -1,0 +1,22 @@
+using System;
+using System.Reflection;
+
+namespace ConsoleDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            MyMethod(new { hello = "hello111" });
+            Console.Read();
+        }
+
+        public static void MyMethod(object t)
+        {
+            Type to = t.GetType();
+            PropertyInfo p = to.GetProperty("hello");
+            object v = p.GetValue(t, null);
+        }
+    }
+}

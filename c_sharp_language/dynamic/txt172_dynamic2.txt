@@ -1,0 +1,52 @@
+
+using System;
+using System.Collections.Generic;
+using System.Dynamic;
+class Program
+{
+    public static void Main()
+    {
+        dynamic person = new ExpandoObject();
+
+        person.Name = "Saman";
+
+        Console.WriteLine(person.Name);
+
+        // ExpandoObject implements the interface Dictionary<string, object> with this we can do following
+
+        dynamic person2 = new ExpandoObject();
+
+        var dictionary = (IDictionary<string, object>)person2;
+
+        dictionary.Add("Name", "Wasindu");
+        dictionary.Add("Age", 24);
+
+        Console.WriteLine(person2.Name + " " + person2.Age);
+
+        // Adding a method to dynamic type 
+
+        dictionary.Add("Shout", new Action(() => { Console.WriteLine("Helloooo"); }));
+
+        person2.Shout();
+
+        Console.Read();
+    }
+
+
+}
+
+
+class Student
+{
+    public void FakeMethod() { Console.WriteLine("Hello from FakeMethod()"); }
+}
+
+/*
+    c# is not a dynamically typed even though you can have dynamic types.
+ * 
+ * ExpandoObject is the object that use with the dynamic keyword, in order to add properties and method dynamically.
+ * 
+ * dynamics are eveluated at runtime
+ * 
+ * ExpandoObject implements the interface Dictionary<string, object> with this we can do
+ */

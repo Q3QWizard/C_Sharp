@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Linq_1_6v
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            IEnumerable<int> evenNumbers = numbers.Where(x => x % 2 == 0);
+            IEnumerable<int> evenNumbers1 = numbers.Where(delegate(int x) { return x % 2 == 0; });
+
+            Func<int, bool> f_even = x => x % 2 == 0;
+            IEnumerable<int> evenNumbers2 = numbers.Where(f_even);
+
+            Func<int, bool> f_even1 = IsEven;
+            IEnumerable<int> evenNumbers3 = numbers.Where(f_even1);
+
+            IEnumerable<int> evenNumbers4 = numbers.Where(IsEven);
+
+            foreach (int i in evenNumbers)
+            {
+                Console.WriteLine(i);
+            }
+
+            foreach (int i in evenNumbers1)
+            {
+                Console.WriteLine(i);
+            }
+
+            foreach (int i in evenNumbers2)
+            {
+                Console.WriteLine(i);
+            }
+
+            foreach (int i in evenNumbers3)
+            {
+                Console.WriteLine(i);
+            }
+
+            foreach (int i in evenNumbers4)
+            {
+                Console.WriteLine(i);
+            }
+
+            //LINQ Sql like query
+
+            IEnumerable<int> evenNumbers5 = from num in numbers where num % 2 == 0 select num;
+
+            //LINQ array value and index postion
+            var evenNumbers6 = numbers.Select((num, index) => new { Number = num, Index = index }).Where(n => n.Number % 2 == 0);
+            foreach (var item in evenNumbers6)
+            {
+                Console.WriteLine("value is " + item.Number + " index is " + item.Index);
+            }
+
+            Console.WriteLine();
+            //LINQ array index only selected
+            var evenNumbers7 = numbers.Select((num, index) => new { Number = num, Index = index }).Where(n => n.Number % 2 == 0).Select(i => i.Index);
+
+            foreach (var item in evenNumbers7)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.Read();
+        }
+
+        public static bool IsEven(int x)
+        {
+            return x % 2 == 0;
+        }
+
+
+    }
+}

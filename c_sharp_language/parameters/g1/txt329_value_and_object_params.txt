@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+class Program
+{
+    public static void Main()
+    {
+
+        A a = new A();
+
+        MyMethod(a);
+
+        Console.WriteLine(a.MyProperty);
+
+        Console.ReadLine();
+    }
+
+    public static void MyMethod(A a)
+    {
+        a.MyProperty = 100;
+    }
+
+
+}
+
+
+class A
+{
+    public int MyProperty { get; set; }
+}
+
+/*
+ If we pass a object to a another method as a parameter only the reference to that object will be passed to the calling method. The changes that we are doing to the object 
+ * in the calling method will reflect in the place where object was made.
+ * 
+ * But in value types when we pass a value as a parameter to a method a it is passed as a new value and it will not reflect the original value that was passed to the calling function.
+ * 
+ * 
+ */

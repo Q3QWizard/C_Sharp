@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+
+namespace MyConsole_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var OldD = new Dictionary<string, string>
+            {
+                { "Name", "Robert Deniro" },
+                { "ArtistType", "Mafia" },
+                { "FamousQuote", "Insulted him a little bit" }
+            };
+
+            //new way c# 6.0
+            var newD = new Dictionary<string, string>
+            {
+                ["Name"] = "Robert Deniro",
+                ["ArtistType"] = "Mafia",
+                ["FamousQuote"] = "Insulted him a little bit"
+            };
+
+            var array = new[] { "Name", "ArtistType" };
+            var thisArrayList = new List<string>(array)
+            {
+                [0] = "Robert DeNiro",
+                [1] = "Mafia"
+            };
+            foreach (var item in thisArrayList)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.Read();
+
+        }
+    }
+}
+
+/*
+ this initializers can be used in any object supporting an indexer
+     */

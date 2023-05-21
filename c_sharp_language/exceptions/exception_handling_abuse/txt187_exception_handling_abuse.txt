@@ -1,0 +1,56 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            Console.WriteLine("Please enter numerator : ");
+            int numerator = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Please enter denominator : ");
+            int denominator = Convert.ToInt32(Console.ReadLine());
+
+            int result = numerator / denominator;
+
+            Console.WriteLine("Result = {0}", result);
+
+            Console.ReadLine();
+        }
+        catch (FormatException)
+        {
+
+            Console.WriteLine("Only enter numbers");
+            Console.ReadLine();
+        }
+
+        catch (OverflowException)
+        {
+            Console.WriteLine("Only enter numbers between {0} and {1}", Int32.MinValue, Int32.MaxValue);
+            Console.ReadLine();
+        }
+
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("You can not devide by zero");
+            Console.ReadLine();
+        }
+
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.ReadLine();
+        }
+    }
+}
+
+/*
+Exception Handling abuse
+
+Exception are unforeseen errors that occur when a program is running. For example, when an application
+is executing a query, the database connection is lost, Exception handing is generally used to handle these
+scenarios.
+
+Using exception handling to implement program logical flow is bad and is termed as exception handling abuse.
+*/

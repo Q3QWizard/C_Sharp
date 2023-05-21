@@ -1,0 +1,5 @@
+To paraphrase (to the limits of my comprehension), these methods go into "slots". A has two slots: one for Test1 and one for Test2.
+
+Since A.Test1 is marked as virtual and B.Test1 is marked as override, B's implementation of Test1 does not create its own slot but overwrites A's implementation. Whether you treat an instance of B as a B or cast it to an A, the same implementation is in that slot, so you always get the result of B.Test1.
+
+By contrast, since B.Test2 is marked new, it creates its own new slot. (As it would if it wasn't marked new but was given a different name.) A's implementation of Test2 is still "there" in its own slot; it's been hidden rather than overwritten. If you treat an instance of B as a B, you get B.Test2; if you cast it to an A, you can't see the new slot, and A.Test2 gets called.

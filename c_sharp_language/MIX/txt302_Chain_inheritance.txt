@@ -1,0 +1,59 @@
+using System;
+class A
+{
+    public virtual void Print()
+    {
+        Console.WriteLine("Class A");
+    }
+}
+
+class B : A
+{
+    public override void Print()
+    {
+        Console.WriteLine("Class B inherited from class A");
+    }
+}
+
+
+class C : B
+{
+    public void Print()
+    {
+        Console.WriteLine("Class C inherited from class B");
+    }
+}
+
+class D : C
+{
+    public  virtual void Print()
+    {
+        Console.WriteLine("Class D inherited from class C");
+    }
+}
+
+class F : D
+{
+    public override void Print()
+    {
+        Console.WriteLine("Class F inherited from class D");
+    }
+}
+
+
+
+    class Program
+    {
+        static void Main()
+        {
+            A f = new F();
+            f.Print();
+
+            Console.ReadLine();
+        }
+    }
+
+/*
+ * only a class can be override by its direct child - self
+ */
+

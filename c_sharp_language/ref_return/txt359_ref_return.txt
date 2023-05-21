@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+
+namespace c__7._0
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string []  friends = {"Aruna", "Jayan", "Ravindu", "Thilina"};
+
+            ref string friend = ref Find(friends, "Jayan");
+            
+            Console.WriteLine(friend);
+
+            friends[1] += " Prabodha";
+
+            Console.WriteLine(friend);
+        }
+
+        static ref string Find(string [] friends, string friend)
+        {
+            for(int i=0; i < friends.Length; i++)
+            {
+                if(friends[i].Equals(friend))
+                {
+                    return ref friends[i];
+                }
+            }
+
+            throw new Exception("Frind not found");
+
+            
+        }
+    }
+} 
+
+/*
+    once the reference of a variable is assigned we can not bind that ref local variable to another element
+
+    We can not use this concept with list or generics or any complex types
+
+    Ref argument should be an assigned variable field or a array element
+
+    Once the ref has been set to the local variable if any changes happen to the original data still the refernce
+    variable will work properly
+ */

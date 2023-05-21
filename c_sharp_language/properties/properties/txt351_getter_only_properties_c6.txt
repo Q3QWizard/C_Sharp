@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        //public int MyProperty { get; } error before c# 6
+
+        private int myVar;
+
+        public int MyProperty
+        {
+            get { return myVar; }
+            //set { myVar = value; }
+        }
+        
+        static void Main(string[] args)
+        {
+        }
+    }
+}
+
+/*
+ For auto implemented properties we have to use get; and set; both in the auto implemented properties
+ * 
+ * But for fully implemented propertes we can have getter only properties, before c# 6.
+ * 
+ * Now with in c#6 we can have auto implemeted properties with getter only
+ * 
+ *   In c# 6
+ *   -------
+ *   public string FirstName { get; }
+     public string LastName { get;  }
+ * 
+ *   Read-only auto-properties provide a more concise syntax to create immutable types. You declare the auto-property with only a get accessor:
+ This feature enables true language support for creating immutable types and uses the more concise and convenient auto-property syntax.
+ 
+ Getter only auto property is essentially readonly properties that let you ommit a setter, leaving you with just a getter.
+ Because of that backing field of getter only auto property becomes readonly
+ 
+ This feature will only important to you if you care to control what is mutable or what's immutable in your design. Mutable
+ means who's objects can be modified. Immutable means who's state cannot be modified.
+ 
+ */

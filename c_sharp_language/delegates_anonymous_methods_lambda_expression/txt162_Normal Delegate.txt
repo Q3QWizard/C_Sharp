@@ -1,0 +1,24 @@
+using System;
+public class Program
+{
+    delegate string myDele(int age);
+
+    static string myDelMethod(int age)
+    {
+        return age.ToString();
+    }
+
+    public static void Main()
+    {
+        myDele obj_myDel = myDelMethod;
+
+        myDele obj_myDel2 = new myDele(myDelMethod);
+
+        Console.WriteLine(obj_myDel2(27));
+
+        Console.WriteLine(obj_myDel(20));
+
+        Console.ReadLine();
+    }
+
+}

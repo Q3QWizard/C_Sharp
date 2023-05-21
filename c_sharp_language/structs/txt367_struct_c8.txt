@@ -1,0 +1,49 @@
+Readonly members
+----------------
+
+You can apply the readonly modifier to members of a struct. It indicates that the member doesn't modify state. 
+It's more granular than applying the readonly modifier to a struct declaration. Consider the following mutable struct:
+
+public struct Point
+{
+    public double X { get; set; }
+    public double Y { get; set; }
+    public double Distance => Math.Sqrt(X * X + Y * Y);
+
+    public override string ToString() =>
+        $"({X}, {Y}) is {Distance} from the origin";
+}
+
+Like most structs, the ToString() method doesn't modify state. You could indicate that by adding the readonly 
+modifier to the declaration of ToString():
+
+public readonly override string ToString() =>
+    $"({X}, {Y}) is {Distance} from the origin";
+	
+The preceding change generates a compiler warning, because ToString accesses the Distance property, 
+which isn't marked readonly:
+
+warning CS8656: Call to non-readonly member 'Point.Distance.get' from a 'readonly' member results in an implicit copy of 'this'
+
+The compiler warns you when it needs to create a defensive copy. The Distance property doesn't change state, 
+so you can fix this warning by adding the readonly modifier to the declaration:
+
+public readonly double Distance => Math.Sqrt(X * X + Y * Y);
+
+The compiler does enforce the rule that readonly members don't modify state. The following method won't compile unless you remove the readonly 
+modifier:
+
+Notice that the readonly modifier is necessary on a read-only property. The compiler doesn't assume get accessors 
+don't modify state; you must declare readonly explicitly. Auto-implemented properties are an exception; 
+the compiler will treat all auto-implemented getters as readonly, so here there's no need to add the 
+readonly modifier to the X and Y properties.
+
+public readonly void Translate(int xOffset, int yOffset)
+{
+    X += xOffset;
+    Y += yOffset;
+}
+
+This feature lets you specify your design intent so the compiler can enforce it, and make optimizations based on that intent. You can learn more about readonly members in the language reference article on readonly
+
+

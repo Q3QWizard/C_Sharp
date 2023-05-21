@@ -1,0 +1,104 @@
+using System;
+using System.Reflection;
+
+namespace Des
+{
+
+    public class Program
+    {
+        public static void Main()
+        {
+            //Type T = Type.GetType("Des.Customer");
+
+            //Type T = typeof(Customer); // You can use this statement other than the above statement
+
+            Customer c = new Customer(); // if it is a instance of a class you can use this way
+            Type T = c.GetType();
+
+            PropertyInfo[] properties = T.GetProperties();
+
+            Console.WriteLine("Full Name = {0} ", T.FullName);
+            Console.WriteLine("Just the Name = {0} ", T.Name);
+            Console.WriteLine("Just the Namespace = {0} ", T.Namespace);
+            
+
+            Console.WriteLine();
+
+            Console.WriteLine("Methods in Customer class");
+            MethodInfo[] methods = T.GetMethods();
+            foreach (MethodInfo method in methods)
+            {
+                Console.WriteLine(method.ReturnType + " " + method.Name );
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Constructors in Customer class");
+            ConstructorInfo[] constructors = T.GetConstructors();
+            foreach (ConstructorInfo Constructor in constructors)
+            {
+                Console.WriteLine(Constructor.ToString());
+            }
+
+           /*
+            In T.GetMethods there are more method than what we have defined in the Customer class
+            * 
+            * In C# every type directly or indirectly inherites from System.Objects.
+            * The extra methods are comming from this System.Object class.
+            */
+            
+
+            foreach (PropertyInfo prop in properties)
+            {
+                Console.WriteLine(prop.PropertyType + " " + prop.Name);
+            }
+
+            Console.ReadLine();
+        }
+    }
+
+    class Customer
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public Customer(int ID, string Name)
+        {
+            this.Id = ID;
+            this.Name = Name;
+        }
+        public Customer()
+        {
+            this.Id = -1;
+            this.Name = string.Empty;
+        }
+
+        public void PrintId()
+        {
+            Console.WriteLine("ID = ", this.Id);
+        }
+
+        public void PrintName()
+        {
+            Console.WriteLine("Name {0}", this.Name);
+        }
+    }
+}
+
+/*
+ *Reflection
+
+Reflection is the ability of inspecting an assemblies metadata at runtime. It is used to
+find all types in an assembly and /or dynamically invoke method in an assembly
+
+Used of reflection:
+1: When you drag and drop a button on a win forms or an asp.net application. The Properties window users
+reflection to show all the properties of the Button class. So, reflection is extensively used by IDE or a UI designers.
+
+2. Late binding can be achieved by using reflaction. You can use reflection to dynamically create an instance of a type,
+about which we don't have any information at compile time. So reflection enables you to use code that is not available at
+compile time.
+
+3. Consider an example where we have to alternate implementation of an interface. You want to allow the user to pick one or the other using a config file.
+With reflection, you can simply read the name of the class whose implementation you want to use from the config file, and instantiate an instance of that class.
+This is another example for late binding using reflection.
+*/

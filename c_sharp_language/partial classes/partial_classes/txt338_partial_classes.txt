@@ -1,0 +1,14 @@
+Partial Classes
+
+partial classes allow us to split a class into 2 or more files. All these parts are then combined into
+a single class, when the application is compiled. The partial keyword can also be used to split a struct or an interface
+over two or more files.
+
+Advantages of partial classes
+1. The main advantage is that, visual studio uses partial classes to separate, automatically generated system code from the developer's code.
+For example, when you add a webform, 2 .cs files are generated.
+	a) WebForm1.aspx.cs - contains the developer code
+	b) WebForm1.aspx.designer.cs - Contains the system generated code. For example, declarations for the controls that you drag and drop on the webform.
+	
+2. When working on large projects, spreading a class over separate files allows multiple programmers to work on it simultaneously. Though, Microsoft claims this as
+an advantage. I haven't really seen anywhere, people using partial classes, just to work on then simultaneously

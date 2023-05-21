@@ -1,0 +1,28 @@
+using System;
+using System.Reflection;
+
+namespace ConsoleDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            MyFunc(() => MyFunction(2018, 12, 30));
+
+            Console.Read();
+        }
+
+        public static string MyFunction(int year, int month, int day)
+        {
+            return "" + year + month + day;
+        }
+
+        public static string MyFunc(Func<string> me)
+        {
+            string s = me();
+            Console.WriteLine(s); ;
+            return s;
+        }
+    }
+}

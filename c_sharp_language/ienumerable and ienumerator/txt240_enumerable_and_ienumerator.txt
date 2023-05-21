@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<int> ages = new List<int>();
+        ages.Add(10);
+        ages.Add(20);
+        ages.Add(30);
+        ages.Add(40);
+        ages.Add(50);
+
+        PrintAgeUpto30(ages.GetEnumerator());
+
+        PrintUpto30(ages);
+        Console.ReadLine();
+
+    }
+
+    public static void PrintAgeUpto30(IEnumerator<int> age_IEnumerator)
+    {
+        while (age_IEnumerator.MoveNext())
+        {
+            Console.WriteLine(age_IEnumerator.Current);
+            if (age_IEnumerator.Current > 20)
+            {
+                Console.WriteLine("PrintGreaterThan30 is called");
+                PrintGreaterThan30(age_IEnumerator);
+            }
+        }
+    }
+
+    public static void PrintGreaterThan30(IEnumerator<int> age_IEnumerator)
+    {
+        while (age_IEnumerator.MoveNext())
+            Console.WriteLine(age_IEnumerator.Current);
+
+    }
+
+    public static void PrintUpto30(IEnumerable<int> age_IEnumerable)
+    {
+        foreach (int age in age_IEnumerable)
+        {
+            Console.WriteLine(age);
+            if (age > 20)
+            {
+                Console.WriteLine("PrintGreaterThan30 is called");
+                PrintGreaterThan30(age_IEnumerable);
+            }
+        }
+    }
+
+    public static void PrintGreaterThan30(IEnumerable<int> age_IEnumerable)
+    {
+        foreach (int age in age_IEnumerable)
+            Console.WriteLine(age);
+    }
+    // Now Call PrintUpto30 which will call PrintGreaterThan30 
+    // by using our previous age IEnumerator
+    //PrintUpto30(IEnumerator);
+}
+
+/*
+IEnumerable has method -> GetEnumerator() | Return Enumerator
+
+IEnumerator has method -> MoveNext() | Return bool
+						-> object Current();
+						-> void Rest()
+						
+foreach has implicit implementation for enumerator.
+foreach internally uses ienumerator objects.
+foreach only can be use in those objects which implements the IEnumerable
+
+foreach cannot be used in IEnumerator type of objects. Only while statement can be used in IEnumerator
+type of objects.
+*/

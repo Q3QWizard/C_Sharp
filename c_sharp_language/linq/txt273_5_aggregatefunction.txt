@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Linq_1_5v
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] Countries = { "India", "US", "UK", "Canada", "Australia" };
+            int[] Numbers = { 2, 3, 4, 5 };
+
+            //without LINQ
+
+            string result = string.Empty;
+
+            foreach (string str in Countries)
+            {
+                result = result + str + ", ";
+            }
+            int index = result.LastIndexOf(",");
+            result = result.Remove(index);
+            Console.WriteLine(result);
+
+            //with LINQ
+
+            string linqresult = Countries.Aggregate((a, b) => a + ", " + b);
+            Console.WriteLine(linqresult);
+
+            //get the first two items in the array and store in it in a, b and after doing a + ", " + b the result will be stored in a and next value in the array will be bring to the b and go on
+
+            ///////////////////////////////////////////////////////////////////
+
+            //without linq
+            int runTot1 = 1;
+            foreach (int i in Numbers)
+            {
+                runTot1 = runTot1 * i;
+            }
+            Console.WriteLine(runTot1);
+
+
+            //with linq
+            int runTot = Numbers.Aggregate((a, b) => a * b);
+            Console.WriteLine(runTot);
+
+            Console.Read();
+
+        }
+    }
+}

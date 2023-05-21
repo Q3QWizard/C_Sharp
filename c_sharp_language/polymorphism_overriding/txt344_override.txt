@@ -1,0 +1,30 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        A a1 = new B();
+        A a2 = new C();
+
+        a1.SampleMethod();
+        a2.SampleMethod();
+
+        Console.ReadLine();
+    }
+}
+
+public class A
+{
+    public virtual void SampleMethod(){ Console.WriteLine("Class a sample method"); }
+}
+
+public class B : A
+{
+    public override void SampleMethod(){ Console.WriteLine("Class B sample method"); }
+}
+
+public class C : B
+{
+    public override void SampleMethod(){ Console.WriteLine("Class C sample method"); }
+}

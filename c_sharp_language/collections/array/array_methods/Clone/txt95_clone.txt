@@ -1,0 +1,26 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        int[] intArray = new int[5] { 10, 20, 30, 40, 50 };
+
+        int[] newIntArray = (int[])intArray.Clone();
+
+        Console.Read();
+    }
+}
+
+/*
+ * Method -> Clone()
+ * 
+ * This method returns a new array (a shadow copy) object containing all the elements in the original array.
+ * 
+ * Shadow copy - when copying only references will be copies (will not create a another instance with new objects, only a reference will be created to point to the same instance)
+ * 
+ * In value type array (int, bool, double, ...) if we clone, then a new array will be returned but changes in the original array does not reflect in this new array.
+ * 
+ * But if we Clone() on object type array then an new array reference will be create to the original array (there will be no new array elements). Changes in the original array will
+ * reflect in the newly created array.
+ */

@@ -1,0 +1,52 @@
+Readonly keyword is a modifier that can be used in 3 context. One of them is readonly fields.
+
+You can assign value to a readonly field only in following contexts.
+	1. When the variable is initialized in the declaration.
+	2. In an instance constructor of the class that contains the instance field declaration
+	3. In the static constructor of the class that contains the static field declaration
+	
+Diff between readonly and const
+------------------------------
+
+A const field can only be initialized at the declaration of the field. A readonly field can be assigned
+multiple times in the field declaration and in any constructor. Therefore readonly fields can have different
+values depending on the contructor used. Also while a const field is a compile-time constant, the readonly field
+can be used for runtime constant.
+
+Readonly local variables are not allowed
+
+-----------------------------------------------------------------------------------------------------------------
+
+const values need to be intitialized at the variable declaration.
+
+Readonly values can be computed dynamically but need to be assigned before the contructor exists. After that it is frozen.
+
+const are implicitly static. You can use ClassName.ConstName notation to access them.
+
+There is a substle difference. Consider a class defied in assemply A
+
+public class Const_V_Readonly
+{
+	public const int I_CONST_VALUE = 2;
+	public readonly int I_RO_VALUE;
+	public Const_V_Readonly()
+	{
+		I_RO_VALUE = 3;
+	}
+}
+
+Assembly B references assembly A and uses these values in code. When this is compiled.
+
+In the case of const value, it is like a find-replace. The value 3 is baked in to the assembly B's IL. This means that if tomorrow I'll
+update I_CONST_VALUE to 20 in the future, assembly B would still have 2 till I recompile it.
+
+In the case of the readonly value, it is like a ref to memory location. The value is not baked into the assembly's IL. This means that if the memory is updated
+assembly B gets new value without recompilation. So if the I_RO_VALUE is updated to 30, you only need to build assembly A. All clients do not need to be recompiled.
+
+So if you are confident that the value of the constant won't change use const.
+
+ex: public const int CM_IN_A_METER = 100;
+
+But of you want a constant that may change (precision) or when dought, use readonly
+
+ex: public readonly float PI = 3.14;

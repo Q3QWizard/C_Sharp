@@ -1,0 +1,40 @@
+using System;
+
+public class Programe
+{
+    public static void Main()
+    {
+        DerivedClass b = new DerivedClass();
+
+        Console.ReadLine();
+        
+    }
+}
+
+public class BaseClass
+{
+    public int i = 5;
+    //public BaseClass()
+    //{
+    //    Console.WriteLine("This is BaseClass Constructor");
+    //}
+
+    public BaseClass(string s)
+    {
+        Console.WriteLine("This is BaseClass parametrized Constructor " + s);
+    }
+
+    public BaseClass(string s, int i)
+    {
+        Console.WriteLine("This is BaseClass parametrized Constructor " + i);
+    }
+}
+
+public class DerivedClass : BaseClass//("s")
+{
+    public DerivedClass()
+        : base("", 5)
+    {
+        Console.WriteLine("This is DerivedClass Constructor");
+    }
+}

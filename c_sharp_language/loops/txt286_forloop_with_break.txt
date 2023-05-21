@@ -1,0 +1,46 @@
+using System;
+
+namespace Example
+{
+    class ProgrammingExample
+    {
+        static void Main(string[] args)
+        {
+            // Breaking out of a for loop
+            for (int counter = 0; counter < 15; counter++)
+            {
+                Console.WriteLine("Value of counter: {0}", counter);
+
+                // When the condition is met, break out of the loop
+                if (counter == 7)
+                {
+                    Console.WriteLine("Breaking out of the for loop");
+                    break;
+                }
+            }
+
+            Console.Write("\n");    // Separates output from both loops
+
+            // Breaking out of a while loop
+            int i = 1;
+
+            while (i < 10)
+            {
+                Console.WriteLine("Value of i: {0}", i);
+
+                // When i is evenly divisible by 5, exit the loop
+                if (i % 5 == 0)
+                {
+                    Console.WriteLine("Breaking out of the while loop");
+                    break;
+                }
+
+                i++;
+            }
+
+            Console.ReadLine();
+        }
+
+        
+    }
+}

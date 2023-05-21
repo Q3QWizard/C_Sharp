@@ -1,0 +1,67 @@
+
+
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+
+        Customer c = new Customer();
+
+        c.pName = "Desitha";
+        c.pCode = 101;
+        //c.pTempCode = 12;
+
+        Console.WriteLine("Customer Name {0} && Customer Code  {1} && Customer Pet Name : {2}  ", c.pName, c.pCode, c.pTempCode);
+       Console.WriteLine(c.pTempCode);
+
+        Customer c1 = new Customer("Vidura", 102);
+        //c1.pTempCode = 13;
+        Console.WriteLine("Customer Name {0} && Customer Code  {1} && Customer Pet Name : {2} ", c1.pName, c1.pCode, c1.pTempCode);
+
+        Console.ReadLine();
+
+    }
+}
+
+public struct Customer 
+{
+    private int code;
+    private string name;
+
+
+    public Customer(string name, int code) : this()
+    {
+        this.code = code;
+        this.name = name;
+    }
+
+
+    public int pCode
+    {
+        set { this.code = value; }
+        get { return this.code; }
+    }
+
+    public string pName
+    {
+        set { this.name = value; }
+        get { return this.name; }
+    }
+
+    public int pTempCode
+    {
+        set;
+        get;
+    }
+
+    public void printDetails()
+    {
+        Console.WriteLine("Customer Name : {0} && Customer Code = {1}", this.name, this.code);
+    }
+}
+
+/* Structs cannot have explicit parameter less constructors because from the .net framework the constructor is already available for the struct.
+  so you cannot declare another parameter less constructor to a struct.  
+*/

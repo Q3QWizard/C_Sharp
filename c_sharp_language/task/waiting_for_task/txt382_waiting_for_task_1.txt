@@ -1,0 +1,30 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+public class Program
+{
+    public static void Main()
+    {
+        var t = new Task(() =>
+        {
+            Thread.Sleep(5000);
+            Console.WriteLine("Sleep is over");
+        });
+
+        t.Start();
+
+        Console.WriteLine("Main programe done");
+        Console.ReadLine();
+    }
+}
+
+/*
+ * 1.
+ You can use Thread.Sleep(5000) to stop execution of a task for some time.
+ By doing that way it tells that execution I dont need processing and some one
+ else can have the processing power. So if we use Thread.Sleep(5000) sheduler can get
+ another task and executing as you sleep which is great.
+
+    2.
+     */

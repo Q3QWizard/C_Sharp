@@ -1,0 +1,130 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Customer customers = new Customer();
+
+        //Address add1 = customers.getAddress(101);
+        //Address add2 = customers.getAddress("1111");
+
+        //Console.WriteLine(add1.MobileNumber);
+        //Console.WriteLine(add2.StreetName);
+
+        Address add3 = customers[101];
+        Console.WriteLine(add3.StreetName);
+
+        customers[101] = new Address { MobileNumber = "5555", PinCode = 105, StreetName = "tttyyyy" };
+
+        Address add4 = customers["2222"];
+        Console.WriteLine(add4.StreetName);
+
+        /*
+         * Indexer help you to index a class using a simplified interface.
+         * */
+
+        Console.ReadLine();
+    }
+}
+
+public class Customer
+{
+    private List<Address> Addresses = new List<Address>();
+
+    public Customer()
+    {
+        Addresses.Add(new Address { PinCode = 101, StreetName = "Wattegama", MobileNumber = "0000" });
+        Addresses.Add(new Address { PinCode = 102, StreetName = "Embilipitiya", MobileNumber = "1111" });
+        Addresses.Add(new Address { PinCode = 101, StreetName = "Colombo", MobileNumber = "2222" });
+    }
+
+    public Address getAddress(int pinCode)
+    {
+        foreach (Address a in Addresses)
+        {
+            if (a.PinCode == pinCode)
+            {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public Address getAddress(string PhoneNumber)
+    {
+        foreach (Address a in Addresses)
+        {
+            if (a.MobileNumber == PhoneNumber)
+            {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    // Create indexer
+
+    public Address this[int PinCode]
+    {
+        get
+        {
+            foreach (Address a in Addresses)
+            {
+                if (a.PinCode == PinCode)
+                {
+                    return a;
+                }
+
+            }
+            return null;
+        }
+
+        set
+        {
+
+            foreach (Address a in Addresses)
+            {
+                if (a.PinCode != PinCode)
+                {
+                    Addresses.Add(value);
+                    break;
+                }
+
+            }
+        }
+    }
+
+
+
+    public Address this[string PhoneNumber]
+    {
+        get
+        {
+            foreach (Address a in Addresses)
+            {
+                if (a.MobileNumber == PhoneNumber)
+                {
+                    return a;
+                }
+            }
+            return null;
+        }
+    }
+
+    /*
+     * Indexer is defined by using "this: keyword
+     * 
+     * Indexer is a property so we need to define set and get for the same
+     * 
+     * In this example we don't need set because data is filled by the constructor.
+     */
+}
+
+public class Address
+{
+    public string StreetName { get; set; }
+    public int PinCode { get; set; }
+    public string MobileNumber { get; set; }
+}

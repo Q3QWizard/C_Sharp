@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        List<string> names = new List<string>();
+        names.Add("Desitha");
+        names.Add("Vidura");
+        names.Add("Yahan");
+
+        string result = names.Find(
+
+            delegate(string name)
+            {
+                return name.Equals("Desitha");
+            }
+
+            );
+
+        string result1 = "Name not found..";
+        result1 = names.Find(s => s.Equals("Desitha"));
+
+        Console.WriteLine(result1);
+
+        if (result == null)
+        {
+            Console.WriteLine("Name Not Found..");
+        }
+        else
+        {
+            Console.WriteLine(result + "--");
+            Console.WriteLine("Name Found");
+        }
+
+        Console.ReadLine();
+    }
+
+
+
+}
+
+/*
+
+ What is Anonymous Methods :
+ 
+    Anonymous method is an inline un-named method in the code.
+    It is created using the delegate keyword and doesnt require name and return type and hence we can consider an anonymous method has only body without name and return type.
+ 
+    Syntax:
+        
+    delegate([argInfo])
+    {
+        //statements
+     ...
+    }
+
+*/

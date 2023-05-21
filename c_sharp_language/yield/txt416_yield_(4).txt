@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    static List<int> myList = new List<int>();
+
+    static void fillValue()
+    {
+        myList.Add(1);
+        myList.Add(2);
+        myList.Add(3);
+        myList.Add(4);
+        myList.Add(5);
+        myList.Add(6);
+    }
+
+    public static void Main()
+    {
+        fillValue();
+
+        foreach (int i in runningTotal())
+        {
+            Console.WriteLine(i);
+        }
+        Console.ReadLine();
+    }
+
+    static IEnumerable<int> runningTotal()
+    {
+        int runningTot = 0;
+
+        foreach (int i in myList)
+        {
+            runningTot += i;
+            yield return runningTot;
+        }
+    }
+
+}
+
+//  1   ->  1
+//  2   ->  3
+//  3   ->  6
+//  4   ->  10
+//  5   ->  15
+//  6   ->  21  

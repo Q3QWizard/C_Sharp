@@ -1,0 +1,7 @@
+D:\Projects\51_AccessModifiersForTypes\AssemblyTwo\bin\Debug\AssemblyTwo.dll
+D:\Projects\51_AccessModifiersForTypes\AssemblyTwo\bin\Debug\AssemblyTwo.pdb
+D:\Projects\51_AccessModifiersForTypes\AssemblyTwo\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\51_AccessModifiersForTypes\AssemblyTwo\obj\Debug\AssemblyTwo.dll
+D:\Projects\51_AccessModifiersForTypes\AssemblyTwo\obj\Debug\AssemblyTwo.pdb
+D:\Projects\51_AccessModifiersForTypes\AssemblyTwo\bin\Debug\AssemblyOne.dll
+D:\Projects\51_AccessModifiersForTypes\AssemblyTwo\bin\Debug\AssemblyOne.pdb

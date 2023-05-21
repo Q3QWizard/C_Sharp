@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Linq_2_3v
+{
+    class Program
+    {
+        static void Main()
+        {
+            List<int> Numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            IEnumerable<int> EvenNumbers = Numbers.Where(n => n % 2 == 0);
+
+            foreach (var evenN in EvenNumbers)
+            {
+                Console.WriteLine(evenN);
+            }
+
+            Console.WriteLine("---------------------------------------------");
+
+            IEnumerable<int> EvenNumbers2 = Enumerable.Where(EvenNumbers, n => n % 2 == 0);
+
+            foreach (var evenN in EvenNumbers2)
+            {
+                Console.WriteLine(evenN);
+            }
+
+            Console.WriteLine("---------------------------------------------");
+
+            Func<int, bool> del;
+            del = delegate(int i) { return i%2 == 0; };
+
+            IEnumerable<int> EvenNumbers1 = Numbers.Where(del);
+            
+            foreach (var evenN in EvenNumbers1)
+            {
+                Console.WriteLine(evenN);
+            }
+
+            Console.Read();
+
+        }
+    }
+}

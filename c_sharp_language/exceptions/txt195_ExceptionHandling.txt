@@ -1,0 +1,73 @@
+using System;
+using System.IO;
+
+public class Program
+{
+    public static void Main()
+    {
+        StreamReader streamReader = null;
+        try
+        {
+            streamReader = new StreamReader(@"G:\Desitha\WorkBench\c#\PragimTech\C# txt\40_ExceptionHandling\data.txt");
+            Console.WriteLine(streamReader.ReadToEnd());
+                        
+        }
+        catch (FileNotFoundException ex)    // this FileNotFoundException will only catch file missing exceptions it will not catch directory exceptions
+        {
+            Console.WriteLine("Please check if the file {0} exists ", ex.FileName);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            if (streamReader != null)
+            {
+                streamReader.Close();
+                Console.WriteLine("Finally blockis called");
+            }
+            
+        }
+
+        Console.ReadLine();
+        
+    }
+}
+
+/*
+ * Exception Handling
+ 
+ Exception Handling
+
+An exception is an unforeseen error that occurs when a program is running.
+
+Example:
+	Trying to read from a file that does not exist, throws FileNotFoundException
+	Trying to read from a database table that does not exist, throws a SqlExcption.
+	
+Showing actual unhanded exception to the end user is bad for two reason
+	1. Users will be annoyed as the are cryptic and does not make much sense to the end user.
+	2. Exception contains information, that can be used for hacking into your application.
+	
+an exception is actually a class that derived from System.Exception class. The System.Exception class has
+several useful properties, that provide valuable information about the exception.
+
+Message : Gets message that describes that current exception
+StackTrace : Provides the call stack to the line number in the method when the exception occurred.
+
+Releasing System Resources
+
+We use try, catch and finally blocks for exception handling.
+
+try - The code that possibly cause an exception will be in the try block.
+catch - Handles the exception
+finally  -  Clean the free resources that the class was holding onto during the program execution. Finally 
+block is optional.
+
+Note : It is good practice to always release resources in the finally block, because
+finally block is guaranteed to execute, irrespective of whether there is an exception or not.
+
+Specific exceptions will be caught before the base general execution, so specific exception block should always be on the top of the
+base exception block otherwise, you will encounter a compiler error.
+ */

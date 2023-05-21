@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "62_CreatingPartialClass", "62_CreatingPartialClass\62_CreatingPartialClass.csproj", "{984994CF-7CAD-4D46-B965-0C8662906BAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{984994CF-7CAD-4D46-B965-0C8662906BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{984994CF-7CAD-4D46-B965-0C8662906BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{984994CF-7CAD-4D46-B965-0C8662906BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{984994CF-7CAD-4D46-B965-0C8662906BAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

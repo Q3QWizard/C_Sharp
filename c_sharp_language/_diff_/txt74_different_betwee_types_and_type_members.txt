@@ -1,0 +1,67 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    { 
+        
+    }
+}
+
+public class Customers
+{
+    #region Fields
+    private int _id;
+    private string _firstName;
+    private string _lastName;
+    #endregion
+
+    #region Properties
+    public int id
+    {
+        get { return _id; }
+        set { _id = value; }
+    }
+
+    public string FirstName
+    {
+        get { return _firstName; }
+        set { _firstName = value; }
+    }
+
+    public string LastName
+    {
+        get { return _lastName; }
+        set { _lastName = value; }
+    }
+    #endregion
+
+    #region Method
+    public string GetFullName()
+    {
+        return this._firstName + "" + _lastName;
+    }
+    #endregion
+}
+
+/*
+Types Vs Types Members
+
+In this example Customer is the Type and fields, Properties and method are type members.
+
+So, in general classes, structs, enums, interfaces, delegates are called types and fields, properties, constructors, methods etc. that
+normally reside in a type are called as type members.
+
+In C# there are 5 different access modifiers:
+	1. private
+	2. Protected
+	3. Internal
+	4. Protected Internal
+	5. Public
+	
+Type members can have all the access modifiers, where as types can have only 2 
+(internal, public) of the 5 access modifers.
+
+Note: using regions you can expand and collapse sections of your code either manually.
+or by using Visual Studio Edit->Outlining->Toggle All Outlining
+*/

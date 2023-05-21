@@ -1,0 +1,114 @@
+C# - Stack
+----------
+
+C# includes a special type of collection which stores elements in LIFO style (Last In First Out). C# includes a generic and non-generic Stack. Here, you are going to learn about the non-generic stack.
+
+Stack allows null value and also duplicate values. It provides a Push() method to add a value and Pop() or Peek() methods to retrieve values.
+
+Add Values into Stack
+---------------------
+
+The Push() method adds values into the Stack. It allows value of any datatype.
+
+Push() method signature: void Push(object obj);
+
+Stack myStack = new Stack();
+myStack.Push("Hello!!");
+myStack.Push(null);
+myStack.Push(1);
+myStack.Push(2);
+myStack.Push(3);
+myStack.Push(4);
+myStack.Push(5);
+
+Accessing Stack Elements
+------------------------
+
+You can retrieve stack elements by various ways. Use a foreach statement to iterate the Stack collection and get all the elements in LIFO style.
+
+Stack myStack = new Stack();
+myStack.Push("Hello!!");
+myStack.Push(null);
+myStack.Push(1);
+myStack.Push(2);
+myStack.Push(3);
+myStack.Push(4);
+myStack.Push(5);
+
+foreach (var itm in myStack)
+     Console.Write(itm);
+
+Peek()
+------
+
+The Peek() method returns the last (top-most) value from the stack. Calling Peek() method on empty stack will throw InvalidOperationException. So always check for elements in the stack before retrieving elements using the Peek() method.
+
+Peek() method signature: object Peek();
+
+Stack myStack = new Stack();
+myStack.Push(1);
+myStack.Push(2);
+myStack.Push(3);
+myStack.Push(4);
+myStack.Push(5);
+
+Console.WriteLine(myStack.Peek());
+Console.WriteLine(myStack.Peek());
+Console.WriteLine(myStack.Peek());
+
+Pop()
+-----
+
+You can also retrieve the value using the Pop() method. The Pop() method removes and returns the value that was added last to the Stack. The Pop() method call on an empty stack will raise an InvalidOperationException. So always check for number of elements in stack must be greater than 0 before calling Pop() method.
+
+Pop() signature: object Pop();
+
+Stack myStack = new Stack();
+myStack.Push(1);
+myStack.Push(2);
+myStack.Push(3);
+myStack.Push(4);
+myStack.Push(5);
+
+Console.Write("Number of elements in Stack: {0}", myStack.Count);
+
+while (myStack.Count > 0)
+     Console.WriteLine(myStack.Pop());
+
+Console.Write("Number of elements in Stack: {0}", myStack.Count);
+
+Contains()
+----------
+
+The Contains() method checks whether the specified item exists in a Stack collection or not. It returns true if it exists; otherwise it returns false.
+
+Contains() method signature: bool Contains(object obj);
+
+Stack myStack = new Stack();
+myStack.Push(1);
+myStack.Push(2);
+myStack.Push(3);
+myStack.Push(4);
+myStack.Push(5);
+
+myStack.Contains(2); // returns true
+myStack.Contains(10); // returns false
+
+Clear()
+-------
+
+The Clear() method removes all the values from the stack.
+
+Clear() signature: void Clear();
+
+Stack myStack = new Stack();
+myStack.Push(1);
+myStack.Push(2);
+myStack.Push(3);
+myStack.Push(4);
+myStack.Push(5);
+
+myStack.Clear(); // removes all elements
+
+Console.Write("Number of elements in Stack: {0}", myStack.Count);
+

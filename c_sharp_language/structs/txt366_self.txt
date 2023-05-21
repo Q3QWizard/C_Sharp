@@ -1,0 +1,57 @@
+using System;
+
+class Program
+{
+    public static void Main()
+    {
+        Student s = new Student();
+        s.IdProperties = 101;
+        s.NameProperties = "Desitha";
+
+        Console.WriteLine("Id is : "+s.IdProperties+" Name is : "+ s.NameProperties);
+
+        s.printDetails(102, "Wasindu");
+
+        Console.ReadLine();
+    }
+}
+
+public struct Student
+{
+    private int id;
+    private string name;
+
+    public int IdProperties
+    {
+        set
+        {
+            this.id = value;
+        }
+
+        get
+        {
+            return this.id;
+        }
+    }
+
+    public string NameProperties
+    {
+        set
+        {
+            this.name = value;
+        }
+
+        get
+        {
+            return this.name;
+        }
+    }
+
+    public void printDetails(int _id, string _name)
+    {
+        this.id = _id;
+        this.name = _name;
+
+        Console.WriteLine("id = {0} -- name = {1}", this.id, this.name);
+    }
+}

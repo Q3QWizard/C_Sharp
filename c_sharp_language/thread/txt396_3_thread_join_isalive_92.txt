@@ -1,0 +1,55 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Main thread started");
+
+        Thread t1 = new Thread(Thread1Function);
+        t1.Start();
+
+        Thread t2 = new Thread(Thread2Function);
+        t2.Start();
+
+        if(t1.Join(1000)) // main thread is going to suspend it's execution and wait for t1 to return from its method
+            Console.WriteLine("Thread one has returned");// main thread execution comes here once t1 has returned.
+        else
+            Console.WriteLine("Thread one did not complete in 1s");
+
+        t2.Join();// forcing main thread to suspend it's executioin and wait for t2 to return from its method
+        Console.WriteLine("Thread two has returned");
+
+        Console.WriteLine("Main thread completed");
+
+        Console.Read();
+    }
+
+    public static void Thread1Function()
+    {
+        Console.WriteLine("Thread one function started");
+        Thread.Sleep(5000);
+    }
+
+    public static void Thread2Function()
+    {
+        Console.WriteLine("Thread two function started");
+    }
+}
+
+/*
+ In this example main thread is creating two additional threads, that is 
+ * t1, and t2
+ * 
+ * Once main thread create additional thread (t1) once t1 starts executing main thread will not wait for the t1 to complete. It proceed to the next line.
+ * 
+ * Again main thread creates t2 thread and main thread will not wait either t1 or t2 to complete.
+ * 
+ * some times we may need to while worker threads are doing their work. Probably because we want to collect the result of worker threads and based on that we want
+ * main thread to do something
+ * 
+ * Every time we run this program it is not guranteed to run it in a particular order. That is the nature of the multi-threaded program.
+ * 
+ * Basically if you want to force the main thread to wait until these worker threads complete there execution then you will have to use join method.
+ */

@@ -1,0 +1,42 @@
+using System;
+
+namespace MyConsole_3
+{
+    class Program
+    {
+        static string _name;
+        static string Name
+        {
+            get
+            {
+                return _name ?? "Default";
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+
+        static void Main()
+        {
+            Console.WriteLine(Name);
+            Name = "Perls";
+            Console.WriteLine(Name);
+            Name = null;
+            Console.WriteLine(Name);
+
+            string test = null;
+
+            if ("DD" == (test ?? "DD"))
+            {
+                Console.WriteLine("Hee");
+            }
+
+            test = test ?? "D";
+
+            Console.WriteLine(test);
+
+            Console.Read();
+        }
+    }
+}

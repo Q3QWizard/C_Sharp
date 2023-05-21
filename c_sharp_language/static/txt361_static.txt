@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace MyConsole
+{
+    public delegate void Print(int value);
+
+    class Program
+    {
+        public static void Main()
+        {
+            Console.WriteLine(Student.StudentCount);
+
+            Student student = new Student();
+
+            Console.WriteLine(student.StudentID);
+            Console.WriteLine(Student.StudentCount); // static methods, fields can only be accessed through class name
+
+            Console.WriteLine(Student.StudentCount);
+
+            Console.Read();
+
+        }
+    }
+
+    class Student
+    {
+        static Student()
+        {
+            StudentCount = 10;
+
+            /*
+             When we are creating a Student object using new keyword before class constructor is called, static constructor will be invoked
+             * 
+             * static constructor is called  when we are calling a class's static field
+             */
+        }
+
+        public Student()
+        {
+            StudentCount = 5; // with in class constructor static members can be accessed
+        }
+
+        //public int StudentCount; // variable name should be unique static does not make any different
+        public static int StudentCount;
+        public static int GetTotalStudentMarks() { return 100; }
+        public int StudentID;
+        public int StudentName;
+        //public string StudentID; // variable names should be unique, if variable name is the same but data type is different that doesn't make any difference
+
+        public static int MyProperty { get; set; }
+
+        // public static int NextId { get; private set; } = 42; // in c# 6.0 this is possible
+    }
+}

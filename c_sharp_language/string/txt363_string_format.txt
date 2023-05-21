@@ -1,0 +1,27 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
+namespace cs_vsc
+{
+    class Program
+    {
+        static void Main()
+        {
+            string userName = "Desitha";
+            int age = 27;
+
+            Console.WriteLine("{0} your age is {1}", userName, age);// staring from 0 is essential otherwise error
+
+            string s = string.Format("{0} your age is {1}", userName, age);
+
+            Console.WriteLine(s);
+
+            Console.WriteLine("The current time is {0:HH:mm:ss} and the date is {0:dd-MM-yyyy}", DateTime.Now);
+
+            Console.Read();
+        }
+    }
+}
+

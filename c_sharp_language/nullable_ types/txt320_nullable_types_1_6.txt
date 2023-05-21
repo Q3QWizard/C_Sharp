@@ -1,0 +1,34 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        bool? AreYouHuman = null;
+
+        if (AreYouHuman == true)
+        {
+            Console.WriteLine("You are human");
+        }
+        else if (AreYouHuman == false)
+        {
+            Console.WriteLine("You are not human");
+        }
+        else
+        {
+            Console.WriteLine("User did not answer");
+        }
+        Console.ReadLine();
+
+    }
+}
+
+//in c# types are divided into 2 broad categories
+//Value types - int, float, double, structs, enums etc
+//Reference type - Interface, class, delegates, arrays etc
+
+//By default values types are non nullable. To make them nullable use?
+//int i = 0 (i is non nullable, so i cannot be set to mull, i =null will generate compiler error)
+//int? j = 0(j is nullable int, so j=jull is legal)
+
+//Nullable types bridge the difference between C# types and Database types

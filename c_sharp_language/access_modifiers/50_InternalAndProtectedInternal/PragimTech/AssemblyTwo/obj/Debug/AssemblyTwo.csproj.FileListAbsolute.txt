@@ -1,0 +1,14 @@
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyTwo\bin\Debug\AssemblyTwo.dll
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyTwo\bin\Debug\AssemblyTwo.pdb
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyTwo\obj\Debug\AssemblyTwo.dll
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyTwo\obj\Debug\AssemblyTwo.pdb
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyTwo\bin\Debug\AssemblyOne.dll
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyTwo\bin\Debug\AssemblyOne.pdb
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\AssemblyTwo\obj\Debug\AssemblyTwo.csprojResolveAssemblyReference.cache
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyTwo\bin\Debug\AssemblyTwo.dll
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyTwo\bin\Debug\AssemblyTwo.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyTwo\bin\Debug\AssemblyOne.dll
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyTwo\bin\Debug\AssemblyOne.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyTwo\obj\Debug\ResolveAssemblyReference.cache
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyTwo\obj\Debug\AssemblyTwo.dll
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\AssemblyTwo\obj\Debug\AssemblyTwo.pdb

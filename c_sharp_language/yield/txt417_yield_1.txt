@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        List<int> list = new List<int>();
+        list.Add(50);
+        list.Add(150);
+        list.Add(120);
+        list.Add(250);
+
+        foreach (int i  in filter(list))
+        {
+            Console.WriteLine(i);          
+        }
+
+        Console.ReadLine();
+
+
+    }
+
+    public static IEnumerable<int> filter(IEnumerable<int> lst)
+    {
+        foreach (int i in lst)
+        {
+            if (i > 120)
+            {
+                yield return i;
+            }
+        }
+    }
+
+    /* when there was no yield keyword in c# things happend in following way */
+
+    //public static List<int> filter(List<int> lst)
+    //{
+    //    List<int> temp = new List<int>();
+    //    //int ii= 0;
+    //    foreach (int i in lst)
+    //    {
+    //        if (i > 120)
+    //        {
+    //            temp.Add(i);
+
+    //        }
+    //    }
+
+    //    return temp;
+    //}
+}
+
+When comparing two code, yeild allow us to inform base foreach at the moment it found a match in current execution.
+
+Without yeild what can we do is, return the whole matched list in current execution and then return it.
+

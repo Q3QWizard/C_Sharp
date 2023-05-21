@@ -1,0 +1,176 @@
+ArrayList is a non-generic type of collection in C#. It can contain elements of any data types. It is similar to an array, except that it grows automatically as you add items in it. Unlike an array, you don't need to specify the size of ArrayList.
+
+As you can see from the above diagram, the ArrayList class implements IEnumerable, ICollection, and IList interfaces. So, you can create an object of ArrayList class and assign it to the variable of any base interface type. However, if you assign it to IEnumerable or ICollection type variable then you won't be able to add elements and access ArrayList by index.
+
+[<<
+	Create ArrayList
+	----------------
+	ArrayList myArryList1 = new ArrayList();// Recommended
+	// or - with some limitations
+	IList myArryList2 = new ArrayList();
+	// or - with some limitations
+	ICollection myArryList3 = new ArrayList();
+	// or - with some limitations
+	IEnumerable myArryList4 = new ArrayList();
+>>]
+
+It is recommended to use ArrayList type of variable for ArrayList object because ArrayList class contains some additional methods which are not the members of IList interface such as AddRange(), BinarySearch(), Repeat(), Reverse(), etc.
+
+Adding Elements into ArrayList
+-------------------------------
+
+Use the Add()method to add a single element or the AddRange() method to add multiple elements from the other collections into an ArrayList. Here, the element means the literal value of a primitive or non-primitive type. Please note that the AddRange() method only available in the ArrayList class but not in IList. So, it can only be use with the variable of type ArrayList.
+
+Signature: int Add(Object value)
+void AddRange(ICollection c)
+
+ArrayList arryList1 = new ArrayList();
+arryList1.Add(1);
+arryList1.Add("Two");
+arryList1.Add(3);
+arryList1.Add(4.5);
+
+IList arryList2 = new ArrayList()
+{
+    100, 200
+};
+
+//Adding entire collection using ArrayList.AdRange() method.
+////Note: IList does not contain AddRange() method.
+arryList1.AddRange(arryList2);
+
+You can also add items when you initialize it using object initializer syntax.
+
+IList arrayList = new ArrayList() { 100, "Two", 12.5, 200 };
+
+ArrayList can contain multiple null and duplicate values.
+
+Accessing Elements
+------------------
+
+ArrayList myArryList = new ArrayList();
+myArryList.Add(1);
+myArryList.Add("Two");
+myArryList.Add(3);
+myArryList.Add(4.5f);
+
+//Access individual item using indexer
+int firstElement = (int) myArryList[0]; //returns 1
+string secondElement = (string) myArryList[1]; //returns "Two"
+int thirdElement = (int) myArryList[2]; //returns 3
+float fourthElement = (float) myArryList[3]; //returns 4.5
+
+//use var keyword
+var firstElement = myArryList[0]; //returns 1
+
+Use a foreach or a for loop to iterate an ArrayList.
+-----------------------------------------------------
+
+IList myArryList = new ArrayList()
+                        {
+                            1,
+                            "Two",
+                            3,
+                            4.5F
+                        };
+
+foreach (var val in myArryList)
+    Console.WriteLine(val); 
+            
+//Or
+for(int i = 0 ; i< myArryList.Count; i++)
+    Console.WriteLine(myArryList[i]);
+
+Inserting Elements into ArrayList
+----------------------------------
+
+Use the IList.Insert() method to insert a single item at the specified index.
+
+Signature: void Insert(int index, Object value)
+
+IList myArryList = new ArrayList();
+myArryList.Add(1);
+myArryList.Add("Two");
+myArryList.Add(3);
+myArryList.Add(4.5);
+
+myArryList.Insert(1, "Second Item");
+myArryList.Insert(2, 100);
+
+foreach (var val in myArryList)
+        Console.WriteLine(val); 
+
+InsertRange()
+-------------
+
+Use the ArrayList.InsertRange() method to insert all the values from another collection into ArrayList at the specfied index. Please note that the InsertRange() method only available in the ArrayList class but not in IList. So, it can only be use with the variable of type ArrayList.
+
+Signature: Void InsertRange(int index, ICollection c)
+
+IList arryList1 = new ArrayList();
+arryList1.Add(100);
+arryList1.Add(200);
+
+ArrayList arryList2 = new ArrayList();
+arryList2.Add(10);
+arryList2.Add(20);
+arryList2.Add(30);
+
+arryList2.InsertRange(2, arryList1);
+
+foreach(var item in arryList2)
+    Console.WriteLine(item);
+
+Remove Elements from ArrayList
+------------------------------
+
+Use the IList.Remove() method to remove a specified element from an ArrayList.
+
+Signature: void Remove(Object obj)
+
+IList arryList1 = new ArrayList();
+arryList1.Add(100);
+arryList1.Add(200);
+arryList1.Add(300);
+
+arryList1.Remove(100); //Removes 1 from ArrayList
+
+foreach (var item in arryList1)
+    Console.WriteLine(item);
+
+Use the IList.RemoveAt() method to remove an element from the specified index location.
+
+Signature: void RemoveAt(int index)
+
+RemoveAt()
+----------
+
+IList arryList1 = new ArrayList();
+arryList1.Add(100);
+arryList1.Add(200);
+arryList1.Add(300);
+
+arryList1.RemoveAt(1); //Removes the first element from an ArrayList
+
+foreach (var item in arryList1)
+    Console.WriteLine(item);
+
+ArrayList.RemoveRange()
+-----------------------
+
+Use the ArrayList.RemoveRange() method to remove multiple elements from the specified index till the specified number of elements in the ArrayList. Please note that the RemoveRange() method only available in the ArrayList class but not in IList. So, it can only be use with the variable of type ArrayList.
+
+Signature: void RemoveRange(int index, int count)
+
+ArrayList arryList1 = new ArrayList();
+arryList1.Add(100);
+arryList1.Add(200);
+arryList1.Add(300);
+
+arryList1.RemoveRange(0,2);//Removes two elements starting from 1st item (0 index)
+
+foreach(var item in arryList1)
+    Console.WriteLine(item);
+
+
+

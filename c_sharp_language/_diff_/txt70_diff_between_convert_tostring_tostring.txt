@@ -1,0 +1,42 @@
+using System;
+
+namespace Des
+{
+
+    public class Program
+    {
+        public static void Main()
+        {
+            Customer c1 = new Customer();
+            string str = c1.ToString();
+
+            Customer c2 = null;
+
+         
+            string str1 = Convert.ToString(c1);
+
+            string str2 = Convert.ToString(c2);
+
+            //string str3 = c2.ToString();
+
+            Console.WriteLine("From ToString() method  :" + str);
+            Console.WriteLine("From Convert.ToString() method  :" + str1);
+            Console.WriteLine("From Convert.ToString() method with null object " + str2);
+            //Console.WriteLine("From ToString() method with null object " + str3);
+
+
+            Console.ReadLine();
+        }
+    }
+
+    public class Customer
+    {
+        public string Name { get; set; }
+    }
+}
+
+/*
+Convert, ToString() handles null, while ToString() doesn't and throws a null reference exception
+
+Depending on the type of the application architecture what you are trying to achieve, you choose one over the other
+*/

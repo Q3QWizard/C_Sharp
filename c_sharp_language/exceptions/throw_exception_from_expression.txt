@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DotNetCoreDemo
+{
+    public class ThrowsInExpression
+    {
+        public static void Main(string[] args)
+        {
+            Name mySelf = new Name("Wasindu", "Desithaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+            Console.WriteLine($"Name : {mySelf.FirstName} {mySelf.LastName}");
+
+            Console.WriteLine(mySelf.GetFullName());
+
+            Console.Read();
+        }
+    }
+
+    public class Name
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public Name(string fname, string lname)
+        {
+            //old way
+            /*if (fname != null)
+                FirstName = fname;
+            else
+                throw new ArgumentNullException(paramName: nameof(fname));
+
+            if (lname != null)
+                LastName = lname;
+            else
+                throw new ArgumentNullException(paramName: nameof(lname));*/
+
+            // c# 7 way
+
+            FirstName = fname ?? throw new ArgumentNullException(paramName: nameof(fname));
+
+            LastName = lname ?? throw new ArgumentNullException(paramName: nameof(lname));
+        }
+
+        public string GetFullName()
+        {
+            return (FirstName + LastName).Length < 20 ? (FirstName + LastName) : throw new Exception("Name is too long to display");
+        }
+    }
+}

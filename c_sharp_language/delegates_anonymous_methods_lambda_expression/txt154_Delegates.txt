@@ -1,0 +1,49 @@
+using System;
+
+public delegate void HelloFunctionDelegate(string Message);
+
+public delegate string  printDelegate(string str);
+class Program
+{
+    public static void Main()
+    {
+        HelloFunctionDelegate del = new HelloFunctionDelegate(Hello);
+        del("Hello From delegate");
+
+        Test test = new Test();
+        printDelegate del1 = new printDelegate(test.print);
+        del1("This is delegate2");
+
+        Console.ReadLine();
+        
+    }
+
+    public static void Hello(string strMessage)
+    {
+        Console.WriteLine(strMessage);
+    }
+
+}
+
+
+class Test
+{
+    public string print(string str)
+    {
+        Console.WriteLine("Class Test print method");
+        return str;
+    }
+}
+/*
+ * A delegate is a type safe function pointer. That is, it hold a reference (pointer) to function
+ * 
+ * The signature of the delegate must match the signature of the function, the delegate point to, otherwise you get a compiler error.
+ * This is the reason delegates are called as type safe function pointers.
+ * 
+ * A Delegate is similar to a class. You can create an instance of it, and  when you do so, you pass in the function name as a parameter to the 
+ * delegate constructor, and it is to this function the delegate will point to
+ * 
+ * Just like delegate can have access modifiers, types, and parameters.
+ * 
+ * 
+ */

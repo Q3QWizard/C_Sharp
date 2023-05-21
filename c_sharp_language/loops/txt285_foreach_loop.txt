@@ -1,0 +1,28 @@
+using System;
+
+namespace Example
+{
+    class ProgrammingExample
+    {
+        static void Main(string[] args)
+        {
+            // The foreach loop can iterate over any collection, such as an array
+            int[] myArray = new int[5] { 0, 1, 2, 3, 4 };
+
+            foreach (int intValue in myArray)
+            {
+                Console.WriteLine("intValue: {0}", intValue);
+            }
+
+            Console.Write("\n");
+
+            // The foreach loop also works with no so apparent collections, like a string
+            foreach (char c in "example")
+            {
+                Console.WriteLine(c);
+            }
+
+            Console.ReadLine();
+        }
+    }
+}

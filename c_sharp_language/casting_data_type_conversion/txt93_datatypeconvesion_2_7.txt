@@ -1,0 +1,36 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        String strNumber = "100";
+        String str_Number = "100er";
+
+        int i = int.Parse(strNumber);
+        Console.WriteLine(i);
+
+        int dresult = 0;
+        bool IsConSucc = int.TryParse(str_Number, out dresult);
+
+        if (IsConSucc == true)
+        {
+            Console.WriteLine(dresult);
+        }
+        else
+        {
+            Console.WriteLine("Please enter a valid number");
+        }
+        Console.ReadLine();
+    }
+}
+
+//Difference between Parse and TryParse
+
+//if the number is in a string format you have 2 options-parse() and TryParse()
+
+//Parse() method throws an exception if it cannot parse the value, whereas TryParse() 
+//returns a bool indicating whether it succedded or failed
+
+//Use Parse() if you are sure the value will be valid, otherwise use TryParse()
+

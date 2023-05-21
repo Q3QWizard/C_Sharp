@@ -1,0 +1,84 @@
+using System;
+
+public class BaseClass
+{
+    public virtual void Print()
+    {
+        Console.WriteLine("I am a Base class print method");
+    }
+}
+
+public class DerivedClass : BaseClass
+{
+    public override void Print()
+    {
+        Console.WriteLine("I am a derived class print method");
+    }
+
+}
+
+public class DerivedClass1 : BaseClass
+{
+    public new void Print()
+    {
+        Console.WriteLine("I am a derived class 1 print method");
+    }
+
+}
+
+public class DerivedClass2 : BaseClass
+{
+    public void Print()
+    {
+        Console.WriteLine("I am a derived class 2 print method");
+    }
+
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        BaseClass B = new DerivedClass();
+        B.Print();
+
+
+        BaseClass B1 = new DerivedClass1();
+        B1.Print();
+
+        BaseClass B2 = new DerivedClass2();
+        B2.Print();
+
+        DerivedClass D = new DerivedClass();
+        D.Print();
+
+        Console.ReadLine();
+
+
+    }
+
+
+}
+
+/*
+ * 
+ * Method overriding
+ * In method overriding a base class reference variable pointing to a child class
+ * object, will invoke the overridden method in the child class.
+ * 
+ * Method Hidding
+ *  In method hidding a base class reference variable pointing to a child class object, will
+ *  inovke the hidden method in the base class.
+ *  
+ *  If a base class reference variable is pointing to a child class and the child class has 
+ *  hidden the base class method the base class itself will be called.
+ *  
+ * virtual - The virtual keyword is used to modify a method, property, indexer, or event declaration and allow for it to be overridden in a derived class. For example, this method can be overridden by any class that inherits it:
+ *  
+ * new - When used as a declaration modifier, the new keyword explicitly hides a member that is inherited from a base class. When you hide an inherited member, the derived version of the member replaces the base class version. Although you can hide members without using the new modifier, you get a compiler warning. If you use new to explicitly hide a member, it suppresses this warning.
+ *
+ * override - The override modifier is required to extend or modify the abstract or virtual implementation of an inherited method, property, indexer, or event.
+
+
+
+ */

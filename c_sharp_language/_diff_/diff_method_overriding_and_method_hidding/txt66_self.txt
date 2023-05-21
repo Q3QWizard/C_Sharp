@@ -1,0 +1,30 @@
+using System;
+
+class A
+{
+    public virtual void print()
+    {
+        Console.WriteLine("Class A method");
+    }
+}
+
+class B : A
+{
+    public override void print()
+    {
+        Console.WriteLine("Class B method");
+    }
+}
+class Program
+{
+    public static void Main()
+    {
+        A a = new A();
+        a.print();
+
+        A b = new B();
+        b.print();
+
+        Console.ReadLine();
+    }
+}

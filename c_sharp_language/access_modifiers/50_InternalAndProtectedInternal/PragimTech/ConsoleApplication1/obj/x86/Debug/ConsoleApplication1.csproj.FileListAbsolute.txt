@@ -1,0 +1,11 @@
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+c:\users\desitha\documents\visual studio 2010\Projects\PragimTech\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+G:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+G:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\50_InternalAndProtectedInternal\PragimTech\ConsoleApplication1\obj\x86\Debug\ResolveAssemblyReference.cache

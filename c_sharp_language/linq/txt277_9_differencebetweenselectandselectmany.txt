@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Student
+{
+    public string Name { get; set; }
+    public string Gender { get; set; }
+    public List<string> Subjects { get; set; }
+
+    public static List<Student> GetAllStudents()
+    {
+        List<Student> lstStudents = new List<Student> 
+            { 
+                new Student { Name = "Tom", Gender = "Male", Subjects = new List<string> { "ASP.NET", "C#" }},
+                new Student { Name =  "Mike", Gender = "Male", Subjects = new List<string> { "ADO.NET", "C#", "AJAX" }},
+                new Student { Name =  "Pam", Gender = "Female", Subjects = new List<string> { "WCF", "SQL Server", "C#" }},
+                new Student { Name =  "Mary", Gender = "Female", Subjects = new List<string> { "WPF", "LINQ", "ASP.NET" }},
+            };
+
+        return lstStudents;
+    }
+}
+class Program
+{
+    public static void Main()
+    {
+        IEnumerable<List<string>> result = Student.GetAllStudents().Select(x => x.Subjects);
+
+        foreach (List<string> strList in result)
+        {
+            foreach (string str in strList)
+            {
+                Console.WriteLine(str);
+            }
+        }
+
+        Console.WriteLine("----using select many method-----");
+        Console.WriteLine();
+
+        IEnumerable<string> result1 = Student.GetAllStudents().SelectMany(x => x.Subjects);
+        
+        foreach (string str in result1)
+        {
+            Console.WriteLine(str);
+        }
+
+        Console.ReadLine();
+    }
+}

@@ -1,0 +1,25 @@
+using System;
+
+namespace MyConsole_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string firstName = "Wasindu";
+            string lastName = "Desitha";
+            int age = 27;
+
+            string s = string.Format("My name is {0} {1}, I am {2}", firstName, lastName, age);
+            Console.WriteLine(s);
+
+            string s1 = $"My name is, {firstName}, {lastName}      I am {age}";
+            Console.WriteLine(s1);
+
+            string s2 = $"Today is {DateTime.Now.ToShortDateString()}";
+            Console.WriteLine(s2);
+            Console.Read();
+
+        }
+    }
+}

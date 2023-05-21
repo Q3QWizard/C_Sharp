@@ -1,0 +1,45 @@
+
+using System;
+class Program
+{
+    public static void Main()
+    {
+        var ano = new { FirstName = "Wasindu", LastName = "Desitha" };
+
+        var ano2 = new { FirstName = "Vidura", LastName = "Bhashana", Other = new { Data = 1 } };
+
+        Console.WriteLine(ano.FirstName + " " + ano.LastName);
+
+        Console.WriteLine(ano2.FirstName + " " + ano2.LastName + " " + ano2.Other.Data);
+
+        MyMethod(ano2);
+
+        Console.Read();
+    }
+
+    public static void MyMethod(dynamic testpara)
+    {
+        Console.WriteLine();
+        Console.WriteLine("inside the MyMethod");
+
+        Console.WriteLine(testpara.FirstName + " " + testpara.LastName);
+
+        Console.WriteLine(testpara.FirstName + " " + testpara.LastName + " " + testpara.Other.Data);
+    }
+}
+
+
+/*
+ C# allows you to create an object with the new keyword without defining its class. The implicitly typed variable "var" is used to hold the reference of anonymous type.
+ * 
+ * An anomymous type is temporay data type that is infered based on the data that you include in an object initializer. Properties of th anomymous type will be read-only 
+ * properties, so you cannot change their value.
+ * 
+ * The compiler applies the appropriate type to each property based on the value expression. 
+ * 
+ * If we disassembled anonymous type the anonymous class derived from System.Object class. It is a sealed class and all the properties are created as readonly properties.
+ * 
+ * An anonymous type will always be local to the method where it is defined.
+ * 
+ * You cannot pass an anonymous type to a another method. However you can pass it to a method that accepts a parameter of dynamic type. Passing anomymous type using dynamic is not recommended.
+ */

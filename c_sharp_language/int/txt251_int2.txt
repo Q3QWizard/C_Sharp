@@ -1,0 +1,19 @@
+using System;
+class Program
+{
+    static void Main()
+    {
+        int result = 0;
+
+        int.TryParse("45", out result);
+
+        Console.WriteLine(result);
+
+        Console.Read();
+
+    }
+}
+
+/*
+ if couldn't parse no exception will raise
+ */

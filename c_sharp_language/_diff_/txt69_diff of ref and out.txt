@@ -1,0 +1,10 @@
+The ref modifier means that:
+
+The value is already set and
+The method can read and modify it.
+The out modifier means that:
+
+The Value isn't set and can't be read by the method until it is set.
+The method must set it before returning.
+
+these ref out keyword are only work with value types.

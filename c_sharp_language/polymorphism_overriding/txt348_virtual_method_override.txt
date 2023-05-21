@@ -1,0 +1,9 @@
+Is it neccessary to override virtual method in base class?
+	
+	A virtual method is the method which is declared with the keyword virtual, and it can be override by the derived class method by using override
+	keyword. It's up to the derived class whether to override it or not.
+	
+Can we create virtual method in abstract class?
+	
+	Yes, we can have virtual methods in abstract class in c#. This is true that both virtual and abstract methods allow derived classes to override and implement it.
+	But the difference is that a abstract method foreces derived class to implement it where as virtual method is optional.

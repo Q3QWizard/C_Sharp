@@ -1,0 +1,35 @@
+using System;
+
+namespace c__7._0
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+          
+            //var add = new Func<int, int, int>((no1, no2) => no1 + no2);
+            var result = add(10, 20);
+            Console.WriteLine($"The result is : {result}");
+           
+
+            int add(int no1, int no2)
+            {
+                return no1 + no2;
+            }
+        }
+
+      
+    }
+} 
+
+/*
+local functions allow the declaration of helper functions nested inside other functions
+Local functions not only reduce the scope but also allow use of variables declared in composing scope without allocating memory on heap or stack.
+
+Whenever we are developing we might often need to create methods that are not reused.
+
+Before c#7 we could have achived this using func and action types with anonymous methods.
+
+We can define local functions in any method, contructor, or inside a property that is both in getter and setter.
+When the local functions are compiled by the c# compiler the local function gets transformed in to a private method.
+ */

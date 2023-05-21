@@ -1,0 +1,21 @@
+Generic types allow code reuse with type safety
+	- Defer type specification to clients
+	
+public class Buffer<T>
+{
+	private int _start = 0;
+	public int BufferProperty  { get; set; }
+
+	private T[] _bufferArray;
+
+	public Buffer(int capacity)
+	{
+		_bufferArray = new T[capacity];
+	}
+
+	public void Write(T value)
+	{ _bufferArray[0] = value; }
+
+	public T Read()
+	{ return _bufferArray[0]; }
+}

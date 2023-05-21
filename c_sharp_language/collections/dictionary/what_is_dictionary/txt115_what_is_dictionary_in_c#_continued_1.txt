@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Program
+{
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101, Name = "Desitha", Salary = 5000
+        };
+        Customer customer2 = new Customer()
+        {
+            ID = 102,
+            Name = "Vidura",
+            Salary = 6000
+        };
+        Customer customer3 = new Customer()
+        {
+            ID = 103,
+            Name = "Amila",
+            Salary = 7000
+        };
+
+        Customer[] custArray = new Customer[3];
+        custArray[0] = customer1;
+        custArray[1] = customer2;
+        custArray[2] = customer3;
+
+        List<Customer> custList = new List<Customer>();
+        custList.Add(customer1);
+        custList.Add(customer2);
+        custList.Add(customer3);
+
+        Dictionary<int, Customer> dic1 = custList.ToDictionary(cust => cust.ID, cust => cust);
+
+        Dictionary<int, Customer> dic =  custArray.ToDictionary(cust => cust.ID, cust => cust);
+
+        foreach (KeyValuePair<int, Customer> kvp in dic)
+        {
+            Customer cust = kvp.Value;
+            Console.WriteLine("Key = {0}", kvp + " " + cust.Name);
+            
+        }
+
+        Console.WriteLine();
+
+        foreach (KeyValuePair<int, Customer> kvp in dic1)
+        {
+            Customer cust = kvp.Value;
+            Console.WriteLine("Key = {0}", kvp + " " + cust.Name);
+
+        }
+        Console.ReadLine();
+    }
+}
+
+public class Customer
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public int Salary { get; set; }
+}
+
+/*
+Dictionary in C#
+
+A dictionary is a collection of (key, value) pairs.
+
+Dictionary class is present in System.Collections.Generic namespace
+
+When creating a dictionary, we need to specify the type for key and value.
+
+Dictionary provides fast lookups for values using keys.
+
+Keys in dictionary must be unique.
+*/

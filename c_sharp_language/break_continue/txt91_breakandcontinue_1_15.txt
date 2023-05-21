@@ -1,0 +1,31 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        for (int i = 1; i <= 20; i++)
+        {
+            Console.WriteLine(i);
+
+            if (i == 10)
+                break;
+        }
+
+        for (int j = 0; j <= 20; j++)
+        {
+            if (j % 2 == 1)
+            {
+                continue;
+            }
+            Console.WriteLine(j);
+        }
+
+        Console.ReadLine();
+        
+
+
+    }
+}
+
+

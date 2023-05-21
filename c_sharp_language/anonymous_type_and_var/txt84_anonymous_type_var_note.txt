@@ -1,0 +1,66 @@
+Anonymous Type
+--------------
+
+static void Main(string [] args)
+{
+	var myAnonymous = new {
+		firstProperty = "First", secondProperty = 2, thirdProperty = true };
+	}
+}
+
+Nested anonymous types
+----------------------
+
+An anonymous type can have another anonymous typea as a property
+
+var myAnonymous = new {
+	firstProperty = "first",
+	secondProperty = 2,
+	thirdProperty = true,
+	anotherAnonymous = new { nestedProp = "N" }
+};
+
+c# allows you to create an object with the new keyword without defining its class. The implicitly types variable
+var is used to hold the reference of the anonymous type.
+
+Anonymous type is temporary data type that is infered based on the data that you include in as object initializer.
+Properties of the anonymous type will be readonly properties so you can not change their value.
+
+The compiler applies appropriate type to each property based on the value expression. For ex: firstProperty is a string type
+, secondProperty is an int type and third property is a bool.
+
+The compiler generates a type with some cryptic name for an anonymous type.
+
+static void Main(string [] args)
+{
+	var myAno = new {firstProperty = "First", secondProperty = 2, thirdProperty = true};
+	
+	Console.WriteLine(myAno.GetType().ToString());
+}
+//-> f__AnonymousType0'3[---
+
+If we disassembled anonymous type the anonymous class derived from System.Object class. IT is a sealed class
+and all the properties are created as readonly properties.
+
+An anonymous type will always be local to the method where it is defined.
+
+You can not pass an anonymous type to a another method. However you can pass it to a method that accepts a parameter of 
+dynamic type. Passing anonymous types using dynamic is not recommanded.
+
+static vaoid Main(string [] args)
+{
+	var myAno = new {
+		firstProperty = "first property",
+		secondProperty = 2,
+		thirdProperty = true,
+	};
+	
+	DoSomthing(myAno);
+}
+
+static void DoSomthing(dynamic pra)
+{
+	Console.WriteLine(para.firstProperty);
+}
+
+//-> first property

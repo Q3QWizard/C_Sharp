@@ -1,0 +1,28 @@
+using System;
+using System.Collections;
+
+public class Program
+{
+    public static void Main()
+    {
+        Operation operation = new Operation(10, 15);
+
+        var (num1, num2) = operation;
+
+        Console.WriteLine("num1 -> " + num1 + " num2 -> " + num2);
+    }
+}
+
+class Operation
+{
+    public int num1 = 100;
+    public int num2 = 30;
+
+    public Operation(int num1, int num2) => (this.num1, this.num2) = (num1, num2);
+
+    public void Deconstruct(out int num1, out int num2)
+    {
+        num1 = this.num1;
+        num2 = this.num2;
+    }
+}

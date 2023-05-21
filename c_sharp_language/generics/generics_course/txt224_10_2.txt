@@ -1,0 +1,71 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
+namespace cs_vsc
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DepartmentCollection departments = new DepartmentCollection();
+
+            departments.Add("Engineering",new Employee { Name = "Scott" })
+            .Add("Engineering", new Employee { Name = "Alex" })
+            .Add("Engineering", new Employee { Name = "Dani" });
+
+            departments.Add("Sales", new Employee { Name = "Joy" });
+            departments.Add("Sales", new Employee { Name = "Dani" });
+            departments.Add("Sales", new Employee { Name = "Dani" });
+
+            foreach(var dept in departments)
+            {
+                Console.WriteLine(dept.Key);
+                foreach(var emp in dept.Value)
+                {
+                    Console.WriteLine("    " + emp.Name);
+                }
+            }
+
+        }
+    }
+
+    class DepartmentCollection : SortedDictionary<string, SortedSet<Employee>>
+    {
+        public DepartmentCollection Add(string departmentName, Employee employee)
+        {
+            if(!ContainsKey(departmentName))
+            {
+                Add(departmentName, new SortedSet<Employee>(new EmployeeComparer()));
+            }
+            this[departmentName].Add(employee);
+
+            return this;
+        }
+    }
+
+    class EmployeeComparer : IEqualityComparer<Employee>, IComparer<Employee>
+    {
+        public int Compare([AllowNull] Employee x, [AllowNull] Employee y)
+        {
+            return String.Compare(x.Name, y.Name);
+        }
+
+        public bool Equals([AllowNull] Employee x, [AllowNull] Employee y)
+        {
+            return String.Equals(x.Name, y.Name);
+        }
+
+        public int GetHashCode([DisallowNull] Employee obj)
+        {
+            return obj.Name.GetHashCode();
+        }
+    }
+
+    class Employee 
+    { 
+        public string Name { get; set; }
+        public int DepartmentId { get; set; }
+    }
+}

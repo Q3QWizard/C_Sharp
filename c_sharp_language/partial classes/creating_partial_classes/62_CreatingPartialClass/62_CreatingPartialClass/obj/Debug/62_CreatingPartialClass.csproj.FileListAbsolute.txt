@@ -1,0 +1,5 @@
+D:\Projects\62_CreatingPartialClass\62_CreatingPartialClass\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\62_CreatingPartialClass\62_CreatingPartialClass\bin\62_CreatingPartialClass.dll
+D:\Projects\62_CreatingPartialClass\62_CreatingPartialClass\bin\62_CreatingPartialClass.pdb
+D:\Projects\62_CreatingPartialClass\62_CreatingPartialClass\obj\Debug\62_CreatingPartialClass.dll
+D:\Projects\62_CreatingPartialClass\62_CreatingPartialClass\obj\Debug\62_CreatingPartialClass.pdb

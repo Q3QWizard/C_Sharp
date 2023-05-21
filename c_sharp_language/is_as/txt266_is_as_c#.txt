@@ -1,0 +1,29 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        object x = "dsfg";
+
+        if (x is string)
+        {
+            Console.WriteLine("This is a string type variable");
+        }
+
+        string y = x as string;
+
+        Type t = y.GetType();
+        Console.WriteLine(t.ToString());
+
+        Console.ReadLine();
+    }
+}
+/*
+ IS keyword is useful when you want to check, if two objects are of the same type or not.
+ AS keyword is useful when you want to type cast, one object to the other type.
+ 
+ As assign null if the x is not a string. For this reason you cannot use it will the value types.(The operator could never return null in that case).
+ */
+
+/*IS vs AS Keyword ( C# Interview questions with answers)*/

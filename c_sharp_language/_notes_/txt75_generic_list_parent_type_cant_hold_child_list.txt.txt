@@ -1,0 +1,26 @@
+The reason this is not legal is because it is not safe. Suppose it were legal:
+
+List<Giraffe> giraffes = new List<Giraffe>();
+List<Animal> animals = giraffes; // this is not legal; suppose it were.
+animals.Add(new Tiger());  // it is always legal to put a tiger in a list of animals
+But "animals" is actually a list of giraffes; you can't put a tiger in a list of giraffes.
+
+In C# this is, unfortunately, legal with arrays of reference type:
+
+Giraffe[] giraffes = new Giraffe[10];
+Animal[] animals = giraffes; // legal! But dangerous because...
+animals[0] = new Tiger(); // ...this fails at runtime!
+In C# 4 this is legal on IEnumerable but not IList:
+
+List<Giraffe> giraffes = new List<Giraffe>();
+IEnumerable<Animal> animals = giraffes; // Legal in C# 4
+foreach(Animal animal in animals) { } // Every giraffe is an animal, so this is safe
+It is safe because IEnumerable<T> does not expose any method that takes in a T.
+
+To solve your problem you can:
+
+Create a new list of objects out of the old list.
+Make the method take an object[] rather than a List<object>, and use unsafe array covariance.
+Make the method generic, so it takes a List<T>
+Make the method take IEnumerable
+Make the method take IEnumerable<object> and use C# 4.

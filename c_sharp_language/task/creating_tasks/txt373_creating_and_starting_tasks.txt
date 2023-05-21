@@ -1,0 +1,78 @@
+using System;
+using System.Threading.Tasks;
+
+namespace MyApp
+{
+    class Program
+    {
+        public static void Write(char c)
+        {
+            int i = 1000;
+
+            while (i-- > 0)
+            {
+                Console.Write(c);
+            }
+        }
+
+        public static void Write(object o)
+        {
+            int i = 1000;
+
+            while (i-- > 0)
+            {
+                Console.Write(o.ToString());
+            }
+        }
+
+        public static int JoinTextLength(string str, string str2)
+        {
+            return (str + str2).Length;
+        }
+
+        public static int TextLength(object o)
+        {
+            Console.WriteLine("\nTask with id {0} processing", Task.CurrentId);
+            return o.ToString().Length;
+        }
+        static void Main(string[] args)
+        {
+            //// using task factory to create new task
+            //// when you use task factory you create a task and start that task at the same time
+            //Task.Factory.StartNew(() => Write('.'));
+
+            ////When you use Task to create task you just create task not start it.
+            //Task t = new Task(() => Write('?'));
+            //t.Start();//use Start() method to start a task created by Task
+
+            //// way 2 passing argument to task. you action has to accept one parameter of type object
+            //Task t1 = new Task(Write, "hello");
+            //t1.Start();
+
+            //Task t2 = new Task(Write, 123);
+            //t2.Start();
+
+            //Write('-');
+
+            //--------------------------------------------------------------------------------------------------------------
+
+            var t3 = new Task<int>(() => JoinTextLength("Hello", "bro"));
+            t3.Start();
+            Console.WriteLine(t3.Result);
+
+            var t4 = new Task<int>(TextLength, "Brother");
+            t4.Start();
+            Console.WriteLine(t4.Result);
+
+            Task<int> t5 = Task.Factory.StartNew(TextLength, "Jack");
+            Console.WriteLine(t5.Result);
+
+            Console.WriteLine("Main programe done");
+            Console.ReadKey();
+        }
+    }
+}
+/*
+ Task is just an abstraction is just .net way of grouping a unit of work together and telling sheduler that this unit of work
+ can be executed on a sparate thread.
+     */

@@ -1,0 +1,17 @@
+using System;
+using System.Collections;
+using static System.Console;
+
+public class Program
+{
+    public static void Main()
+    {
+        WriteLine("hello");
+        Read();
+    }
+}
+
+/*
+With new c# 6.0 we can import static members of a class with using
+*/
+

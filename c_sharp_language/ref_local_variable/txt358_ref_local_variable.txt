@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+
+namespace c__7._0
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string []  friends = {"Aruna", "Jayan", "Ravindu", "Thilina"};
+
+            ref string friend = ref friends[1];
+            //  friend = ref friends[0]; Error
+            friend += " Prabodha";
+
+            Console.WriteLine("Friend name : " + friend);
+            Console.WriteLine("Friends list : \n : " + String.Join(",", friends));
+
+            List<string> bestFriends = new List<string>()
+            {
+                "Aruna", "Jayan", "Ravindu", "Thilina"
+            };
+
+            // ref string friend1 = ref bestFriends[1]; // Error
+
+            friends = null;
+
+            Console.WriteLine(friend);
+        
+        }
+    }
+} 
+
+/*
+    once the reference of a variable is assigned we can not bind that ref local variable to another element
+
+    We can not use this concept with list or generics or any complex types
+
+    Ref argument should be an assigned variable field or a array element
+
+    Once the ref has been set to the local variable if any changes happen to the original data still the refernce
+    variable will work properly
+ */

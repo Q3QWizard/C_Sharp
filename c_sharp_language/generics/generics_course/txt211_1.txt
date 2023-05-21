@@ -1,0 +1,30 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CCApp
+{
+    public class Buffer
+    {
+        private int _start = 0;
+        public int BufferProperty  { get; set; }
+
+        private int[] _bufferArray;
+
+        public Buffer(int capacity)
+        {
+            _bufferArray = new int[capacity];
+        }
+
+        public void Write(int value)
+        { }
+
+        public int Read()
+        { return _bufferArray[0]; }
+    }
+}
+
+/*
+ This implementation only works with ints but what if we want to extend this functionality to double and string.
+     */

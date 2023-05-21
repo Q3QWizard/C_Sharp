@@ -1,0 +1,24 @@
+using System;
+using System.IO;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            StreamReader streamReader = new StreamReader(@"G:\Desitha\WorkBench\c#\PragimTech\C# txt\40_ExceptionHandling\dataq.txt");
+            Console.WriteLine(streamReader.ReadToEnd());
+            streamReader.Close();
+
+            Console.ReadLine();
+        }
+        catch (FileNotFoundException ex)
+        {
+            Console.WriteLine("Please check if the file {0} exists ", ex.FileName);
+        }
+
+        Console.ReadLine();
+        
+    }
+}

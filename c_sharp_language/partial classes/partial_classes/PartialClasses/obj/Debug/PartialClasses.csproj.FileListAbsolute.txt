@@ -1,0 +1,10 @@
+D:\Projects\PartialClasses\PartialClasses\bin\PartialClasses.dll
+D:\Projects\PartialClasses\PartialClasses\bin\PartialClasses.pdb
+D:\Projects\PartialClasses\PartialClasses\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\PartialClasses\PartialClasses\obj\Debug\PartialClasses.dll
+D:\Projects\PartialClasses\PartialClasses\obj\Debug\PartialClasses.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\PartialClasses\bin\PartialClasses.dll
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\PartialClasses\bin\PartialClasses.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\PartialClasses\obj\Debug\ResolveAssemblyReference.cache
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\PartialClasses\obj\Debug\PartialClasses.dll
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\PartialClasses\obj\Debug\PartialClasses.pdb

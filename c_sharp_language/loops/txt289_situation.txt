@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web;
+
+namespace Example
+{
+    class ProgrammingExample
+    {
+        static void Main()
+        {
+            int varA = 10;
+            double varB = 123.45;
+
+            // Using substitution parameters to format a string
+            Console.WriteLine("Variable A: {0}, variable B: {1}",
+                varA, varB);
+
+            // The string.Format() method also accepts substitution parameters,
+            // making this useful for generating string variables
+            string myString = string.Format("Variable A: {0}, variable B: {1}",
+                varA, varB);
+            Console.WriteLine(myString);
+
+            // Any custom format specifiers can be used with substitution parameters
+            Console.WriteLine("The current time is {0:HH:mm:ss} and the date is {0:dd-MM-yyyy}.",
+                DateTime.Now);
+            Console.WriteLine("Scientific notation: {0:E0}", varA * 10000);
+
+            // Formatting a string with substitution parameters and escape characters
+            Console.WriteLine("\nVariable values:\nVariable A:\t{0}\nVariable B:\t{1}",
+                varA, varB);
+
+            Console.ReadLine();
+        }
+    }
+}

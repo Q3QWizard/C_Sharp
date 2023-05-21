@@ -1,0 +1,51 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        Customer[] customers = new Customer[3];
+        customers[0] = new Customer() { Name = "Mark", Gender = Gender.Male };
+        customers[1] = new Customer() { Name = "Mary", Gender = Gender.Female };
+        customers[2] = new Customer() { Name = "Sam", Gender = Gender.Unknown };
+
+        foreach (Customer cust in customers)
+        {
+            Console.WriteLine("Name = {0} and Gender = {1}", cust.Name, GetGender(cust.Gender));
+        }
+
+        Console.ReadLine();
+    }
+
+    public static string GetGender(Gender gender)
+    {
+        switch (gender)
+        {
+            case Gender.Unknown:
+                return "Unknown";
+
+            case Gender.Female:
+                return "Female";
+
+            case Gender.Male:
+                return "Male";
+
+            default:
+                return "Invalid data detected";
+
+        }
+    }
+}
+
+public enum Gender
+{ 
+    Unknown,
+    Male,
+    Female
+}
+public class Customer
+{
+    public string Name { get; set; }
+    public Gender Gender { get; set; }
+}
+

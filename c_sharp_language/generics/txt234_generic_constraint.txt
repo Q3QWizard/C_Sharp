@@ -1,0 +1,70 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        MyGenericClass<string> strGenericClass = new MyGenericClass<string>("Hello Generic World");
+
+        strGenericClass.genericProperty = "This is a generic property example.";
+        string result = strGenericClass.genericMethod<int>("Generic Parameter", 25);//<int> is not neceessary
+
+        Console.ReadLine();
+    }
+
+}
+
+class MyGenericClass<T>
+{
+    private T genericMemberVariable;
+    public MyGenericClass(T value)
+    {
+        genericMemberVariable = value;
+    }
+
+    public MyGenericClass()
+    {
+
+    }
+    public T genericMethod<U>(T genericParameter, U antoerhParameter) where U : struct
+    {
+        Console.WriteLine("Parameter type: {0}, value: {1}", typeof(T).ToString(), genericParameter);
+
+        Console.WriteLine("Another parameter: {0} , {1}", typeof(U).ToString(), antoerhParameter);
+
+        Console.WriteLine("Return type: {0}, value: {1}", typeof(T).ToString(), genericMemberVariable);
+
+        return genericMemberVariable;
+    }
+    public T genericProperty { get; set; }
+}
+
+class MyDerivedClass : MyGenericClass<string>
+{
+
+    /*When deriving from a generic base class, you must provide a type argument instead of the base-class's generic
+type parameter as shown below.*/
+}
+
+class MyDerivedClass2<T> : MyGenericClass<T>
+{ /*If you want the derived class to be generic then no need to specify type for the generic base class.*/}
+
+
+/*Advantages of Generic:
+1. Increases the reusability of the code.
+2. Generic are type safe. You get compile time errors if you try to use a different type of data than the one
+specified in the definition.
+3. Generic has a performance advantage because it removes the possibilities of boxing and unboxing.*/
+
+/*
+Points to Remember :
+1. Generics denotes with angel bracket <>.
+2. Compiler applys specified type for generics at compile time.
+3. Generics can be applied to interface, abstrct class, method, static method, property, event,
+delegate and operator.
+4. Generics performs faster by not doing boxing & unboxing.
+5
+*/
+

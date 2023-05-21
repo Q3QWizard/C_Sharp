@@ -1,0 +1,112 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        int i = 10;
+        int j = 10;
+
+        Console.WriteLine("Int");
+        Console.WriteLine(i == 2);
+        Console.WriteLine(i.Equals(10));
+
+        Console.WriteLine();
+        Console.WriteLine("Enum");
+
+        Direction direction1 = Direction.East;
+        Direction direction2 = Direction.East;
+
+        Console.WriteLine(direction1 == direction2);
+        Console.WriteLine(direction1.Equals(direction2));
+
+        Console.WriteLine();
+        Console.WriteLine("Same Object with different reference valriable");
+
+
+        Customer c1 = new Customer();
+        c1.FirstName = "Wasindu";
+        c1.LastName = "Desitha";
+        
+        Customer c2 = c1;
+
+        Console.WriteLine(c1 == c2);
+        Console.WriteLine(c1.Equals(c2));
+
+        Customer c3 = new Customer();
+        c3.FirstName = "Wasindu";
+        c3.LastName = "Desitha";
+
+        /*
+         * c1 and c3 are not pointing to the same object they are not refering to the same object, So the reference equality which is this double equal "=="
+         * will be false.
+         * 
+         * But if you see the values of the both objects FirstName, LastName they are the same.
+         * 
+         * If reference equality is true then value equality will also become true.
+         * But on the other hand value equality does not guarantee reference eqality.
+         * 
+         * When it comes to reference types by default the double equal comparision operator gives us reference eqality.
+         * 
+         * Where as equals method should be giving value eqality. But if we run this both the reference equality and reference equality are false.
+         * In this example c1 firstName, lastName values are equal to the c3 firstName, lastName so the value equality should be true.
+         * But reference equality should be false because c1 and c3 are two objects.
+         * 
+         * This is the occasion when we have to override the Equals() method. To ensure we get what we expects.
+         * The reason why we get false is because of the default implementation, the default implementation comming from the base class does not know 
+         * what from these to check for the equality. 
+         * 
+         * That's when we will override the inherited virtual Equals() method from System.Objects class.
+         * 
+         * */
+
+        Console.WriteLine();
+        Console.WriteLine("2 separete Object");
+
+
+        Console.WriteLine(c1 == c3);
+        Console.WriteLine(c1.Equals(c3)); 
+        Console.WriteLine(c2.GetHashCode().ToString());
+
+        Console.ReadLine();
+
+    }
+
+    public enum Direction
+    { 
+        East = 1,
+        West = 2,
+        North = 3,
+        South = 4 
+    }
+
+}
+
+public class Customer
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+
+    public override bool Equals(object obj)
+    {
+        if (obj == null)
+        {
+            return false;
+        }
+
+        if (!(obj is Customer))
+        {
+            return false;
+        }
+
+        return this.FirstName == ((Customer)obj).FirstName && this.LastName == ((Customer)obj).LastName;
+
+    }
+
+    public override int GetHashCode()
+    {
+        return this.FirstName.GetHashCode() ^ this.LastName.GetHashCode();
+    }
+
+
+}

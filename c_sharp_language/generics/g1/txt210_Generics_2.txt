@@ -1,0 +1,64 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        bool Equal = Calculator<string>.AreEqual("a", "a");
+
+        if (Equal)
+        {
+            Console.WriteLine("Equal");
+        }
+        else
+        {
+            Console.WriteLine("Not Equal");
+        }
+
+        Console.ReadLine();
+    }
+}
+
+public class Calculator<T>
+{
+    public static bool AreEqual(T value1, T value2)
+    {
+        return value1.Equals(value2);
+    }
+}
+
+/*
+Generics are introduced in C# 2.0. Generics allow us to design classes and methods decoupled from the data types.
+
+Generic classes are extensively used by collection classes available in System.Collections.Generic namespace
+
+One way of making AreEqual() method reusable, is to use object type parameters.
+Since, every type in .NET directly or indirectly inherit from System.Objects type, AreEqual() method works with any data type
+but the problem is performance degradation due to boxing and unboxing happening.
+
+Also, AreEqual() method is no longer type safe. It is now possible to pass integer for the first parameter, and a string for the 
+second parameter. It doesn't really make sense to compare strings with integers.
+
+Generics are introduced in C# 2.0. Generics allow us to design classes and methods decoupled from the data types.
+
+Generic classes are extensively used by collection classes available in System.Collections.Generic namespace
+
+One way of making AreEqual() method reusable, is to use object type parameters.
+Since, every type in .NET directly or indirectly inherit from System.Objects type, AreEqual() method works with any data type
+but the problem is performance degradation due to boxing and unboxing happening.
+
+Also, AreEqual() method is no longer type safe. It is now possible to pass integer for the first parameter, and a string for the 
+second parameter. It doesn't really make sense to compare strings with integers.
+
+To make AreEqual() method generic, we specify a type parameter using angular brackets as shown below.
+public static bool AreEqual<T>(T value1, T value2)
+
+At the point, When the client wants to invoke this method, they need to specify the type, they want the method to operate on. If the 
+user wants the AreEqual() method to work with integers, they can invoke the method specifying int as the data type using angular brackets
+as shown below
+
+bool Equal = Calculator.AreEqual<string>("A". "B");
+
+In this example, we made the method generic. Along the same line, it is also possible to make classes, interfaces and 
+delegates generic.
+ */

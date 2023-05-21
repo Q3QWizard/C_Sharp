@@ -1,0 +1,29 @@
+using System;
+
+public class Program
+{
+    public delegate string myDelegate(int age);
+
+    public static string myDelegateMethod(int age)
+    {
+        return age.ToString();
+    }
+
+    public static void Main()
+    {
+        myDelegate testDelegate = myDelegateMethod;
+
+        Console.WriteLine(testDelegate(20));
+
+        Console.ReadLine();
+    }
+}
+
+/*
+delegate
+
+if you want to store a method in c#, then you should use delegate
+
+
+
+*/

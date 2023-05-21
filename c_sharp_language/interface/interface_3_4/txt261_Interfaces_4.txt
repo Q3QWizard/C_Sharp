@@ -1,0 +1,68 @@
+/*If you want to make the default measurements in English units, implement the methods Length and Width normally, and explicitly implement the Length and Width methods from the IMetricDimensions interface:*/
+
+// Declare the English units interface: 
+interface IEnglishDimensions
+{
+    float Length();
+    float Width();
+}
+
+// Declare the metric units interface: 
+interface IMetricDimensions
+{
+    float Length();
+    float Width();
+}
+
+// Declare the Box class that implements the two interfaces: 
+// IEnglishDimensions and IMetricDimensions: 
+class Box : IEnglishDimensions, IMetricDimensions
+{
+    float lengthInches;
+    float widthInches;
+
+    public Box(float length, float width)
+    {
+        lengthInches = length;
+        widthInches = width;
+    }
+
+    // Normal implementation: 
+    public float Length()
+    {
+        return lengthInches;
+    }
+    public float Width()
+    {
+        return widthInches;
+    }
+
+    // Explicit implementation: 
+    float IMetricDimensions.Length()
+    {
+        return lengthInches * 2.54f;
+    }
+    float IMetricDimensions.Width()
+    {
+        return widthInches * 2.54f;
+    }
+
+    static void Main()
+    {
+        Box box1 = new Box(30.0f, 20.0f);
+        IMetricDimensions mDimensions = (IMetricDimensions)box1;
+
+        System.Console.WriteLine("Length(in): {0}", box1.Length());
+        System.Console.WriteLine("Width (in): {0}", box1.Width());
+        System.Console.WriteLine("Length(cm): {0}", mDimensions.Length());
+        System.Console.WriteLine("Width (cm): {0}", mDimensions.Width());
+
+        System.Console.ReadLine();
+    }
+}
+/* Output:
+    Length(in): 30
+    Width (in): 20
+    Length(cm): 76.2
+    Width (cm): 50.8
+*/

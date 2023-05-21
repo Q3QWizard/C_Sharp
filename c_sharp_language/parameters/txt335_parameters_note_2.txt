@@ -1,0 +1,6 @@
+We can't give default value to a out parameters.
+We can't give optional attribute to a out parameters
+
+ref or out parameters can not have default values.
+
+put optional arguments after the positional argements when defining the method.

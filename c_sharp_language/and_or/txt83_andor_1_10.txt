@@ -1,0 +1,33 @@
+using System;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Please enter a number!");
+
+            int userInput = int.Parse(Console.ReadLine());
+
+            if (userInput == 10 || userInput == 20)
+            {
+                Console.WriteLine("Your number is 10 or 20");
+            }
+
+            else
+            {
+                Console.WriteLine("your number is not 10 or 20");
+            }
+
+
+
+        }
+    }
+// || will check the first conditon if it is ture then it will not check the other condition is true or not
+// | but if we use | this will check the first condition and the second condition also(only check if one of them is ture code will execute.)
+
+//&& - will check the first conditon if it is ture then it will not check the other conditon is true or not (if first condition is false it will skip the second condition)
+// & - but if we use & this will check the first condtion and the second condtion wether the second condtion is false(but only execute code if the both conditions are true)
+
+    
+
+

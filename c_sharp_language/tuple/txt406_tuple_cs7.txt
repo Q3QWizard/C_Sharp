@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+
+namespace c__7._0
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var objTuple = Math(10, 50);
+            Console.WriteLine("Sum is : " + objTuple.Item1);
+            Console.WriteLine("Product is : " + objTuple.Item2);
+
+            var (sumResult, productResult) = Math(10, 50);
+            Console.WriteLine("Sum is : " + sumResult);
+            Console.WriteLine("Product is : " + productResult);
+
+            var objTuple2 = Math2(10, 50);
+            Console.WriteLine("Sum is : " + objTuple2.sum);
+            Console.WriteLine("Product is : " + objTuple2.product);
+        }
+
+        static (int, int) Math(int a, int b)
+        {
+            int sum =  a+ b;
+            int Product = a * b;
+
+            return (sum, Product);
+        }
+
+        static (int sum, int product) Math2(int a, int b)
+        {
+            int sum =  a+ b;
+            int Product = a * b;
+
+            return (sum, Product);
+        }
+    }
+} 

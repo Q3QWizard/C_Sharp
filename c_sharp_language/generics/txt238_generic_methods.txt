@@ -1,0 +1,27 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        ResultPrinter rp = new ResultPrinter();
+        rp.print<int, string>("hello", 5);
+
+        Console.ReadLine();
+    }
+}
+
+public class ResultPrinter
+{
+
+
+    public T print<U, T>(T result, U result2)
+    {
+        T result3 = result;
+
+        Console.WriteLine(result + "  " + result2);
+
+        return result3;
+        
+    }
+}

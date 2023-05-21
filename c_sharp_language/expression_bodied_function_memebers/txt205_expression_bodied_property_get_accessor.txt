@@ -1,0 +1,17 @@
+Expression bodied technique can be used to define get accessor. Return keyword
+is not required for 'get' accessor.
+
+class Operations
+{
+	public int num1 = 100;
+	public int num2 = 33;
+	private string name;
+	
+	public string Name
+	{
+		get => name;
+	}
+}
+
+Expression or right side followed with => must be a valid single statement and must return a value of data type
+defined in the property.

@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Linq_1_6v
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            IEnumerable<int> result = Employee.GetAllEmployees().Select(emp => emp.EmmloyeeID);
+            foreach (int id in result)
+            {
+                Console.WriteLine(id);
+            }
+
+            // using annoyumous type to hold empId and gender example 01
+            var result1 = Employee.GetAllEmployees().Select(emp => new { FirstName = emp.FirstName, Gender = emp.Gender });
+            foreach (var emp in result1)
+            {
+                Console.WriteLine(emp.FirstName + " - " + emp.Gender);
+            }
+
+            // using annoymous types example 03
+            Console.WriteLine();
+            Console.WriteLine("-----------------------------------");
+            // using annoyumous type to hold empId and gender example 02
+            var result2 = Employee.GetAllEmployees().Select(emp => new { FirstName = emp.FirstName, LastName = emp.LastName, MonthlySalary = emp.AnnualSalary / 12 });
+            foreach (var v in result2)
+            {
+                Console.WriteLine(v.FirstName + " " + v.LastName + " - " + v.MonthlySalary);
+            }
+
+            // using annoymous types example 03
+            Console.WriteLine();
+            Console.WriteLine("-----------------------------------");
+            var result3 = Employee.GetAllEmployees().Where(x => x.AnnualSalary > 50000).Select(emp => new { Name = emp.FirstName, Salary = emp.AnnualSalary, Bonus = emp.AnnualSalary * 0.1 });
+            foreach (var emp in result3)
+            {
+                Console.WriteLine(emp.Name + " - " + emp.Salary + " - " + emp.Bonus);
+            }
+            Console.Read();
+        }
+
+        public static bool IsEven(int x)
+        {
+            return x % 2 == 0;
+        }
+
+
+    }
+}
+
+
+class Employee
+{
+    public int EmmloyeeID { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Gender { get; set; }
+    public int AnnualSalary { get; set; }
+
+    public static List<Employee> GetAllEmployees()
+    {
+        List<Employee> lstEmployees = new List<Employee> 
+            {
+                new Employee { EmmloyeeID = 101, FirstName = "Tom", LastName="Daely", Gender = "Male", AnnualSalary = 60000 },
+                new Employee { EmmloyeeID = 102, FirstName = "Mike", LastName = "Mist", Gender = "Male", AnnualSalary = 72000 },
+                new Employee { EmmloyeeID = 103, FirstName = "Mary", LastName = "Lambeth", Gender = "Female", AnnualSalary = 48000 },
+                new Employee { EmmloyeeID = 104, FirstName = "Pam", LastName = "Penny", Gender = "Female", AnnualSalary = 84000 }
+            };
+
+        return lstEmployees;
+    }
+}

@@ -1,0 +1,42 @@
+/*
+sorting according to the department name
+*/
+
+using System;
+using System.Collections.Generic;
+
+namespace cs_vsc
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var departments = new SortedDictionary<string, List<Employee>>();
+
+            departments.Add("Engineering", new List<Employee>());
+            departments["Engineering"].Add(new Employee { Name = "Scott" });
+            departments["Engineering"].Add(new Employee { Name = "Alex" });
+            departments["Engineering"].Add(new Employee { Name = "Dani" });
+
+            departments.Add("Sales", new List<Employee>());
+            departments["Sales"].Add(new Employee { Name = "Joy" });
+            departments["Sales"].Add(new Employee { Name = "Dani" });
+
+            foreach(var dept in departments)
+            {
+                Console.WriteLine(dept.Key);
+                foreach(var emp in dept.Value)
+                {
+                    Console.WriteLine("    " + emp.Name);
+                }
+            }
+
+        }
+    }
+
+    class Employee 
+    { 
+        public string Name { get; set; }
+        public int DepartmentId { get; set; }
+    }
+}

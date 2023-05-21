@@ -1,0 +1,94 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Program
+{
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101, Name = "Desitha", Salary = 5000
+        };
+        Customer customer2 = new Customer()
+        {
+            ID = 102,
+            Name = "Vidura",
+            Salary = 6000
+        };
+        Customer customer3 = new Customer()
+        {
+            ID = 103,
+            Name = "Amila",
+            Salary = 7000
+        };
+
+
+        Dictionary<int, Customer> dictionaryCustomer = new Dictionary<int,Customer>();
+        dictionaryCustomer.Add(customer1.ID, customer1 );
+        dictionaryCustomer.Add(customer2.ID, customer2);
+        dictionaryCustomer.Add(customer3.ID,customer3);
+
+
+        /*
+         *  If you are not sure a dictionary contains specific key that when we use TryGetValue function
+         *  
+         * */
+        Customer cust;
+        if (dictionaryCustomer.TryGetValue(101, out cust))
+        {
+            Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", cust.ID, cust.Name, cust.Salary);
+        }
+        else
+        {
+            Console.WriteLine("The key does not exist");
+        }
+
+        /*
+         * To total number of items in a dictionary
+         * */
+        int itemCount = dictionaryCustomer.Count;
+        int itemCount1 = dictionaryCustomer.Count();    // this count method is a linq extention method
+        int itemCount2 = dictionaryCustomer.Count(kvp => kvp.Value.Salary > 6000);
+
+        Console.WriteLine("The dictiaonary contains " + itemCount + " items");
+        Console.WriteLine("The dictiaonary contains " + itemCount1 + " items. (Using Property)");
+        Console.WriteLine("The dictiaonary contains " + itemCount2 + " items (Using Linq extention fucntion)");
+
+        /*
+         Remove a specific item from the dictionary
+         */
+
+        dictionaryCustomer.Remove(101);
+
+        /*
+         * To Clear, that means remove all the items from the dictionary
+        */
+       
+        
+
+     
+        Console.ReadLine();
+    }
+}
+
+public class Customer
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public int Salary { get; set; }
+}
+
+/*
+Dictionary in C#
+
+A dictionary is a collection of (key, value) pairs.
+
+Dictionary class is present in System.Collections.Generic namespace
+
+When creating a dictionary, we need to specify the type for key and value.
+
+Dictionary provides fast lookups for values using keys.
+
+Keys in dictionary must be unique.
+*/

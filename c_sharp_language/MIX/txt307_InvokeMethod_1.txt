@@ -1,0 +1,55 @@
+using System;
+using System.Reflection;
+
+class Program
+{
+    public void Win()
+    {
+	Console.WriteLine("{You're a winner}");
+    }
+
+    public void Lose()
+    {
+    }
+
+    public void Draw()
+    {
+    }
+
+    static void Main()
+    {
+	// Instance used for Invoke. [1]
+	Program program = new Program();
+
+	// Get methods.
+	MethodInfo[] methods = typeof(Program).GetMethods();
+	foreach (MethodInfo info in methods)
+	{
+	    Console.WriteLine(info.Name);
+
+	    // Call Win method.
+	    if (info.Name == "Win")
+	    {
+		info.Invoke(program, null); // [2]
+	    }
+	}
+
+    Console.ReadLine();
+    }
+}
+
+/*
+Output
+
+Win
+{You're a winner}
+Lose
+Draw
+ToString
+Equals
+GetHashCode
+GetType
+
+MethodInfo Invoke. An instance method can be called by its name. With the MethodInfo type, we call the Invoke method. We must provide an instance expression. We demonstrate the MethodInfo type, as well as the Invoke method.
+Example. The GetMethods method on the Type class returns all the public instance methods on a type by default. Here, we get an array of MethodInfo instances of all the public Program class methods.
+*/

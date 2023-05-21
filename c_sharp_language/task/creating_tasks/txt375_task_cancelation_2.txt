@@ -1,0 +1,61 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace MyApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var cts = new CancellationTokenSource();
+            var token = cts.Token;
+
+            // the way to get notify about if task is being canceled
+            token.Register(() => Console.WriteLine("Cancellation has been requested"));
+
+            var t = new Task(() =>
+                {
+                    int i = 0;
+                    while (true)
+                    {
+                        if (token.IsCancellationRequested)
+                        {
+                            // you can use exceptions to exit from a thread, this is the recommended way of tpl
+                            // this exception will not break the programe just cancel the thread
+                            throw new OperationCanceledException();
+                        }
+                        else
+                        {
+                            Console.WriteLine(i++);
+                        }
+
+                        //youcan move above checking for cancellation request and then throwing exception into following
+
+                        //token.ThrowIfCancellationRequested();
+                        //Console.WriteLine(i++);
+                    }
+                }, token);
+
+            t.Start();
+
+            Console.ReadKey();
+            cts.Cancel();
+
+            Console.WriteLine("Main programe done.");
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+ Inorder to cancel tasks task parallel library gives you two things.
+    1. Cancellation token source 
+    2. cancellation tokens.
+
+    How ever you have to understand that in tpl cancellaation the task may explicitly aware of the fact that  it is cancellable and it has to perform some certain actions to do it.
+
+    There is a different of status in the task, if you throw exception to cancel the task the task knows that it has been canceled.
+    How ever if you don't throw the exception the task isn't going to know that it is being canceled and will tell you that it has been completed successfully.
+     */
+

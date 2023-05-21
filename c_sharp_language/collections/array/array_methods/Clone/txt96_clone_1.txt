@@ -1,0 +1,120 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        int[] intArray = new int[5] { 10, 20, 30, 40, 50 };
+
+        int[] newIntArray = (int[])intArray.Clone();
+
+        Student[] studentArray = new Student[2] { new Student() { ID = 101, Name = "Saman" }, new Student() { ID = 102, Name = "Piyal" } };
+
+        Student[] newStudentArray = (Student[])(studentArray.Clone());
+
+        Console.WriteLine("Value type array");
+
+        Console.WriteLine("intArray elements");
+
+        foreach (int i in intArray)
+        {
+            Console.Write(i + " | ");
+        }
+
+        Console.WriteLine();
+
+        Console.WriteLine("newIntArray elements");
+
+        foreach (int i in newIntArray)
+        {
+            Console.Write(i + " | ");
+        }
+
+        Console.WriteLine();
+
+        Console.WriteLine("changing intArray[0] element to 100");
+        intArray[0] = 100;
+
+        Console.WriteLine("after changing ... ");
+
+        Console.WriteLine("intArray elements");
+
+        foreach (int i in intArray)
+        {
+            Console.Write(i + " | ");
+        }
+
+        Console.WriteLine();
+
+        Console.WriteLine("newIntArray elements");
+
+        foreach (int i in newIntArray)
+        {
+            Console.Write(i + " | ");
+        }
+
+        Console.WriteLine();
+
+        Console.WriteLine("----------------------------------------------------------------------------");
+
+        Console.WriteLine("Object type array");
+        Console.WriteLine();
+        Console.WriteLine("Student array elements");
+        foreach (Student s in studentArray)
+        {
+            Console.Write(s.ID + " | " + s.Name + "  " + "||  ");
+        }
+        Console.WriteLine();
+
+        Console.WriteLine("newStudentArray array elements");
+
+        foreach (Student s in studentArray)
+        {
+            Console.Write(s.ID + " | " + s.Name + "  " + "||  ");
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("changing studnetArary[0].ID = 1000 and studentArray[0].Name = Test");
+
+        studentArray[0].ID = 1000;
+        studentArray[0].Name = "Test";
+
+        Console.WriteLine("after changing...");
+
+        Console.WriteLine("Student array elements");
+        foreach (Student s in studentArray)
+        {
+            Console.Write(s.ID + " | " + s.Name + "  " + "||  ");
+        }
+        Console.WriteLine();
+
+        Console.WriteLine("newStudentArray array elements");
+
+        foreach (Student s in studentArray)
+        {
+            Console.Write(s.ID + " | " + s.Name + "  " + "||  ");
+        }
+
+
+        Console.Read();
+    }
+}
+
+class Student
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+}
+
+/*
+ * Method -> Clone()
+ * 
+ * This method returns a new array (a shadow copy) object containing all the elements in the original array.
+ * 
+ * Shadow copy - when copying only references will be copies (will not create a another instance with new objects, only a reference will be created to point to the same instance)
+ * 
+ * In value type array (int, bool, double, ...) if we clone, then a new array will be returned but changes in the original array does not reflect in this new array.
+ * 
+ * But if we Clone() on object type array then an new array reference will be create to the original array (there will be no new array elements). Changes in the original array will
+ * reflect in the newly created array.
+ */

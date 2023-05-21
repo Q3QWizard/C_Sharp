@@ -1,0 +1,9 @@
+Name					Purpose					Implemented By
+IList<T>				Access by index			List<T>,SotedList<T>
+ICollection<T>			Add, remove, search		List<T>,Dictionary<K, V>,HashSet<T>
+IDicionary<K, V>		Access by key			Dictionary<K,V>
+IReadOnlyCollection<T>	Countable collection 	List<T>, Dictionary<K,V>
+						can not modify
+ISet					Set based on operation	HashSet<T>
+ICompare<T>
+IEqualityCompare<T>		Compare objects			

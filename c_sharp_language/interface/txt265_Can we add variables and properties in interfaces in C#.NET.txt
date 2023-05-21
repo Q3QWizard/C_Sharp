@@ -1,0 +1,24 @@
+
+This should have been easy to find on the internet.
+
+Interfaces are contracts to be fulfilled by implementing classes. Hence they can consist of public methods, properties and events (indexers are permitted too).
+
+Variables in Interfaces - NO. Can you elaborate on why you need them? You can have variables in Base classes though.
+Properties in Interfaces - Yes, since they are paired methods under the hood.
+Members of an interface are implicitly public. You cannot specify access modifiers explicitly
+
+public interface ISampleInterface
+{
+    // method declaration
+    bool CheckSomething(object o);
+
+    // event declaration
+    event EventHandler ShapeChanged;
+
+    // Property declaration:
+    string Name
+    {
+        get;
+        set;
+    }
+}

@@ -1,0 +1,57 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CCApp
+{
+    public class Buffer
+    {
+        private int _start = 0;
+        public int BufferProperty  { get; set; }
+
+        private object[] _bufferArray;
+
+        public Buffer(int capacity)
+        {
+            _bufferArray = new object[capacity];
+        }
+
+        public void Write(object value)
+        { _bufferArray[0] = value; }
+
+        public object Read()
+        { return _bufferArray[0]; }
+    }
+}
+
+/*
+ The solution to add support for double and string is to make the type of the class as object. Now class can
+ accept any type because in c# everything is inherited from object class
+
+    Because of using object type we willhave to do some casting operations
+
+    Becuase we can use any type when casting programe can crash
+	
+	Because of using objects boxing and unboxing happens this can effect the performance of the application.
+     */
+-------------------------------------------------------------------------------------------------------------------------
+
+using System;
+
+namespace CCApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Buffer buffer = new Buffer(5);
+            var value = buffer.Read();
+            var sum = 0.0;
+            if(value is double)
+            {
+                sum += (double)value;
+            }
+        }
+    }
+}

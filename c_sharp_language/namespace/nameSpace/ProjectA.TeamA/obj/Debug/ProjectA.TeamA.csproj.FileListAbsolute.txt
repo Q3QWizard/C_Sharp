@@ -1,0 +1,4 @@
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\ProjectA.TeamA\bin\Debug\ProjectA.TeamA.dll
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\ProjectA.TeamA\bin\Debug\ProjectA.TeamA.pdb
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\ProjectA.TeamA\obj\Debug\ProjectA.TeamA.dll
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\ProjectA.TeamA\obj\Debug\ProjectA.TeamA.pdb

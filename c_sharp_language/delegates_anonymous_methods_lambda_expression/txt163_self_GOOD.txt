@@ -1,0 +1,180 @@
+using System;
+using System.Collections.Generic;
+
+namespace MyConsole
+{
+    class Program
+    {
+        delegate string MyDele();
+        public static void Main(string[] args)
+        {
+            #region EmployeeNameToUppercase()
+            List<Employee> employees = Employee.GetEmployees();
+
+            foreach (Employee e in employees)
+            {
+                Console.WriteLine(e.ToString(EmployeeNameToUppercase));
+            }
+            #endregion
+            Console.WriteLine("--------------------------------------------------1");
+
+            #region Del_EmployeeFormat objDelEmp = delegate(Employee e) { return e.EmployeeName.ToUpper(); };
+            Del_EmployeeFormat objDelEmp = delegate (Employee e) { return e.EmployeeName.ToUpper(); };
+            foreach (Employee emp in employees)
+            {
+                //Console.WriteLine(emp.ToString(objDelEmp));
+            }
+            #endregion
+
+            Console.WriteLine("--------------------------------------------------2");
+
+            #region Func<Employee, string> funcEmp = delegate(Employee e) { return e.EmployeeName.ToUpper(); };
+            Func<Employee, string> funcEmp = delegate (Employee e) { return e.EmployeeName.ToUpper(); };
+            foreach (Employee e in employees)
+            {
+                Console.WriteLine(e.ToString(funcEmp));
+            }
+            #endregion
+
+            Console.WriteLine("--------------------------------------------------3");
+
+            #region delegate(Employee e) { return e.EmployeeName.ToUpper(); })
+            foreach (Employee emp in employees)
+            {
+                Console.WriteLine(emp.ToString(delegate (Employee e) { return e.EmployeeName.ToUpper(); }));
+            }
+            #endregion
+
+            Console.WriteLine("--------------------------------------------------4");
+
+            #region e => e.EmployeeName.ToUpper()
+            foreach (Employee emp in employees)
+            {
+                Console.WriteLine(emp.ToString(e => e.EmployeeName.ToUpper()));
+            }
+            #endregion
+
+            Console.WriteLine("--------------------------------------------------5");
+            Del_EmployeeFormat del_emp = new Del_EmployeeFormat(EmployeeNameToUppercase);
+
+            foreach (Employee emp in employees)
+            {
+                Console.WriteLine(del_emp(emp));
+            }
+            Console.WriteLine("--------------------------------------------------6");
+
+            Del_EmployeeFormat del_emp1;
+
+            del_emp1 = EmployeeNameToUppercase;
+
+            foreach (Employee emp in employees)
+            {
+                Console.WriteLine(del_emp1(emp));
+            }
+
+            Console.WriteLine("--------------------------------------------------7");
+
+            MyDelFunc(() => FuncMethod("Hello", "Brother"));
+
+            MyDele del = delegate () { return FuncMethod("Bro", "Hello"); };
+
+            Console.WriteLine(del());
+
+            Console.Read();
+        }
+        public static void ActionMethod()
+        {
+            Console.WriteLine("Hello from action method");
+        }
+
+        public static bool PredicateMethod(string s1)
+        {
+            if (s1 == "a")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static string FuncMethod(string s1, string s2)
+        {
+            return s1 + " " + s2;
+        }
+
+        public static void MyDelFunc(Func<string> del)
+        {
+            Console.WriteLine(del());
+        }
+        public static string EmployeeNameToUppercase(Employee emp)
+        {
+            return emp.EmployeeName.ToUpper();
+        }
+    }
+
+    delegate string Del_EmployeeFormat(Employee e);
+
+    class Employee
+    {
+        public int EmployeeID { get; set; }
+        public string EmployeeName { get; set; }
+
+        private string _gender;
+
+        public string Gender
+        {
+            get { return _gender; }
+
+            set
+            {
+                if (!(value == "M" || value == "F" || value == "U"))
+                {
+                    throw new Exception("only M for male, F for female, U for unknown is allowd");
+                }
+
+                this._gender = value;
+            }
+        }
+        public DateTime DOB { get; set; }
+        public int Salary { get; set; }
+        public string City { get; set; }
+
+        public static List<Employee> GetEmployees()
+        {
+            List<Employee> employees = new List<Employee>()
+            {
+                new Employee() { EmployeeID = 101, EmployeeName = "Sally", DOB = new DateTime(1980, 2, 25), Gender = "F", City = "Matara", Salary = 45000 },
+                new Employee() { EmployeeID = 101, EmployeeName = "Roku", DOB = new DateTime(1990, 12, 25), Gender = "M", City = "Matara", Salary = 35000 },
+                new Employee() { EmployeeID = 101, EmployeeName = "Leema", DOB = new DateTime(1984, 7, 15), Gender = "U", City = "Colombo", Salary = 45000 },
+                new Employee() { EmployeeID = 101, EmployeeName = "Sonik", DOB = new DateTime(1997, 3, 5), Gender = "M", City = "Galle", Salary = 65000 },
+                new Employee() { EmployeeID = 101, EmployeeName = "Rithu", DOB = new DateTime(1996, 4, 18), Gender = "F", City = "Jaffna", Salary = 30000 },
+                new Employee() { EmployeeID = 101, EmployeeName = "Nalin", DOB = new DateTime(1972, 8, 17), Gender = "M", City = "Galle", Salary = 67250 },
+                new Employee() { EmployeeID = 101, EmployeeName = "Nilu", DOB = new DateTime(1991, 6, 13), Gender = "F", City = "Tangalle", Salary = 76500},
+                new Employee() { EmployeeID = 101, EmployeeName = "Nimal", DOB = new DateTime(1979, 5, 25), Gender = "M", City = "Kandy", Salary = 49000},
+                new Employee() { EmployeeID = 101, EmployeeName = "Shamil", DOB = new DateTime(1992, 11, 29), Gender = "M", City = "Trinco", Salary = 56000},
+                new Employee() { EmployeeID = 101, EmployeeName = "Chamil", DOB = new DateTime(1998, 12, 25), Gender = "M", City = "Kandy", Salary = 30000 },
+            };
+
+            return employees;
+        }
+
+        public override string ToString()
+        {
+            return "EmployeeID" + " -> " + this.EmployeeID + " | " + "EmployeeName" + "->" + this.EmployeeName + " | " + "Gender" + " -> " + this.Gender + " | " + "DOB" + "->" + this.DOB + " | " + "City" + " -> " + this.City + " | " + "Salary" + " -> " + this.Salary;
+        }
+
+        public string ToString(Func<Employee, string> delEmpFrmt)
+        {
+            return delEmpFrmt(this);
+        }
+
+        //public string ToString(Del_EmployeeFormat delEmpFrmt)
+        //{
+        //    return delEmpFrmt(this);
+        //}
+    }
+}
+
+//Func type delegates can not be assign to custome delegate types though signature similar.

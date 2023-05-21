@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+public class Program
+{
+
+    public static void ActionMethod()
+    { Console.WriteLine("Hello this is action method"); }
+
+    public static void Main()
+    {
+
+        Action d = ActionMethod;
+        d();
+
+        Console.ReadLine();
+
+        //using Action with anonymous method
+
+        Action d1 = () => { Console.WriteLine("Hello with anonymous method"); };
+        d1();
+
+        Console.ReadLine();
+
+        Func<int, string, string> fu = (x,y) => { return x.ToString()+ " " + y.ToString(); };
+
+        Console.WriteLine(fu(1,"one"));
+
+        Console.ReadLine();
+
+        Predicate<string> bo = (y) => { return true; };
+
+        List<string> myList = new List<string> { "Desitha", "Vidura", "Nadeen", "Amila" };
+
+        var p = from name in myList where name == "Desitha" select name;
+
+        var de = myList.Where((s) => { return s == "Desitha"; });
+
+        //var de1 = myList.ForEach((x) => { x== });
+
+        
+    }
+}
+
+/*
+
+.net itself has created a delegate called Action
+
+Action Delegate
+  is a kind of delegate which returns nothing
+  Action delegate may take parameters but does not return any value
+ 
+ Predicate delegate
+    Predicate delegate accepts one parameter and its retuen type is always bool
+
+ Func Delegate
+ *  Always return a value, it may or may not accept parameters
+ 
+
+*/

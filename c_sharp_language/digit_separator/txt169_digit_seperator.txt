@@ -1,0 +1,20 @@
+using System;
+
+namespace c__7._0
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double income = 1_00_00_000;
+            double familyIncome = 12__345_780;
+
+            Console.WriteLine($"{income}\n{familyIncome}");
+        }
+    }
+}
+
+/*
+digit seperator can be used any where within the number and can be used any number of times
+digit seperator can not be the last character of a number
+*/

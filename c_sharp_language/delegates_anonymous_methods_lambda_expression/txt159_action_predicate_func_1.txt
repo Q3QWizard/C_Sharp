@@ -1,0 +1,44 @@
+using System;
+
+public class Program
+{
+    public static void ActionMethod(){ Console.WriteLine("Hello from action method"); }
+    public static void Main()
+    {
+        Action d = ActionMethod;
+        d();
+
+        Console.Read();
+
+        Action d1 = () => { Console.WriteLine("Hello action"); };
+        d1();
+
+        Console.Read();
+
+        Func<int, string, string> fu = (x, y) => { return x.ToString() + " " + y.ToString(); };
+
+        Console.WriteLine(fu(1, "one"));
+
+        Console.Read();
+
+        Predicate<string> pre = (y) => {return true;};
+
+        Console.ReadLine();
+    }
+
+    
+}
+
+/*
+ Action delegate
+    Action delegate may take parameters but does not return any value.
+
+Predicate delegate
+    Predicate will always take an input and always return bool
+    
+Func delegate
+    Func delegate will always will return a value but may or may not take input parameters
+
+ 
+  */
+

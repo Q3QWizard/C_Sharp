@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        MyGenericClass<String> st = new MyGenericClass<String>("this is the generic memeber varibale");
+
+        String s = st.genericMethod("Generic Parameter");
+        Console.WriteLine(s);
+        Console.ReadLine();
+    }
+}
+
+class MyGenericClass<T> where T : class
+{
+    private T genericMemberVariable;
+    public MyGenericClass(T value)
+    {
+        genericMemberVariable = value;
+    }
+    public T genericMethod(T genericParameter)
+    {
+        Console.WriteLine("Parameter type: {0}, value: {1}",
+        typeof(T).ToString(), genericParameter);
+        Console.WriteLine("Return type: {0}, value: {1}", typeof(T).ToString(),
+        genericMemberVariable);
+        return genericMemberVariable;
+
+        
+    }
+    public T genericProperty { get; set; }
+}
+
+class MyGenericClass<T, U> where T: class where U:struct
+{
+    //
+}
+
+class MyGenericClass2<T> where T : class
+{
+    public T genericMethod<U>(T genericParameter, U anotherGenericType) where U :
+    struct
+    {
+        T genericMemberVariable = genericParameter;
+
+        Console.WriteLine("Generic Parameter of type {0}, value {1}",
+        typeof(T).ToString(), genericParameter);
+        Console.WriteLine("Return value of type {0}, value {1}", typeof(T).ToString(), genericMemberVariable);
+        return genericMemberVariable;
+    }
+}
+
+/*
+ In the above example, the generic class MyGenericClass defines a placeholder for the type, but the placeholder is
+like a black box, because MyGenericClass doesn't know anything about the placeholder type, whether it is primitive
+or non-primitive type, or an interface or custom class etc.
+C# includes Constraints to specify which type of placeholder type with the generic class is allowed. It will give a
+compile time error if you try to instantiate a generic class using a placeholder type that is not allowed by a
+constraints. For example, if the generic constraints specifies that only reference type can be used with the generic
+class then you cannot use value type to create an object of generic type.
+Constraints can be applied using the where keyword. In the following example, MyGenericClass specifies the
+constraints that only a reference type can be used with MyGenericClass. This means that only a class can be a
+placeholder type not the primitive types, struct etc
+ */
+
+/*
+ Constraint Description
+where T : class     Type must be reference type.
+where T: struct     Type must be value type.
+where T: new()      Type must have public parameterless constructor.
+where T:            Type must be or derive from the specified base class
+where T:            Type must be or implement the specified interface.
+2/3
+where T: U Type supplied for T must be or derive from the argument supplied for U
+ */
+
+/*
+ Points to Remember :
+1. Constraints specifies the kind of types allowed with the generics.
+2. Constraints can be applied using the where keyword.
+3. Six types of constraints can be applied: class, struct, new(), base class name, interface and
+derived type.
+4. Multiple constraints also can be applied.
+3
+ */

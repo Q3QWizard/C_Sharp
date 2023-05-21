@@ -1,0 +1,37 @@
+using System;
+
+namespace MyConsole
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int result = 100;
+
+            System.Console.WriteLine(nameof(result));
+
+            Console.Read();
+        }
+    }
+}
+
+/*
+ C# 6.0
+ 
+ What about cases where you want to reuse the name of a property, for example when throwing exception based on a property name, or handling a PropertyChanged event. There are numerous cases where you would want to have the name of the property.
+
+Take this example:
+
+switch (e.PropertyName)
+{
+    case nameof(SomeProperty):
+    { break };
+
+    // opposed to
+    case "SomeOtherProperty":
+    { break;}
+}
+In the first case, renaming SomeProperty will change the name of the property too, or it will break compilation. The last case doesn't.
+
+This is a very useful way to keep your code compiling and bug free (sort-of).
+     */

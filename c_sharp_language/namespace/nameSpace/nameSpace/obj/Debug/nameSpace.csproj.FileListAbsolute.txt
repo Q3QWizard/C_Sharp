@@ -1,0 +1,13 @@
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\nameSpace\bin\Debug\nameSpace.exe.config
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\nameSpace\bin\Debug\nameSpace.exe
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\nameSpace\bin\Debug\nameSpace.pdb
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\nameSpace\bin\Debug\ProjectA.TeamA.dll
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\nameSpace\bin\Debug\ProjectA.TeamB.dll
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\nameSpace\bin\Debug\ProjectA.TeamA.pdb
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\nameSpace\bin\Debug\ProjectA.TeamB.pdb
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\nameSpace\obj\Debug\nameSpace.csprojResolveAssemblyReference.cache
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\nameSpace\obj\Debug\nameSpace.exe
+c:\users\desitha\documents\visual studio 2012\Projects\nameSpace\nameSpace\obj\Debug\nameSpace.pdb
+F:\WorkBench\c#\C# txt\nameSpace\nameSpace\nameSpace\bin\Debug\nameSpace.exe.config
+F:\WorkBench\c#\C# txt\nameSpace\nameSpace\nameSpace\obj\Debug\nameSpace.exe
+F:\WorkBench\c#\C# txt\nameSpace\nameSpace\nameSpace\obj\Debug\nameSpace.pdb

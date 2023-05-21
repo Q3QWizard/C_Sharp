@@ -1,0 +1,71 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Enter the first number :");
+        string str_num = Console.ReadLine();
+        Console.WriteLine("Enter the second number :");
+        string str_num2 = Console.ReadLine();
+        Console.WriteLine("Enter you choice + - * / ");
+        string choice = Console.ReadLine();
+
+        MathFunctions mathfun = new MathFunctions();
+        int result = mathfun.getFunction(choice).Invoke(int.Parse(str_num), int.Parse(str_num2));
+
+        Console.WriteLine("The Result is " + result);
+        Console.ReadLine();
+    }
+}
+
+public delegate int MathPtr(int x, int y);
+
+public class MathFunctions
+{
+    public MathPtr getFunction(string choice)
+    {
+        if (choice == "+")
+        {
+            MathPtr mathPtr = Add;
+
+            return mathPtr;
+        }
+        else if (choice == "-")
+        {
+            MathPtr mathPtr = Substract;
+
+            return mathPtr;
+        }
+        else if (choice == "*")
+        {
+             MathPtr mathPtr = Multiply;
+
+            return mathPtr;
+        }
+        else if (choice == "/")
+        {
+            MathPtr mathPtr = Divide;
+
+            return mathPtr;
+        }
+        return null;
+    }
+
+    private int Add(int x, int y)
+    { 
+        return x + y;
+    }
+    private int Substract(int x, int y)
+    {
+        return x - y;
+    }
+    private int Multiply(int x, int y)
+    {
+        return x * y;
+    }
+    private int Divide(int x, int y)
+    {
+        return x / y;
+    }
+}

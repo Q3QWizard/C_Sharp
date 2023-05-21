@@ -1,0 +1,46 @@
+
+using System;
+class Program
+{
+    public static void Main()
+    {
+        dynamic dvar = 100;
+        Console.WriteLine(dvar.GetType().ToString());
+
+        dvar = "Hello";
+        Console.WriteLine(dvar.GetType().ToString());
+
+        dvar = true;
+        Console.WriteLine(dvar.GetType().ToString());
+
+        Console.WriteLine();
+
+        dynamic dvar2 = new Student();
+
+        dvar2.FakeMethod();
+
+        Console.Read();
+    }
+
+
+}
+
+
+class Student
+{
+    public void FakeMethod() { Console.WriteLine("Hello from FakeMethod()"); }
+}
+
+/*
+ A dynamic type changes its type at runtime based on the value of the expression to the right of the "=" operator
+ * 
+ * If we comment out the FakeMethod decleration there will be no compiletime exception but in runtime there will be exception.
+ * 
+ * dynamic types are resolved at runtime instead of compile time.
+ * 
+ * the compiler skips the type checking for dynamic type. so it doesn't give any error about dynamic types at the compile time.
+ * 
+ * The dynamic type doesn't have intellisense support in VS.
+ * 
+ * A method can have parameters of dynamic type.
+ */

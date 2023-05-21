@@ -1,0 +1,23 @@
+private static void Test_NameOf()
+{
+	thePeople = null;
+	
+	if(thePeople == null)
+	{
+		throw new ArgumentNullException("the people", "The parameter passed is null");
+	}
+}
+
+If we rename the thePeople variable using select word right click and then rename or select the word C+R,R.
+By default VS will not rename inside string unless if we don't tick include in string in rename dialog box.
+
+In c# 6.0 there is a better way to do this. That's where nameOf operator comes in to play
+
+throw new ArgumentNullException(nameOf(thePeople), "the parameter passed is null");
+
+Note:- 
+	nameOf operator works with in scope. If we had a variable out of the scope of the Test_NameOf function then
+	those variables cannot be accessed via nameOf
+	
+	If you use it inside summary comment renameing will not rename nameOf variable inside summary comment to rename it
+	use Include comments in rename window.

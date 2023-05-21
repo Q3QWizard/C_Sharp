@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+
+public class MainClass
+{
+    private static void Main()
+    {
+        Console.WriteLine(Calculator.Add(10, 20));
+
+        Console.WriteLine(Calculator.Add(new List<int> { 5, 5, 5 }));
+
+        Console.ReadLine();
+    }
+}
+
+public class Calculator
+{
+    [Obsolete("Use Add(List<int> Numbers) Method")] // Can use ObsoleteAttribute instead of Obsolete
+    public static int Add(int FirstNum, int SecondNum)
+    {
+        return FirstNum + SecondNum;
+    }
+
+    public static int Add(List<int> Numbers)
+    {
+        int Sum = 0;
+
+        foreach (int Number in Numbers)
+        {
+            Sum = Sum + Number;
+        }
+
+        return Sum;
+    }
+}
+
+/*
+Attributes
+
+Attributes allow you to add declarative information to your programs. This information
+can then be queried at runtime using reflection.
+
+There are several Pre-defined Attributes provided by .NET it is also possible to create
+you own Custom Attributes
+
+It is possible to customize the attribute using parameters.
+
+An attribute is a class that inherits from the System.Attributes base class
+*/

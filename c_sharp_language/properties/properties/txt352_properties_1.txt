@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace MyConsole
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+        }
+    }
+
+    class Employee
+    {
+        public int EmployeeID { get; set; }
+        public string EmployeeName { get; set; }
+        public string Gender
+        {
+            //get { return Gender; }
+            get; // ERROR if one of get or set has some logic in it other must have its functionality declared inside
+            set
+            {
+                if (value != "M" || value != "F" || value != "U")
+                {
+                    throw new Exception("only M for male, F for female, U for unknown is allowd");
+                }
+            }
+        }
+        public DateTime DOB { get; set; }
+        public DateTime JoinDate { get; set; }
+        public int Salary { get; set; }
+        public string City { get; set; }
+    }
+}

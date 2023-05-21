@@ -1,0 +1,84 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        FullTimeEmployee fte = new FullTimeEmployee();
+        fte.firstName = "Wasindu";
+        fte.lastName = "Desitha";
+        fte.printFullName();
+
+        Employee tte = new TemparyTimeEmloyee();
+        tte.firstName = "Ranga";
+        tte.lastName = "Hadi";
+        tte.printFullName();
+        //((Employee)tte).printFullName();
+        
+        partTimeEmployee pte = new partTimeEmployee(); 
+        pte.firstName = "Vidura";
+        pte.lastName = "Bhashana";
+        pte.printFullName();
+        ((Employee)pte).printFullName();
+
+        Employee pte1 = new partTimeEmployee();
+        pte1.firstName = "Yahan";
+        pte1.lastName = "Udeshana";
+        pte1.printFullName();
+        //pte1.SayHello();
+
+        Console.ReadLine();
+    }
+}
+
+public class Employee
+{
+
+    public string firstName;
+    public string lastName;
+
+    public void printFullName()
+    {
+        Console.WriteLine(firstName + " ++ " + lastName);
+    }
+}
+
+public class partTimeEmployee : Employee
+{
+    public new string firstName;
+    public new string lastName;
+    public new void printFullName()
+    {
+        Console.WriteLine(firstName + " -- " + lastName );
+        base.printFullName();
+    }
+
+    public void SayHello()
+    {
+        Console.WriteLine("Say Hello");
+    }
+}
+
+public class TemparyTimeEmloyee : Employee
+{
+    public new void printFullName()
+    {
+        Console.WriteLine(firstName + " ** "+ lastName);
+    }
+}
+
+public class FullTimeEmployee : Employee
+{
+
+}
+
+/*
+Use the new keyword to hide a base class member. You will get a compiler warning if you miss the new keyword
+ * 
+ * Different ways to invoke a hidden base class member from derived class
+ * 
+ * 1. Use base keyword
+ * 2. Cast child type to parent type and invoke the hidden members
+ * 3. ParentClass pc= new ChildClass()
+ *      pc.hiddenMethod()
+*/

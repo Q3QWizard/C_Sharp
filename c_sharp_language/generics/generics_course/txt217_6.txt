@@ -1,0 +1,65 @@
+public interface IBuffer<T>
+{
+	bool IsEmpty();
+	void Write(T value);
+
+	T Read();
+}
+
+public class Buffer<T> : IBuffer<T>
+{
+	Queue<T> _queue = new Queue<T>();
+	
+	public T Read(){ return _queue.Dequeue(); }
+	
+	public void Write(T value)
+	{ _queue.Enqueue(value); }
+	
+	public bool IsEmpty()
+	{ return _queue.count == 0 }
+}
+
+public class CircularBuffer<T> : IBuffer<T>
+{
+	private int _start = 0;
+	public int BufferProperty  { get; set; }
+
+	private T[] _bufferArray;
+	
+	public Buffer(int capacity)
+	{
+		_bufferArray = new T[capacity];
+	}
+	
+	public void Write(T value)
+	{
+		_bufferArray[0] = value;
+	}
+	
+	public T Read()
+	{
+		return _bufferArray[0];
+	}
+	
+	public bool IsEmpty()
+	{
+		return _bufferArray.length == 0;
+	}
+}
+----------------------------------------------------------------------------------------------------------------------------------
+SVM
+{
+	IBuffer<int> inBuffer = new CircularBuffer<int>(5);
+	MyMethod(intBuffer);
+	IBuffer<double> doubleBuffer = new CircularBuffer(double>(5);
+	MyMethod(doubleBuffer);
+}
+
+static void MyMethod(IBuffer<int> intBuffer){}
+
+static void MyMethod(IBuffer<double> doubleBuffer){}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Generic interfaces can be very powerful they can help us to build abstraction and decouple clients from specific implementation and still
+be type safe.

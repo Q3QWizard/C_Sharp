@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+class Program
+{
+    static void Main()
+    {
+        List<int> lstInt = new List<int>();
+
+        lstInt.Add(1);
+        lstInt.Add(2);
+        lstInt.Add(3);
+        lstInt.Add(4);
+        lstInt.Add(5);
+
+        List<int> lstInt2 = new List<int>();
+        lstInt2.Add(100);
+        lstInt2.Add(101);
+        lstInt2.Add(102);
+
+        lstInt2.AddRange(lstInt);
+
+        foreach (int i in lstInt2)
+        {
+            Console.WriteLine(i);
+        }
+
+        Console.Read();
+
+    }
+}
+
+/*
+AddRang(IEnumerable<T> collection)
+*/

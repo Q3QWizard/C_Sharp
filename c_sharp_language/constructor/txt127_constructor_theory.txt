@@ -1,0 +1,1 @@
+Constructor method is declared as public because it is used to create objects from outside the class in which it is declared. We can also declare a constructor method as private, but then such a constructor cannot be used to create objects. Constructor methods do not have a return type (not even void).

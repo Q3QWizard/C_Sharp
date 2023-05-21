@@ -1,0 +1,41 @@
+using System;
+
+public delegate void SampleDelegate();
+
+public class Program
+{
+    public static void Main()
+    {
+        SampleDelegate del1, del2, del3, del4, del5;
+
+        del1 = new SampleDelegate(sampleMethodOne);
+        del2 = new SampleDelegate(sampleMethodTwo);
+        del3 = new SampleDelegate(sampleMethodThree);
+
+        del4 = del1 + del2 + del3;  // del4 will point to del1, del2, del3
+
+        del5 = del1 + del2 + del3 - del1;   
+        del4();
+        Console.WriteLine();
+        del5();
+
+
+        Console.ReadLine();
+    }
+
+    public static void sampleMethodOne()
+    {
+        Console.WriteLine("SampleMethodOne Invoked");
+    }
+
+    public static void sampleMethodTwo()
+    {
+        Console.WriteLine("SampleMethodTwo Invoked");
+    }
+
+    public static void sampleMethodThree()
+    {
+        Console.WriteLine("SampleMethodThree Invoked");
+    }
+
+}

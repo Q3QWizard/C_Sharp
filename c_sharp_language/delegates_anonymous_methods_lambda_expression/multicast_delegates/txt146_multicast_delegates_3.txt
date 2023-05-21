@@ -1,0 +1,36 @@
+using System;
+
+public delegate void SampleDelegate(out int i);
+
+public class Program
+{
+    public static void Main()
+    {
+        SampleDelegate del = new SampleDelegate(sampleMethodOne);
+        del += sampleMethodTwo;
+        del += sampleMethodThree;
+
+        int outputparamvalue = 0;
+
+        del(out outputparamvalue);
+
+        Console.WriteLine("DelegateOutValue = {0}", outputparamvalue);
+        Console.ReadLine();
+    }
+
+    public static void sampleMethodOne(out int Number)
+    {
+        Number = 1;
+    }
+
+    public static void sampleMethodTwo(out int Number)
+    {
+        Number = 2;
+    }
+
+    public static void sampleMethodThree(out int Number)
+    {
+        Number = 3;
+    }
+
+}

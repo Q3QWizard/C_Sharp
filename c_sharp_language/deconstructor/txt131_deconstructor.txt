@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DotNetCoreDemo
+{
+    public class Employee
+    {
+        int _Eno;
+        string _EName, _Job;
+        double _Salary;
+        public Employee(int eno, string name, string job, double salary)
+        {
+            _Eno = eno;
+            _EName = name;
+            _Job = job;
+            _Salary = salary;
+        }
+
+        public void Deconstruct(out int eno, out string name, out string job, out double salary)
+        {
+            eno = _Eno;
+            name = _EName;
+            job = _Job;
+            salary = _Salary;
+        }
+
+        public void Deconstruct(out int eno, out string name)
+        {
+            eno = _Eno;
+            name = _EName;
+        }
+    }
+    public class DeconstructorDemo
+    {
+        static void Main(string[] args)
+        {
+            Employee emp = new Employee(1001, "Desitha", "Manager", 500000);
+
+            //(int Eno, string EName, string Job, double Salary) = emp;
+
+            //(var Eno, var EName, var Job, var Salary) = emp;
+
+            var(Eno, EName, Job, Salary) = emp;
+
+            Console.WriteLine(Eno);
+            Console.WriteLine(EName);
+            Console.WriteLine(Job);
+            Console.WriteLine(Salary);
+
+            var (NewEno, NewEName) = emp;
+
+            Console.WriteLine();
+            Console.WriteLine(NewEno);
+            Console.WriteLine(NewEName);
+
+            var (EnoV, ENameV, _, _) = emp; // there is no need for a overloaded constructor to access only two fields, we can use _ to escape unrequired
+
+            Console.Read();
+        }
+    }
+}
+
+/*
+ Deconstructor can be overloaded
+     */

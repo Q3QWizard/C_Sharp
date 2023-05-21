@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+
+
+public class Program
+{
+    public static void Main()
+    {
+        Func<Double, Double> cpointer = r => 3.12 * r * r;
+
+        Action<string> MyAction = y => Console.Write(y);
+
+        Predicate<string> CheckGreaterThen5 = x => x.Length > 5;
+        //Console.WriteLine(CheckGreaterThen5("Dea"));
+
+        List<string> oString = new List<string>();
+        oString.Add("Desitha");
+        oString.Add("Des");
+
+        string str = oString.Find(CheckGreaterThen5);
+        Console.WriteLine(str);
+        Console.ReadLine();
+    }
+}
+
+/*
+
+ *  Predicate is a extend to the Func
+ *  You can have inputs as well as outputs
+ *  It is only for checking, to ckeck weather something is true and false
+ *  Predicate always return type of boolean and it can take any input type
+ *  
+ * Func, Action, Predicate are ready made delegates
+ * 
+ * Functions is used to point towards methods where input type can be anything and output type can be anything
+ * Action is used to point towards methods where there is input type and return type is void
+ * Predicate is used to point towards method where input type is anyting and return type is boolean
+
+*/

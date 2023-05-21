@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+class Program
+{
+    static void Main()
+    {
+        List<int> lstInt = new List<int>();
+
+        lstInt.Add(1);
+        lstInt.Add(2);
+        lstInt.Add(3);
+        lstInt.Add(4);
+        lstInt.Add(5);
+
+        IReadOnlyCollection<int> readOnlyLstInt = lstInt.AsReadOnly();
+
+        Console.Read();
+
+    }
+}
+
+/*
+ Returns a read-only IList<T> wrapper for the current collection
+ */

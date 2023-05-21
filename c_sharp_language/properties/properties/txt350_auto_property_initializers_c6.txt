@@ -1,0 +1,21 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
+namespace cs_vsc
+{
+    class Program
+    {
+        public ICollection<double> Grades { get; } = new List<double>();
+		public string Name {get; set;} = "Jone";
+        static void Main(string[] args)
+        {
+
+        }
+    }
+}
+
+/*
+Auto-property initializers let you declare the initial value for an auto-property as part of the property declaration.
+*/

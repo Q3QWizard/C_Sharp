@@ -1,0 +1,52 @@
+using System;
+
+public delegate void DelMethod();
+
+public class Program
+{
+
+    public static void Main()
+    {
+        DelMethod del1 = MethodOne;
+        DelMethod del2 = MethodTwo;
+        DelMethod del3 = MethodThree;
+        DelMethod del4;
+
+        del4 = del1 + del2 + del3;
+        del4.Invoke();
+
+        Console.WriteLine("----------------------------------------------------------------------");
+
+        DelMethod del = MethodOne;
+        del += MethodTwo;
+        del += MethodThree;
+
+        del.Invoke();
+
+        Console.WriteLine("----------------------------------------------------------------------");
+
+        DelMethod de = new DelMethod(MethodOne);
+        de += MethodTwo;
+        de += MethodThree;
+        de();
+
+
+
+        Console.ReadLine();
+    }
+
+    public static void MethodOne()
+    {
+        Console.WriteLine("Method One implemented");
+    }
+
+    public static void MethodTwo()
+    {
+        Console.WriteLine("Method two implemented");
+    }
+
+    public static void MethodThree()
+    {
+        Console.WriteLine("Method three implemented");
+    }
+}

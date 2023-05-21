@@ -1,0 +1,7 @@
+D:\Projects\51_AccessModifiersForTypes\51_AccessModifiersForTypes\bin\Debug\51_AccessModifiersForTypes.exe
+D:\Projects\51_AccessModifiersForTypes\51_AccessModifiersForTypes\bin\Debug\51_AccessModifiersForTypes.pdb
+D:\Projects\51_AccessModifiersForTypes\51_AccessModifiersForTypes\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Projects\51_AccessModifiersForTypes\51_AccessModifiersForTypes\obj\x86\Debug\51_AccessModifiersForTypes.exe
+D:\Projects\51_AccessModifiersForTypes\51_AccessModifiersForTypes\obj\x86\Debug\51_AccessModifiersForTypes.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\51_AccessModifiersForTypes\51_AccessModifiersForTypes\obj\x86\Debug\51_AccessModifiersForTypes.exe
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\51_AccessModifiersForTypes\51_AccessModifiersForTypes\obj\x86\Debug\51_AccessModifiersForTypes.pdb

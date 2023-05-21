@@ -1,0 +1,26 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int i = 0;
+
+        SimpleMethod(i);
+            Console.WriteLine(i);
+            Console.ReadLine();
+    }
+
+    public static void SimpleMethod(int j)
+    {
+        j = 101;
+    }
+}
+
+// 1. value parameters : creates a copy of the parameter passed, so modifications does not affect each other.
+// 2. Reference parameters : The ref method parameter keyword on a method parameter causes a method to refer to the same variable that was passed into the method. Any changes made to the
+//      parameter in the method will be reflected in that variable when control passes back to the calling method.
+
+// 3. Out parameters: use when you want to return more than one value.
+// 4. Parameter Arrays: The parameter keyword lets you specify a method parameter that takes a variable number of arguments.
+//      Parameter keyword should be the last one in a method declaration, and only one params keyword is permitted in a method declaration.

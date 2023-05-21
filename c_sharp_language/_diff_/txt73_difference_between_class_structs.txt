@@ -1,0 +1,109 @@
+using System;
+
+public class Customer
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+
+    public Customer(){}  // this is a parameter less constructor. It is possible because a class can have parameter explicit parameter less constructor. But structures cannot have explicit parameter less constructors.
+
+    //~Customer();    // classes can have destructores, structures can not have destructores. IF you want to check this change this class keyword to struct and uncomment ~Customers
+}
+class Program
+{
+    public static void Main()
+    {
+        int i = 10; // int is a structure, int is a alias for System.Int32 you can use System.Int32 to declare integers
+
+        System.Int32 k= 25;
+
+        if(i==10)
+        {
+            int j = 20;
+            Customer c1 = new Customer();
+            c1.ID = 101;
+            c1.Name = "Desitha";
+        }
+
+        ///////////////////////////////////////////////////////////
+
+        int m = 10; // m and n are structures
+        int n = m;  // modification to the n will not affect the variable m. Because they are two different copies.
+        n = n + 1;
+
+        Console.WriteLine(m);
+        Console.WriteLine(n);
+
+        ///////////////////////////////////////////////////////////
+
+        Customer c2 = new Customer();
+        c2.ID = 101;
+        c2.Name = "Rob";
+
+        Customer c3 = c2;
+
+        c2.Name = "Mary";
+
+        Console.WriteLine(c2.Name);
+        Console.WriteLine(c3.Name);
+
+        Console.ReadLine();
+
+
+    }
+}
+
+/*
+ Classes Vs. Structs
+
+A struct is a value type where as a class in a reference type.
+	There are several value types within .net examples include built in data types like int, boolean, enums etc.
+	
+	Reference types are class, examples, interfaces, delegates etc.
+	
+Structs are stored on the stack, where classes are stored on the heap.
+	The physical memory of a computer logically divided by .net runtime a stack, and heap
+	
+	Since this i and j are integers and they are structures and they are value types, how they are stored in memory is like this.
+	Value types store the values on the stack where they are declared.
+	For a reference type you have two things
+		1. reference variable
+		2. Object itself.
+		
+	In the example when creating the customer object what's  happening is the c1 object reference variable gets created in the stack
+	and the actual object is created on the heap. With respective values.
+	
+	When we are talking about objects there are two things one is object reference variable and the other on is the object itself. So objects
+	are different from object reference variables. They are not the same. Object reference variable is just a pointer to the actual object. 
+	In this case c1 is pointing to the actual object we created.
+	
+	Object reference variables are stored in the stack. Where as the object itself is stored in the heap.
+	
+Value types hold their value in memory where they are declared. but reference types hold a reference to an object in the memory.
+	
+Value types are destroyed immediately after the scope is lost, where as for reference types only the reference variables is destroyed after the
+scope is lost. The object is later destroyed by garbage collector. (When we delete the reference variable the object is not destroyed, it will
+be destroyed in a later by garbage collector)
+
+When you copy a struct into another struct, a new copy of that struct gets created and modifications on the one struct will not affect the value contain by the other struct.
+
+When you are copying a reference type to a another reference (but same type) it will not create a copy of the object. it will only create a copy
+of the reference variable. We will get two reference variables but both of them will be pointing to the same object. If you make change through
+one reference type, the change will be the same if you access the object by the other reference variable.
+
+Structs can't have destructors, but classes can have destructors
+
+Structs cannot have explicit parameter less constructors where as class can.
+
+Structs can't inherit from another class where as a class can, Both structs and classes can inherit from an interface.
+	
+	Example of structs in the .NET Framework int(System.Int32), double(System.Double) etc.
+	
+Note 
+	1. A calss or a struct cannot inherit from another struct. struct are sealed types.
+	2. How do you prevent a class being inherited? Or what is the significance of sealed keyword.
+
+	
+	If we mark a class as sealed you cannot use that class as a base class for any other class.
+	Structs are field types. That is why they cannot be inherit.
+ */

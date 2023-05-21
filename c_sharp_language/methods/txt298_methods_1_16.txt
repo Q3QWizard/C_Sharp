@@ -1,0 +1,58 @@
+using System;
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Program.EvennNumbers(10);
+
+            Program p = new Program();
+
+           int sum = p.Add(100,5);
+
+           Console.WriteLine(sum);
+           Console.ReadLine();
+
+        }
+
+        public int Add(int FN, int SN)
+        {
+            return FN + SN;
+        }
+        
+
+        public static void EvennNumbers(int Target)
+        {
+            int start = 0;
+
+            while (start <= Target)
+            {
+                Console.WriteLine(start);
+                start += 2;
+            }
+            
+        }
+    
+    }
+
+//Methods
+
+//[attributes]
+// access-modifiers return-type method-name(parameters)
+//{
+//   Method body
+//}
+
+//Static vs Instance methods
+
+//When a method declaration includes a static modifier, that method is said to be a static method.
+//when no static modifier is present, the method is said to be an instance method
+
+//Static method is involved using the class name, where as an instance method is involved using
+//an instance of the class
+
+//The difference between instance methods and static methods is that multiple instances of a class
+// can be created (or instantiated) and each instance has its own separate method. However, when
+//a method is static, there are no instances of that method, and you can invoke only that one 
+//definition of the static method.
+

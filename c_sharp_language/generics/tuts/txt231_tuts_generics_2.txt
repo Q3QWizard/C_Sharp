@@ -1,0 +1,33 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+
+        var result = new Result<string, bool>() { Data = "Hello", Success = true };
+
+        Console.WriteLine(result.Success);
+        Console.WriteLine(result.Data);
+
+        var result2 = new Result<int, bool>() { Data = 25, Success = true };
+
+        Console.WriteLine(result2.Success);
+        Console.WriteLine(result2.Data);
+
+        var result3 = new Result<int, string>() { Data = 25, Data2 = "Helloooo" };
+
+        Console.WriteLine(result3.Success);
+        Console.WriteLine(result3.Data);
+
+        Console.ReadLine();
+    }
+}
+
+public class Result<T, U>
+{
+    public bool Success { get; set; }
+    public T Data { get; set; }
+    public U Data2 { get; set; }
+}
+

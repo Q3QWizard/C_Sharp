@@ -1,0 +1,62 @@
+using System;
+using System.Threading.Tasks;
+
+namespace Demo
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            try
+            {
+                Test();
+            }
+            catch (AggregateException ex)
+            {
+
+                foreach (var e in ex.InnerExceptions)
+                {
+                    Console.WriteLine("Handled else where");
+                }
+            }
+
+            System.Console.WriteLine("Main Programe done");
+            System.Console.ReadKey();
+        }
+
+        private static void Test()
+        {
+            var t1 = Task.Factory.StartNew(() => { throw new InvalidOperationException("Can not do this operation"); });
+
+            var t2 = Task.Factory.StartNew(() => { throw new AccessViolationException("Can not access this"); });
+
+            //Task.WaitAll(t1, t2); if only this line were not here there will be no exception, but if we uncomment this exceptions that occur in threads will break the programe
+
+            // handling thread exceptions
+            try
+            {
+                Task.WaitAll(t1, t2);
+            }
+            catch (AggregateException ex) // AggregateException is a type of exception that is to handle TPL exceptions
+            {
+                ex.Handle(e =>
+                {
+                    if (e is InvalidOperationException)
+                    {
+                        Console.WriteLine("Invalid op!");
+                        return true; // return true means I handled the exception
+                    }
+                    else if (e is AccessViolationException)
+                    {
+                        Console.WriteLine("Access violated");
+                        return true;
+                    }
+                    else
+                    {
+                        return false; // return false means I didn't haddle the exception
+                    }
+                });
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace MyApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var cts = new CancellationTokenSource();
+            var token = cts.Token;
+
+            var t = new Task(() =>
+                {
+                    int i = 0;
+                    while (true)
+                    {
+                        if (token.IsCancellationRequested)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine(i++);
+                        }
+                        
+                    }
+                }, token);
+
+            t.Start();
+
+            Console.ReadKey();
+            cts.Cancel();
+
+            Console.WriteLine("Main programe done.");
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+ Inorder to cancel tasks task parallel library gives you two things.
+    1. Cancellation token source 
+    2. cancellation tokens.
+
+    How ever you have to understand that in tpl cancellaation the task may explicitly aware of the fact that  it is cancellable and it has to perform some certain actions to do it.
+     */
+

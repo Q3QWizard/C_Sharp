@@ -1,0 +1,8 @@
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\WindowsFormsApplication1\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
+F:\Desitha\WorkBench\c#\PragimTech\C# txt\61_Partial Classes\PartialClasses\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb

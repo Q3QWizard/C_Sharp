@@ -1,0 +1,12 @@
+C:\Users\desitha\Documents\65_Indexers\65_Indexers\bin\65_Indexers.dll
+C:\Users\desitha\Documents\65_Indexers\65_Indexers\bin\65_Indexers.pdb
+C:\Users\desitha\Documents\65_Indexers\65_Indexers\obj\Debug\65_Indexers.dll
+C:\Users\desitha\Documents\65_Indexers\65_Indexers\obj\Debug\65_Indexers.pdb
+C:\Users\desitha\Documents\66_Indexers\65_Indexers\65_Indexers\obj\Debug\65_Indexers.dll
+C:\Users\desitha\Documents\66_Indexers\65_Indexers\65_Indexers\obj\Debug\65_Indexers.pdb
+C:\Users\desitha\Documents\66_Indexers\65_Indexers\65_Indexers\bin\65_Indexers.dll
+C:\Users\desitha\Documents\66_Indexers\65_Indexers\65_Indexers\bin\65_Indexers.pdb
+D:\users\desitha\Dev\C#\PragimTech\C# txt\66_Indexers\65_Indexers\65_Indexers\bin\65_Indexers.dll
+D:\users\desitha\Dev\C#\PragimTech\C# txt\66_Indexers\65_Indexers\65_Indexers\bin\65_Indexers.pdb
+D:\users\desitha\Dev\C#\PragimTech\C# txt\66_Indexers\65_Indexers\65_Indexers\obj\Debug\65_Indexers.dll
+D:\users\desitha\Dev\C#\PragimTech\C# txt\66_Indexers\65_Indexers\65_Indexers\obj\Debug\65_Indexers.pdb

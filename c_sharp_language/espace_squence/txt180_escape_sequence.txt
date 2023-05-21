@@ -1,0 +1,25 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        String name = "Desitha";
+        Console.WriteLine(name);
+        Console.WriteLine("\"wasindu\"");
+        Console.WriteLine();
+        //Escape Sequence - In C# there are special characters which has special meanings like to C# compiler "",'', if you want to treat them as regular printable character you have to use Escape sequence
+        // Escape Sequence in C# is "\"
+
+        String word = "Hello\nbrother\n !!!!!!!";
+        Console.WriteLine(word);
+        
+
+        String path = "C:\\Program Files\\Microsoft\\Web Platform Installer";
+        Console.WriteLine(path);
+        Console.WriteLine();
+        String path1 = @"C:\\Program Files\\Microsoft\\Web Platform Installer";     // @ - verbatim literal 
+        Console.WriteLine(path1);                                                   // Vebrbaim literals make escape sequence translate as normal printable characters to enhance the redability
+        Console.ReadLine();
+    }
+}

@@ -1,0 +1,58 @@
+Pattern matching
+----------------
+Pattern matching is a feature that allows you to implement method dispatch on properties other than the type of an object. You're probably already familiar with method dispatch based on the type of an object. In object-oriented programming, virtual and override methods provide language syntax to implement method dispatching based on an object's type. Base and Derived classes provide different implementations. Pattern matching expressions extend this concept so that you can easily implement similar dispatch patterns for types and data elements that aren't related through an inheritance hierarchy.
+
+Pattern matching supports is expressions and switch expressions. Each enables inspecting an object and its properties to determine if that object satisfies the sought pattern. You use the when keyword to specify additional rules to the pattern.
+
+The is pattern expression extends the familiar is operator to query an object about its type and assign the result in one instruction. The following code checks if a variable is an int, and if so, adds it to the current sum:
+
+C#
+
+Copy
+if (input is int count)
+    sum += count;
+The preceding small example demonstrates the enhancements to the is expression. You can test against value types as well as reference types, and you can assign the successful result to a new variable of the correct type.
+
+The switch match expression has a familiar syntax, based on the switch statement already part of the C# language. The updated switch statement has several new constructs:
+
+The governing type of a switch expression is no longer restricted to integral types, Enum types, string, or a nullable type corresponding to one of those types. Any type may be used.
+You can test the type of the switch expression in each case label. As with the is expression, you may assign a new variable to that type.
+You may add a when clause to further test conditions on that variable.
+The order of case labels is now important. The first branch to match is executed; others are skipped.
+The following code demonstrates these new features:
+
+C#
+
+Copy
+public static int SumPositiveNumbers(IEnumerable<object> sequence)
+{
+    int sum = 0;
+    foreach (var i in sequence)
+    {
+        switch (i)
+        {
+            case 0:
+                break;
+            case IEnumerable<int> childSequence:
+            {
+                foreach(var item in childSequence)
+                    sum += (item > 0) ? item : 0;
+                break;
+            }
+            case int n when n > 0:
+                sum += n;
+                break;
+            case null:
+                throw new NullReferenceException("Null found in sequence");
+            default:
+                throw new InvalidOperationException("Unrecognized type");
+        }
+    }
+    return sum;
+}
+
++ case 0: is the familiar constant pattern.
++ case IEnumerable<int> childSequence: is a type pattern.
++ case int n when n > 0: is a type pattern with an additional when condition.
++ case null: is the null pattern.
++ default: is the familiar default case.

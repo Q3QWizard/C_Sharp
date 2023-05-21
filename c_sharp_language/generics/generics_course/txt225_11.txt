@@ -1,0 +1,92 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Threading.Tasks;
+
+namespace DotNetCoreDemo
+{
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var buffer = new Buffer<double>();
+            buffer.Write(2.2);
+            buffer.Write(2.3);
+            buffer.Write(2.4);
+
+            foreach (var item in buffer)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine();
+
+            foreach (var item in buffer.AsEnumerableOf<int>())
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine();
+
+            foreach (var item in buffer.AsEnumerableOf<string>())
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.Read();
+        }
+    }
+
+    public interface IBuffer<T> : IEnumerable<T>
+    {
+        bool IsEmpty();
+        void Write(T value);
+        T Read();
+        IEnumerable<Output> AsEnumerableOf<Output>();
+    }
+
+    public class Buffer<T> : IBuffer<T>
+    {
+        protected Queue<T> _queue = new Queue<T>();
+        public virtual bool IsEmpty()
+        {
+            return _queue.Count == 0;
+        }
+
+        public virtual T Read()
+        {
+            return _queue.Dequeue();
+        }
+
+        public virtual void Write(T value)
+        {
+            _queue.Enqueue(value);
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var item in _queue)
+            {
+                yield return item;
+            }
+        }
+
+
+        IEnumerator IEnumerable.GetEnumerator()// if there is no explicity interface implementation there will be error becuase both method signatures are same.
+        {
+            return GetEnumerator();
+        }
+
+        public IEnumerable<TOutput> AsEnumerableOf<TOutput>()
+        {
+            var converter = TypeDescriptor.GetConverter(typeof(T));
+            foreach (var item in _queue)
+            {
+                var result = converter.ConvertTo(item, typeof(TOutput));
+                yield return (TOutput)result;
+            }
+        }
+    }
+}

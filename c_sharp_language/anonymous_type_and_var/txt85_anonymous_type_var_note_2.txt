@@ -1,0 +1,69 @@
+var - implicitly typed local variable in c#
+-------------------------------------------
+
+c# 3.0 introduced the implicitly typed local variable "var". var can only be defined in a method as a local variable.
+
+The compiler will infer its type based on the value to the right tothe "=" operator.
+
+Explicitly typed vs implicitly typed variables.
+
+int i = 100; // explicitly typed
+var i = 100; // implicitly typed
+
+var can have different type based on it's value.
+
+static void Main(string[] args)
+{
+	var i = 10;
+	Console.WriteLine(i.GetType().ToString());
+	var j = "Hello world";
+	Console.WriteLine(j.GetType().ToString());
+	var k = 100.50d;
+	Console.WriteLine(k.GetType().ToString());
+	var l = true;
+	Console.WriteLine(l.GetType().ToString());
+}
+
+/*
+	System.Int32
+	System.String
+	System.Double
+	System.Boolean
+*/
+
+- var is earlybounded and dynamic is latebounded.
+
+- var can only be declared and initialized in a single statement. Following is not valid.
+	var i;
+	i=10;
+	
+- var cannot be used as a field type at the class level.
+- var cannot be used in a expression like var += 10;
+- Multile vars cannot be declared and initialized in single statement.
+	ex: var i = 10, j = 20; is invalid
+	
+public static void Main()
+{
+	var i = 10;
+	i = "A";//Error
+}
+
+Can not implicitly convert type 'string' to 'int'
+
+- But this can be done using dynamic
+
+public static void Main()
+{
+	dynamic i = 10;
+	Console.WriteLine(i);
+	i="sdf";
+	Console.WriteLine(i);
+	i=true;
+	Console.WriteLine(i);
+}
+
+/*
+10
+sdf
+true
+*/

@@ -1,0 +1,9 @@
+D:\Projects\63_PartialMethods\63_PartialMethods\bin\Debug\63_PartialMethods.exe
+D:\Projects\63_PartialMethods\63_PartialMethods\bin\Debug\63_PartialMethods.pdb
+D:\Projects\63_PartialMethods\63_PartialMethods\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Projects\63_PartialMethods\63_PartialMethods\obj\x86\Debug\63_PartialMethods.exe
+D:\Projects\63_PartialMethods\63_PartialMethods\obj\x86\Debug\63_PartialMethods.pdb
+C:\Users\DESITHA\Dropbox\dev\C#_\PragimTech\C# txt\63_PartialMethod\63_PartialMethods\63_PartialMethods\obj\x86\Debug\63_PartialMethods.exe
+C:\Users\DESITHA\Dropbox\dev\C#_\PragimTech\C# txt\63_PartialMethod\63_PartialMethods\63_PartialMethods\obj\x86\Debug\63_PartialMethods.pdb
+C:\Users\DESITHA\Dropbox\dev\C#_\PragimTech\C# txt\63_PartialMethod\63_PartialMethods\63_PartialMethods\bin\Debug\63_PartialMethods.exe
+C:\Users\DESITHA\Dropbox\dev\C#_\PragimTech\C# txt\63_PartialMethod\63_PartialMethods\63_PartialMethods\bin\Debug\63_PartialMethods.pdb

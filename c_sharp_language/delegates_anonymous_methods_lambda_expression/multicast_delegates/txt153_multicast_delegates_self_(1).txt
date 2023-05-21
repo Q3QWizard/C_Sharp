@@ -1,0 +1,36 @@
+using System;
+
+public delegate void DelMethods(string str);
+
+public class Program
+{
+    public static void Main()
+    {
+        DelMethods del,del1, del2, del3;
+
+        del1 = new DelMethods(MethodOne);
+        del2 = new DelMethods(MethodTwo);
+        del3 = new DelMethods(MethodThree);
+
+        del = del1 + del2 + del3;
+
+        del("one");
+
+        Console.ReadLine();
+    }
+
+    public static void MethodOne(string one)
+    {
+        Console.WriteLine("Method "+ one);
+    }
+
+    public static void MethodTwo(string two)
+    {
+        Console.WriteLine("Method " + two);
+    }
+
+    public static void MethodThree(string three)
+    {
+        Console.WriteLine("Method " + three);
+    }
+}

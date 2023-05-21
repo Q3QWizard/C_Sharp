@@ -1,0 +1,52 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace MyApp
+{
+    // composite cancelation tokens
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var planned = new CancellationTokenSource();
+            var preventitive = new CancellationTokenSource();
+            var emergency = new CancellationTokenSource();
+
+            var paranoid = CancellationTokenSource.CreateLinkedTokenSource(planned.Token, preventitive.Token, emergency.Token);
+
+            Task.Factory.StartNew(() =>
+            {
+                int i = 0;
+                while (true)
+                {
+                    paranoid.Token.ThrowIfCancellationRequested();
+                    Console.WriteLine(i++);
+                    Thread.Sleep(1000);
+                }
+            }, paranoid.Token);
+
+            // with this way you can cancel task with any of those tokens
+
+            Console.ReadKey();
+            //emergency.Cancel();
+            //preventitive.Cancel();
+            emergency.Cancel();
+
+            Console.WriteLine("Main programe done.");
+            Console.ReadKey();
+        }
+    }
+}
+
+/*
+ Inorder to cancel tasks task parallel library gives you two things.
+    1. Cancellation token source 
+    2. cancellation tokens.
+
+    How ever you have to understand that in tpl cancellaation the task may explicitly aware of the fact that  it is cancellable and it has to perform some certain actions to do it.
+
+    There is a different of status in the task, if you throw exception to cancel the task the task knows that it has been canceled.
+    How ever if you don't throw the exception the task isn't going to know that it is being canceled and will tell you that it has been completed successfully.
+     */
+

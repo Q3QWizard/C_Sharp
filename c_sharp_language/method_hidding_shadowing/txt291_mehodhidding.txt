@@ -1,0 +1,83 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        FullTimeEmployee fte = new FullTimeEmployee();
+        fte.firstName = "Wasindu";
+        fte.lastName = "Desitha";
+        fte.printFullName();
+
+        Employee tte = new TemporaryTimeEmployee();
+        tte.firstName = "Ranga";
+        tte.lastName = "Hadi";
+        tte.printFullName();
+
+
+        //Employee pte = new partTimeEmployee(); // comment out 1 and 2 to active this code
+        partTimeEmployee pte = new partTimeEmployee();  //1
+        pte.firstName = "Vidura";
+        pte.lastName = "Bhashana";
+        pte.printFullName();
+        ((Employee)pte).printFullName();    //2
+
+        Employee pte1 = new partTimeEmployee();
+        pte1.firstName = "Yahan";
+        pte1.lastName = "Udeshana";
+        pte1.printFullName();
+
+        Console.ReadLine();
+    }
+}
+
+public class Employee
+{
+    
+    public string firstName;
+    public string lastName;
+
+    public void printFullName()
+    {
+        Console.WriteLine(firstName + " ++ " + lastName);
+    }
+}
+
+public class partTimeEmployee : Employee
+{
+    public new string firstName; // if firstname is not provided here it will be take from the base class, and we can access base class variables via intelisence
+    public new string lastName;
+    public new void printFullName()
+    {
+        Console.WriteLine(firstName + " -- " + lastName);
+        base.printFullName();
+    }
+    public void SayHello()
+    {
+        Console.WriteLine("Say Hello");
+    }
+}
+
+public class TemporaryTimeEmployee : Employee
+{
+    public new void printFullName()
+    {
+        Console.WriteLine(firstName + "**" + lastName);
+    }
+}
+
+public class FullTimeEmployee : Employee
+{
+
+}
+
+/*
+Use the new keyword to hide a base class member. You will get a compiler warning if you miss the new keyword
+ * 
+ * Different ways to invoke a hidden base class member from derived class
+ * 
+ * 1. Use base keyword
+ * 2. Cast child type to parent type and invoke the hidden members
+ * 3. ParentClass pc= new ChildClass()
+ *      pc.hiddenMethod()
+*/

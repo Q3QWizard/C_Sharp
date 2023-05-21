@@ -1,0 +1,25 @@
+Single expression must return value of method's return type if method is not void type
+
+class Operations
+{
+	public int Num1 = 100;
+	public int Num2 = 33;
+	
+	//method that writes to console
+	public void Display () => Console.WriteLine("Hello Buddy");
+	
+	// method that call another method
+	public void Called => Display();
+	
+	// method that has 2 parameters and return their sum. REturn keyword is not required when implement
+	public int Addition(int a, int b) => a + b + 100;
+	
+	//Method that has two parameters and return value according. Return keyword is not required when implement
+	pubilc int Compare(int a, int b) => a == b ? 100 : 200;
+	
+	
+}
+
+Expression or right side followed with => must be valid statement. Only assignment, call, increment, decrement, and
+new object expression can be used as a statement. Also statement must return value of method's return type if
+method is not void type.

@@ -1,0 +1,6 @@
+Differences between IEnumerable and IEnumerator :
+
+IEnumerable uses IEnumerator internally.
+IEnumerable doesnt know which item/object is executing.
+Whenever we pass IEnumerator to another function ,it knows the current position of item/object.
+Whenever we pass IEnumerable collection to another function ,it doesn't know the current position of item/object(doesn't know which item its executing)

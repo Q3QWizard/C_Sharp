@@ -1,0 +1,46 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+public class Program
+{
+    public static void Main()
+    {
+        CancellationTokenSource cts = new CancellationTokenSource();
+
+        var token = cts.Token;
+
+        var t = new Task(() =>
+        {
+            for (int i = 0; i < 100000; i++)
+            {
+                Thread.SpinWait(1000000000);
+
+                Console.WriteLine(i);
+
+                token.ThrowIfCancellationRequested();
+            }
+        }, token);
+
+        t.Start();
+
+        Console.WriteLine("Main programe done");
+        Console.ReadLine();
+    }
+}
+
+/*
+ * 1.
+ You can use Thread.Sleep(5000) to stop execution of a task for some time.
+ By doing that way it tells that execution I dont need processing and some one
+ else can have the processing power. So if we use Thread.Sleep(5000) sheduler can get
+ another task and executing as you sleep which is great.
+
+    2. 
+
+    Thread.SpinWait(5000);
+    SpinWait.SpinUntil();
+
+    Using above to methods will pause the thread but will but will not release the procesor
+    to to other task while waiting. If you want to wait for a little time then this method is good.
+     */

@@ -1,0 +1,34 @@
+
+using System;
+class Program : MyClass
+{
+    public static void Main()
+    {
+
+
+        Console.Read();
+    }
+
+    public override int MyProperty
+    {
+        get
+        {
+            throw new NotImplementedException();
+        }
+        set
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+}
+
+public abstract class MyClass
+{
+    public abstract int MyProperty { get; set; }
+    public int MyProperty2 { get; set; }
+}
+
+/*
+ Property can be declared as abstract. This means that there is no implementation in the abstact class, and derived calss must write their own implementation.
+ */

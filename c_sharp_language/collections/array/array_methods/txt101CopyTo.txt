@@ -1,0 +1,28 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        int[] intarray = new int[] { 10, 20, 30, 40, 50 };
+
+        Array copyArray = Array.CreateInstance(typeof(int), intarray.Length);
+
+        intarray.CopyTo(copyArray, 0);
+
+        foreach (int i in intarray)
+        {
+            Console.WriteLine(i);
+        }
+
+        Console.Read();
+    }
+}
+
+/*
+ Method -> CopyTo()
+ * 
+ * CopyTo(arrayToCopy, startingIndex) method copies the elements into another existing array. This method also perform a shadow copy
+ * 
+ * 
+ */

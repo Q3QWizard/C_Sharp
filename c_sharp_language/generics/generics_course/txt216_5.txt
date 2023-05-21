@@ -1,0 +1,50 @@
+If we have different version of implementation used inside a Buffer, and circular buffer that means different implementations to do
+the same task. So what we can do is extract a interface out of them and let client use the interface other than the concrete implementation.
+
+public interface IBuffer<T>
+{
+	bool IsEmpty();
+	void Write(T value);
+
+	T Read();
+}
+
+public class Buffer<T> : IBuffer<T>
+{
+	private int _start = 0;
+	public int BufferProperty  { get; set; }
+
+	private T[] _bufferArray;
+	
+	public Buffer(int capacity)
+	{
+		_bufferArray = new T[capacity];
+	}
+	
+	public void Write(T value)
+	{
+		_bufferArray[0] = value;
+	}
+	
+	public T Read()
+	{
+		return _bufferArray[0];
+	}
+	
+	public bool IsEmpty()
+	{
+		return _bufferArray.length == 0;
+	}
+}
+
+SVM
+{
+	IBuffer<int> intBuffer = new Buffer<int>(5);
+	MyMethod(intBuffer);
+	IBuffer<double> doubleBuffer = new Buffer<double>(5);
+	MyMethod(doubleBuffer);
+}
+
+static void myMethod(IBuffer<int> intBuffer){}
+
+static void MyMethod(IBuffer<double> doubleBuffer){}

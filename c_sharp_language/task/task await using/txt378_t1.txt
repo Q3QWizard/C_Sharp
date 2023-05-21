@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Coffee cup = PourCoffee();
+            Console.WriteLine("coffee is ready");
+            Egg eggs = FryEggs(2);
+            Console.WriteLine("eggs are ready");
+            Bacon bacon = FryBacon(3);
+            Console.WriteLine("bacon is ready");
+            Toast toast = ToastBread(2);
+            ApplyButter(toast);
+            ApplyJam(toast);
+            Console.WriteLine("toast is ready");
+            Juice oj = PourOJ();
+            Console.WriteLine("oj is ready");
+
+            Console.WriteLine("Breakfast is ready!");
+            Console.Read();
+        }
+
+        private static Juice PourOJ()
+        {
+            Console.WriteLine("Pouring OJ");
+            return new Juice();
+        }
+
+        private static void ApplyJam(Toast toast)
+        {
+            Console.WriteLine("Applying jam");
+        }
+
+        private static void ApplyButter(Toast toast)
+        {
+            Console.WriteLine("Applying butter");
+        }
+
+        private static Toast ToastBread(int p)
+        {
+            Console.WriteLine("Toasting bread " + p);
+            return new Toast();
+        }
+
+        private static Bacon FryBacon(int p)
+        {
+            Console.WriteLine("Frying bacon " + p);
+            return new Bacon();
+        }
+
+        private static Egg FryEggs(int p)
+        {
+            Console.WriteLine("Frying eggs " + p);
+            return new Egg();
+        }
+
+        private static Coffee PourCoffee()
+        {
+            Console.WriteLine("Pourring coffee");
+            return new Coffee();
+        }
+    }
+
+    class Coffee
+    {
+
+    }
+
+    class Egg
+    {
+
+    }
+
+    class Bacon
+    {
+
+    }
+
+    class Toast
+    { 
+    
+    }
+
+    class Juice
+    {
+
+    }
+}

@@ -1,0 +1,57 @@
+Parameters
+----------
+
+value parameters - creates a copy of the parameter passed, so modifications does not affect each other.
+
+class Program
+{
+	static void Main(string [] args)
+	{
+		int i= 0;
+		SimpleMethod(i);
+	}
+	
+	public static void SimpleMethod(int j)
+	{
+	
+	}
+}
+
+out parameters - Use when you want to return more than one value. Value isn't set and can't be read by the method
+				until it is set. must set values before returning.
+				
+static void Main(string [] args)
+{
+	int totals, totalM = 0;
+	Calculate(10, 20, out total, out totalM);
+}
+
+public static bool Calculate(int fn, int sn, out int sum, out int multiply)
+{
+	sum = fn + sn;
+	multiply = fn*sn;
+	return true;
+}
+
+Reference parameters - The ref method parameters keyword on a method causes a method to refer to the same
+						variable that was passed into the method. Any changes made to the parameter in the method
+						will be reflected in that variable when control passes to the calling method.
+						
+static void Main(string [] args)
+{
+	int i=0;
+	SimpleMethod(ref i);
+	Console.WriteLine(i);
+}
+
+public static void SimpleMethod(ref int i)
+{
+	i = 101;
+}
+
+When we pass a object type variable to a method only the reference is passed to that object no new objects will
+be copied like in value types. The changes done by the method will be refelected in the calling method variable.
+
+But if we pass a primitive type as a parameter to a method a new copy will be created for that method. The changes 
+that are done in that method will be not reflected in the calling method.
+If we need to reflect those changes in the calling method also we can use refs to achive that.

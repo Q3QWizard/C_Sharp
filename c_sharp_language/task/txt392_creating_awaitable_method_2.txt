@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Call();
+            Console.WriteLine("Main method TH ID - " + Thread.CurrentThread.ManagedThreadId);
+            Console.ReadLine();
+        }
+
+        public static async Task<string> ExpensiveTaskAsync()
+        {
+            await Task.Delay(10000);
+            string x = await Task.Run(() => ExpensiveTask());
+            Console.WriteLine("ExpensiveTaskAsync inside method TH ID - " + Thread.CurrentThread.ManagedThreadId);
+            return x;
+        }
+
+        private static string ExpensiveTask()
+        {
+            
+            Console.WriteLine("finish");
+            return "Hello";
+        }
+
+        private static async void Call()
+        {
+            string x = await ExpensiveTaskAsync();
+            Console.Write(x);
+            Console.WriteLine("ExpensiveTaskAsync method TH ID - " + Thread.CurrentThread.ManagedThreadId);
+        }
+    }
+}

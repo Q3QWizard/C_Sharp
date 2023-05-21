@@ -1,0 +1,33 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        string[] strArray1, strArray2;
+
+        strArray1 = new string[5]{ "1st Element",
+                           "2nd Element", 
+                           "3rd Element",
+                           "4th Element",
+                           "5th Element" 
+                          };
+
+
+        strArray2 = new string[]{ "1st Element",
+                           "2nd Element",
+                           "3rd Element",
+                           "4th Element", 
+                           "5th Element" 
+                          };
+
+        /* ERROR
+        string[] strArray;
+
+        strArray = {"1st Element","2nd Element","3rd Element","4th Element" };
+         * */
+
+        Console.Read();
+    }
+}
+

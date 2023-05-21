@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace MyConsole
+{
+    public delegate void Print(int value);
+
+    class Program
+    {
+        public static void Main()
+        {
+            Student s = new Student(25);
+
+            Console.Read();
+
+        }
+    }
+
+    class Student
+    {
+        private Student()
+        { 
+        
+        }
+
+        public Student(int id)
+        { 
+        
+        }
+    }
+}
+
+/*
+ If a class's constructor is private then no instance of that class can be created
+ * 
+ * But if we have a overloaded public constructor then an object can be created by using that overloaded constructor
+ */

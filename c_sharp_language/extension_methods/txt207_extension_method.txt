@@ -1,0 +1,40 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        string strName = "desitha";
+        string result = StringHelper.ChangeFristLettername(strName);
+
+        string result1 = strName.ChangeFristLettername();
+
+        Console.WriteLine(result);
+        Console.WriteLine(result1);
+
+        Console.Read();
+    }
+}
+
+public static class StringHelper
+{
+    public static string ChangeFristLettername(this string inputString)
+    {
+        if (inputString.Length > 0)
+        {
+            char[] charArray = inputString.ToCharArray();
+            charArray[0] = char.IsUpper(charArray[0]) ? char.ToLower(charArray[0]) : char.ToUpper(charArray[0]);
+
+            return new string(charArray);
+        }
+
+        return inputString;
+    }
+}
+
+/*
+	to difine a extenstion method following things must be done
+
+	1. The class that extension method belongs to must be declared as static class
+	2. The extension methods first parameter must be the class that we are trying to extend and that parameter must be precede with "this"
+*/

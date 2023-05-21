@@ -1,0 +1,56 @@
+
+using System;
+class Program : MyClass
+{
+    public static void Main()
+    {
+        Program p = new Program();
+
+        p.MyProperty = 100;
+
+        Console.WriteLine(p.MyProperty);
+
+        Console.Read();
+    }
+
+    public override int MyProperty
+    {
+        get
+        {
+            return base.MyProperty;
+        }
+        set
+        {
+            base.MyProperty = value;
+        }
+    }
+
+    public sealed override int MyProperty2
+    {
+        get
+        {
+            return base.MyProperty2;
+        }
+        set
+        {
+            base.MyProperty2 = value;
+        }
+    }
+
+}
+
+public class MyClass
+{
+    public virtual int MyProperty { get; set; }
+    public virtual int MyProperty2 { get; set; }
+}
+
+/*
+ A property my be marked as virtual property by using virtual keyword. This enables derived classes to override properties and behaviors by using the override keyword
+ * new keyword can also be used to hide the base class property
+ * 
+ * In line 20 if we remove the base keyword then there will be stackoverflow exception because if keeps calling to itself
+ * 
+ * A proerty overriding a virtual property can also be sealed, specifying that for derived classes it is no longer virtual
+ * 
+ */

@@ -1,0 +1,41 @@
+using System;
+using PATA = ProjectA.TeamA;
+using PATB = ProjectA.TeamB;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            PATA.classA.Print();
+            PATB.classA.Print();
+        }
+    }
+
+    namespace ProjectA
+    {
+        namespace TeamA
+        {
+            class classA
+            {
+                public static void Print()
+                {
+                    Console.WriteLine("Team A print method");
+                }
+            }
+        }
+    }
+
+    namespace ProjectA
+    {
+        namespace TeamB
+        {
+            class classA
+            {
+                public static void Print()
+                {
+                    Console.WriteLine("Team B print method");
+                    Console.ReadLine();
+                }
+            }
+        }
+    }

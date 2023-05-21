@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Customer customer1 = new Customer()
+        {
+            ID = 101, Name = "Desitha", Salary = 5000
+        };
+        Customer customer2 = new Customer()
+        {
+            ID = 102,
+            Name = "Vidura",
+            Salary = 6000
+        };
+        Customer customer3 = new Customer()
+        {
+            ID = 103,
+            Name = "Amila",
+            Salary = 7000
+        };
+
+
+        Dictionary<int, Customer> dictionaryCustomer = new Dictionary<int,Customer>();
+        dictionaryCustomer.Add(customer1.ID, customer1 );
+        dictionaryCustomer.Add(customer2.ID, customer2);
+        dictionaryCustomer.Add(customer3.ID,customer3);
+
+        // To check whether a key is include in the dictionary 
+
+        if (!dictionaryCustomer.ContainsKey(customer1.ID))
+        {
+            dictionaryCustomer.Add(customer1.ID, customer1);
+        }
+
+        Customer customer101 = dictionaryCustomer[101];
+        Console.WriteLine("ID is {0}, Name is {1}, Salary is {2} ",customer101.ID.ToString(), customer101.Name.ToString() , customer101.Salary.ToString());
+
+        foreach (KeyValuePair<int, Customer> customerKeyValuePare in dictionaryCustomer)
+        {
+            Console.WriteLine("ID = {0}", customerKeyValuePare.Key);
+            Customer cust = customerKeyValuePare.Value;
+
+            Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", cust.ID, cust.Name, cust.Salary);
+            Console.WriteLine("--------------------------------------------------------");
+
+        }
+
+        Console.WriteLine();
+
+        foreach (int KeyValue in dictionaryCustomer.Keys)
+        {
+            Console.WriteLine(KeyValue);
+        }
+
+        foreach (Customer ValueInDictionary in dictionaryCustomer.Values)
+        {
+            Console.WriteLine(ValueInDictionary.Name);
+        }
+
+        Console.ReadLine();
+    }
+}
+
+public class Customer
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public int Salary { get; set; }
+}
+
+/*
+Dictionary in C#
+
+A dictionary is a collection of (key, value) pairs.
+
+Dictionary class is present in System.Collections.Generic namespace
+
+When creating a dictionary, we need to specify the type for key and value.
+
+Dictionary provides fast lookups for values using keys.
+
+Keys in dictionary must be unique.
+*/

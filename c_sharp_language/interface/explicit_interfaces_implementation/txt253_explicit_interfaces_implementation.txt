@@ -1,0 +1,44 @@
+using System;
+
+interface I1
+{
+    void InterfaceMethod();
+}
+
+interface I2
+{
+    void InterfaceMethod();
+}
+class Program : I1, I2
+{
+    public void InterfaceMethod()   // default interface implimentation
+    {
+        Console.WriteLine("I1 default interface method");
+    }
+
+    void I2.InterfaceMethod()
+    {
+        Console.WriteLine("I2 interface method");
+    }
+    public static void Main()
+    {
+        Program p = new Program();
+        p.InterfaceMethod();
+        ((I2)p).InterfaceMethod();
+        Console.ReadLine();
+    }
+}
+
+/*
+ * Explicit Interface Implementation
+ * 
+ * Q01 - A class inherits from 2 interfaces and both the interfaces have the same method namd. How should the class implement the method for both the interfaces?
+ * 
+ * We are using Explicit interface implementaion technique to solve this problem
+ * 
+ * When a class explicitly implements, an interface member, the interface member can no longer be accessed thru class reference variable, but 
+ * only thru the interface reference variable.
+ * 
+ * Access modifiers are not allowed on explicit implemented interface members.
+ */
+

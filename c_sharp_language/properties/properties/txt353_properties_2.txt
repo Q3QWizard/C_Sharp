@@ -1,0 +1,112 @@
+class Program
+{
+	public int MyProperty{get; set;}
+	
+	public int MyProperty2
+	{
+		get { return MyProperty2}// this will give an stackoverflow exception since it calles itself
+		set {}
+	}
+}
+------------------------------------------------------------------------------------------------------------
+
+private int Two;
+
+public int Two{get; set;} 
+
+// The type program already contains definition for Two
+-------------------------------------------------------------------------------------------------------------
+If we are declaring additional logic in a property then we will have to use full property that means with the 
+private variables.
+
+private int myVar;
+
+public int MyProperty
+{
+	get {return myVar;}
+	set {myVar = value;}
+}
+---------------------------------------------------------------------------------------------------------------
+- We can use get and set accessors to implement properties.
+- A property with both get and set accessor is a Reas/Write property
+- A property with only get accessor is read only property.
+- A property with only set accessor is a write only property.
+
+The advantages of properties over traditional Get() and Set() methods is that you can access them as if they were
+public fields.
+
+Auto implemented properties.
+----------------------------
+
+- If there is no additional logic in the property accessor, then we can make use of auto implemented properties.
+- Auto implemented properties reduce the amount of code that we have to write
+- When you use auto implemented properties, the compiler create a private, anonymous field that can be accessed via property'set
+	get and set accessors.
+- The value keyword contains the value of the property which we pass to the property
+
+We can add additional logic inside get {}  and set{} in auto implemented properties like in normal properties.
+
+- Properties can be marked as public, private, protected and internal. there access modifiers define how users of the class can
+	access the property
+	
+- Can not specify accessiblity modifiers on both get() and set() on property or indexer
+- The accessibility modifier must be more restrictive that the property or indexer.
+	pullic int StudentID { get; private set; }
+
+- If we are to specify access modifiers on noth get{} and set{} then modifer of property itself doesn't make sense
+
+- A property may be marked as virtual property by using the virtual keyword. This enables derived classes to override the properties
+	and behavior by using the override keyword.
+	
+class Student
+{
+	public virtual int StudentID { get; set; }
+	
+	private void TestMethod(){ StudentID = 25; }
+}
+
+class SchoolStudent : Student
+{
+	public override int StudentID
+	{
+		get{ return base.StudentID; }
+		set { base.StudentID = value; }
+	}
+}
+
+A property overriding a virtual property can also be sealed. Specifying that for derived classes it is no longer virtual;
+
+class Student
+{
+	public virtual int StudentID{get; set;}
+	private void TestMethod() { StudentID = 25;} 
+}
+
+class SchoolStudent : Student
+{
+	public sealed override int StudentID
+	{
+		get{return StudentID;}
+		set{StudentID = value;}
+	}
+}
+
+class LittleSchoolStudent : SchoolStudent
+{
+	public override int StudentID//Error
+	{set; get;}// can not override sealed property
+}
+
+- Property can be declared abstract. This means that there is no implementation in the class, and derived class must write
+	their own implementation.
+	
+abstract class Student
+{
+	public abstract int StudentID {get; set;}
+	
+}
+
+class SchoolStudent : Student
+{
+	public override int StudentID {get; set;}
+}

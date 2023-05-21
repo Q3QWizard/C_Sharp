@@ -1,0 +1,47 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        string[,] array1 = new string[2, 2];
+
+        array1[0, 0] = "a";
+        array1[0, 1] = "b";
+        array1[1, 0] = "c";
+        array1[1, 1] = "d";
+
+        Console.WriteLine("2D array");
+
+        foreach (string i in array1)
+        {
+            Console.WriteLine(i);
+        }
+
+        Console.WriteLine();
+
+        Console.WriteLine("3D array");
+
+        string[, ,] array2 = new string[2, 2, 2];
+
+        array2[0, 0, 0] = "A";
+        array2[0, 0, 1] = "B";
+        array2[0, 1, 0] = "D";
+
+        Console.WriteLine(array2.Length);   // 8
+
+        string[, , ,] array3 = new string[2, 2, 2, 2];
+
+        array3[0, 0, 0, 0] = "A";
+        array3[0, 0, 1, 0] = "B";
+        array3[0, 1, 0, 0] = "D";
+
+        Console.Read();
+    }
+}
+
+/*
+ * EX: string[, , ,] array3 = new string[2, 2, 2, 2];
+ * 
+ * "," amount = Rank - 1
+*/

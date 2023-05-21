@@ -1,0 +1,60 @@
+using System;
+
+class Program
+{
+    public static void Main()
+    {
+        Customer c1 = new Customer();
+        c1.Print();
+        c1.ICustomer2Method();
+        Console.ReadLine();
+    }
+}
+
+interface ICustomer // giving capital I infornt of the interface is a common convention
+{
+    void Print();
+}
+
+interface ICustomer2
+{
+    void ICustomer2Method();
+}
+
+class Customer : ICustomer, ICustomer2
+{
+    public void Print()
+    {
+        Console.WriteLine("Interface ICustomer, print method");
+    }
+
+    public void ICustomer2Method()
+    {
+        Console.WriteLine("This is Interface ICustomer2, method");
+    }
+}
+
+/*
+ * Interfaces
+ * 
+ *  1. We create interfaces using interface keyword. Just like classes interfaces also contains properties, methods, delegates or events, but only
+ *      declarations and no implementations.
+ *      
+ *  2. It is a compile time error to provide implementaion for any interface member.
+ *  
+ *  3. Interface members are public by default, and they don't allow explicit access modifiers.
+ *  
+ *  4. If a class or struct inherits from an interface, it must provide implementation for all interface members, Otherwise, we get a compiler error.
+ *  
+ *  5. A class or a struct can inherit from more than one interface at the same time, but where as ,a class cannot inherit from more than one class
+ *      at the same time.
+ *      
+ *  6. Interfaces can inherit from other interfaces. A class that inherits this interface must provide implementation for all interface members in 
+ *      the entire interface inheritance chain.
+ *      
+ *  7. We cannot create an instance of interface, but an interface reference variable can point to a derived class object
+ *  
+ *  8. Interface Naming Convension : Interface names are prefixed with capital I
+ *  
+ * 9. Interfaces cannot have fields
+ */

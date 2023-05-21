@@ -1,0 +1,16 @@
+using System;
+
+
+public class Program
+{
+    public static void Main()
+    {
+        Func<Double, Double> cpointer = r => 3.12 * r * r;
+
+        Action<string> MyAction = y => Console.Write(y);
+
+        MyAction("Hello");
+
+        Console.ReadLine();
+    }
+}

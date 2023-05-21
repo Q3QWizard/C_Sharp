@@ -1,0 +1,44 @@
+using System;
+using System.Threading;
+
+public class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Please enter the targe number");
+        int targe = Convert.ToInt32(Console.ReadLine());
+
+        Number number = new Number(targe);
+
+        Thread t1 = new Thread(number.PrintNumbers);
+        t1.Start();
+        
+        Console.Read();
+    }
+
+    
+}
+
+class Number
+{
+    private int _target;
+
+    public Number(int target)
+    {
+        _target = target;
+    }
+
+    public void PrintNumbers()
+    {
+
+        for (int i = 0; i < _target; i++)
+        {
+            Console.WriteLine(i);
+        }
+    }
+}
+
+/*
+ To pass data to the Thread function in a type safe manner, encapsulate the thread function and the data it needs in a
+ * helper class and use the ThreadStart delegate to execute the thread function.
+ */

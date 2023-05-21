@@ -1,0 +1,33 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        DerivedClass dc = new DerivedClass("Test");
+
+        Console.ReadLine();
+    }
+}
+
+class BaseClass
+{ 
+    public BaseClass()
+    {
+        
+    }
+
+    public BaseClass(string str)
+    {
+        Console.WriteLine("This is base class string constructor "+str);
+    }
+}
+
+class DerivedClass : BaseClass
+{
+    public DerivedClass() { }
+ 
+    public DerivedClass(string str) : base(str)
+    {}
+}
+

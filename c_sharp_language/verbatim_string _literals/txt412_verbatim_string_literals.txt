@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web;
+
+namespace Example
+{
+    class ProgrammingExample
+    {
+        static void Main()
+        {
+            //Verbatim String Literals
+
+            /*Because the backslash (\) is the first character in an escape sequence, you need to use the double-backslash sequence (\\) to embed actual backslashes in a string literal.*/
+
+            string filere = "C:\\MyDir\\Another Dir\\thefile.txt";
+            Console.WriteLine(filere);
+            /*Because this can get a little hard to read, C# allows using the at sign (@) character to indicate a verbatim string literal–a string literal in which escape sequences should not be interpreted.*/
+
+            /*Using a verbatim string literal, we can write the earlier string without doubling the backslashes:*/
+
+            string file1 = @"C:\MyDir\Another Dir\thefile.txt";
+            Console.WriteLine("file1");
+
+            /*We can also use a verbatim string literal to split a string across multiple lines in the source code, rather than embedding the \n escape sequence:*/
+
+            string filere11 = @"First line
+            Second line
+            Third line";
+
+            Console.WriteLine(filere11);
+            
+
+            Console.ReadLine();
+        }
+    }
+}

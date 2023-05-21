@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        List<string> names = new List<string>();
+        names.Add("Desitha");
+        names.Add("Vidura");
+        names.Add("Yahan");
+
+        string result = names.Find(SearchName);
+
+        if (result == null)
+        {
+            Console.WriteLine("Name Not Found..");
+        }
+        else
+        {
+            Console.WriteLine("Name Found");
+        }
+
+        Console.ReadLine();
+    }
+
+    private static bool SearchName(string name)
+    {
+        return name.Equals("Desitha");
+    }
+
+}

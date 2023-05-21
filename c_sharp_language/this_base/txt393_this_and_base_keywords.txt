@@ -1,0 +1,50 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        //Test t = new Test("ssss","ff");
+
+        Test1 t1 = new Test1("dd", "ee");
+
+        Console.ReadKey();
+    }
+}
+
+public class Test
+{
+    public Test()
+    {
+        Console.WriteLine("1");
+    }
+
+    public Test(string s) : this()
+    {
+        Console.WriteLine(s + "2");
+    }
+
+    public Test(string s, string ss) : this("ddd")
+    {
+        Console.WriteLine(s + ss);
+    }
+}
+
+public class Test1 : Test
+{
+    public Test1() : base("qqq", "uuuu")
+    {
+        Console.WriteLine("yyy");
+    }
+
+    public Test1(string ss, string sss) : this()
+    {
+        Console.WriteLine(ss + sss);
+    }
+}
+
+/*
+If parent class has a parameterized constructor, when creating the child class you have to invoke the parent class parameterized constructors.
+
+    If parent class and child class both have parameter less constructors then there is no need to invoke parent class constructor when creating the chlild class
+*/

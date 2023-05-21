@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Linq_1_4v
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] Numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            string[] Countries = { "India", "USA", "UK" };
+
+            //least number in the array
+            int result = Numbers.Min();
+            Console.WriteLine("Least number in the array is - " + result);
+
+            // least even number in the array
+            int evenNumberResult = Numbers.Where(i => i % 2 == 0).Min();
+            Console.WriteLine("Least even number in the array is - " + evenNumberResult);
+
+            // max number in the array
+            int maxNumberResult = Numbers.Max();
+            Console.WriteLine("max number in the array is - " + maxNumberResult);
+
+            // sum of all numbers
+            int sumOfAllNumbers = Numbers.Sum();
+            Console.WriteLine("Sum of all numbers is - " + sumOfAllNumbers);
+
+            //count of all numbers in array
+            int countOfNumbers = 0;
+            countOfNumbers = Numbers.Count();
+            Console.WriteLine("count of all numbers is - " + countOfNumbers);
+
+            //average of numbers in array
+            double average = Numbers.Average();
+            Console.WriteLine("Average of all numbers in array - " + average);
+
+            //min character count of contry
+            int minChars = Countries.Min(x => x.Length);
+            Console.WriteLine("Min length country - " + minChars);
+
+            //max character count country
+            int maxChars = Countries.Max(x => x.Length);
+            Console.WriteLine("Max length country - " + maxChars);
+            Console.ReadLine();
+        }
+    }
+}

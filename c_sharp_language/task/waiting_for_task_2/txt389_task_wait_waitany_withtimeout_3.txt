@@ -1,0 +1,36 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+public class Program
+{
+    public static void Main()
+    {
+        CancellationTokenSource cts = new CancellationTokenSource();
+        var token = cts.Token;
+
+        var t = new Task(() =>
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                token.ThrowIfCancellationRequested();
+                Thread.Sleep(1000);
+            }
+
+            Console.WriteLine("Task 1 done");
+        }, token);
+
+        t.Start();
+
+        Task t2 = Task.Factory.StartNew(() =>
+        {
+            Thread.Sleep(3000);
+            Console.WriteLine("Task 2 done");
+        }, token);
+
+        Task.WaitAny(new[] { t, t2 }, 2000);
+
+        Console.WriteLine("Main programe done");
+        Console.ReadLine();
+    }
+}

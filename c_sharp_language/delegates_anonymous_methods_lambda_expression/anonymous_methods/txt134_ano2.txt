@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace MyConsole
+{
+    public delegate void Print(int value);
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i = 10;
+
+            Print prnt = delegate(int val)
+            {
+                val += i;
+                Console.WriteLine("Anonymous method: {0}", val);
+            };
+
+            prnt(100);
+
+            Console.Read();
+        }
+    }
+}
+
+/*
+ Anonymous methods can access variables defined in an outer function.
+ */

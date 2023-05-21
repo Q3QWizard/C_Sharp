@@ -1,0 +1,32 @@
+using System;
+
+public class ParentClass
+{
+    public ParentClass()
+    {
+        Console.WriteLine("parent class constructor called");
+    }
+
+    public ParentClass(String Message)
+    {
+        Console.WriteLine(Message);
+    }
+}
+
+public class ChildClass : ParentClass
+{ 
+    public ChildClass()
+    {
+        Console.WriteLine("Child class construtor called");
+    }
+}
+
+class Program
+{
+
+    static void Main(string[] args)
+    {
+        ChildClass CC = new ChildClass();
+        Console.ReadLine();
+    }
+}

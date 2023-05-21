@@ -1,0 +1,181 @@
+C# - Hashtable
+
+C# includes Hashtable collection in System.Collections namespace, which is similar to generic Dictionary collection. The Hashtable collection stores key-value pairs. It optimizes lookups by computing the hash code of each key and stores it in a different bucket internally and then matches the hash code of the specified key at the time of accessing values.
+
+Add key-value into Hashtable
+----------------------------
+[
+	The Add() method adds an item with a key and value into the Hashtable. Key and value can be of any data type. Key cannot be null whereas value can be null.
+
+	Add() Signature: void Add(object key, object value);
+
+	Hashtable ht = new Hashtable();
+
+	ht.Add(1, "One");
+	ht.Add(2, "Two");
+	ht.Add(3, "Three");
+	ht.Add(4, "Four");
+	ht.Add(5, null);
+	ht.Add("Fv", "Five");
+	ht.Add(8.5F, 8.5);
+
+	Hashtable can include all the elements of Dictionary as shown below
+
+	Dictionary<int, string> dict = new Dictionary<int, string>();
+
+	dict.Add(1, "one");
+	dict.Add(2, "two");
+	dict.Add(3, "three");
+
+	Hashtable ht = new Hashtable(dict);
+]
+
+object initializer syntax:
+--------------------------
+[
+	Hashtable ht = new Hashtable()
+	                {
+	                    { 1, "One" },
+	                    { 2, "Two" },
+	                    { 3, "Three" },
+	                    { 4, "Four" },
+	                    { 5, null },
+	                    { "Fv", "Five" },
+	                    { 8.5F, 8.5 }
+	                };
+]
+
+Note
+----
+[
+	Add() will throw an exception if you try to add a key that already exists in the Hashtable. So always check the key using the Contains() or ContainsKey() method before adding a key-value pair into the Hashtable.
+]
+
+Access Hashtable
+----------------
+[
+	You can retrive the value of an existing key from the Hashtable using indexer. Please note that the hashtable indexer requires a key.
+
+	Hashtable ht = new Hashtable();
+
+	ht.Add(1, "One");
+	ht.Add(2, "Two");
+	ht.Add(3, "Three");
+	ht.Add(4, "Four");
+	ht.Add("Fv", "Five");
+	ht.Add(8.5F, 8.5F);
+	    
+	string strValue1 = (string)ht[2];
+	string strValue2 = (string)ht["Fv"];
+	float fValue = (float) ht[8.5F];
+
+	Console.WriteLine(strValue1);
+	Console.WriteLine(strValue2);
+	Console.WriteLine(fValue);
+]
+
+Iterate Hashtable
+------------------
+
+[
+	Hashtable ht = new Hashtable()
+                {
+                    { 1, "One" },
+                    { 2, "Two" },
+                    { 3, "Three" },
+                    { 4, "Four" },
+                    { 5, null },
+                    { "Fv", "Five" },
+                    { 8.5F, 8.5 }
+                };
+
+foreach (DictionaryEntry item in ht)
+                Console.WriteLine("key:{0}, value:{1}",item.Key, item.Value);
+]
+
+Access Hashtable using Keys & Values
+-------------------------------------
+[
+	Hashtable has a Keys and a Values property that contain all the keys and values respectively. You can use these properties to get the keys and values.
+
+	Hashtable ht = new Hashtable();
+                {
+                    { 1, "One" },
+                    { 2, "Two" },
+                    { 3, "Three" },
+                    { 4, "Four" },
+                    { 5, null },
+                    { "Fv", "Five" },
+                    { 8.5F, 8.5 }
+                };
+
+foreach (var key in ht.Keys )
+                Console.WriteLine("Key:{0}, Value:{1}",key , ht[key]);
+
+Console.WriteLine("***All Values***");
+        
+foreach (var value in ht.Values)
+                Console.WriteLine("Value:{0}", value);
+]
+
+Remove elements in Hashtable
+----------------------------
+[
+	The Remove() method removes the item with the specified key from the hashtable.
+
+	Remove() Method Signature: void Remove(object key)
+
+	Hashtable ht = new Hashtable()
+                {
+                    { 1, "One" },
+                    { 2, "Two" },
+                    { 3, "Three" },
+                    { 4, "Four" },
+                    { 5, null },
+                    { "Fv", "Five" },
+                    { 8.5F, 8.5 }
+                };
+
+ht.Remove("Fv"); // removes {"Fv", "Five"}
+]
+
+Check for Existing Elements
+---------------------------
+
+Contains() and ContainsKey() check whether the specified key exists in the Hashtable collection. ContainsValue() checks whether the specified value exists in the Hashtable.
+
+Contains(), ContainsKey() and ContainsValue() Signatures:
+
+bool Contains(object key) 
+bool ContainsKey(object key) 
+bool ContainsValue(object value) 
+
+Hashtable ht = new Hashtable()
+                {
+                    { 1, "One" },
+                    { 2, "Two" },
+                    { 3, "Three" },
+                    { 4, "Four" }
+                };
+
+ht.Contains(2);// returns true
+ht.ContainsKey(2);// returns true
+ht.Contains(5); //returns false
+ht.ContainsValue("One"); // returns true
+
+Clear()
+-------
+
+Hashtable ht = new Hashtable()
+                {
+                    { 1, "One" },
+                    { 2, "Two" },
+                    { 3, "Three" },
+                    { 4, "Four" },
+                    { 5, null },
+                    { "Fv", "Five" },
+                    { 8.5F, 8.5 }
+                };
+
+ht.Clear(); // removes all elements
+Console.WriteLine("Total Elements: {0}", ht.Count);

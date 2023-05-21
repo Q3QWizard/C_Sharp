@@ -1,0 +1,64 @@
+using System;
+using System.Threading;
+
+public delegate void SumOfNumbersCallback(int SumOfNumbers);
+
+public class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Please enter the targe number");
+        int targe = Convert.ToInt32(Console.ReadLine());
+
+        Number number = new Number(targe, PrintSumOfNumbers);
+
+        Thread t1 = new Thread(number.PrintSumOfNumbers);
+        t1.Start();
+        
+        Console.Read();
+    }
+
+    public static void PrintSumOfNumbers(int sum)
+    {
+        Console.WriteLine(sum);
+    }
+
+    
+}
+
+class Number
+{
+    private int _target;
+
+    SumOfNumbersCallback _callback;
+
+    public Number(int target, SumOfNumbersCallback callback)
+    {
+        _target = target;
+        _callback = callback;
+    }
+
+    public void PrintSumOfNumbers()
+    {
+        int sum = 0;
+
+        for (int i = 0; i < _target; i++)
+        {
+            sum += i;
+        }
+
+        _callback(sum);
+    }
+}
+
+/*
+ Main thread retrieves the target number from the user.
+ * 
+ * Main thread creates a child thread and pass the target number to the child thread.
+ * 
+ * The child thread computes the sum of numbers and then return the sum to the Main thread using callback function.
+ * 
+ * The callback method prints the sum of numbers
+ * 
+ * Create a callback delegate. the actual callback method signature should match with the signature of this delegate.
+ */

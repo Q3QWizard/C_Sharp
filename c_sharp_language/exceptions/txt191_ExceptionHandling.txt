@@ -1,0 +1,26 @@
+using System;
+using System.IO;
+
+public class Program
+{
+    public static void Main()
+    {
+        try
+        {
+            StreamReader streamReader = new StreamReader(@"G:\Desitha\WorkBench\c#\PragimTech\C# txt\40_ExceptionHandling\dataq.txt");
+            Console.WriteLine(streamReader.ReadToEnd());
+            streamReader.Close();
+
+            Console.ReadLine();
+        }
+        catch (FileNotFoundException ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine();
+            Console.WriteLine(ex.StackTrace);
+        }
+
+        Console.ReadLine();
+        
+    }
+}

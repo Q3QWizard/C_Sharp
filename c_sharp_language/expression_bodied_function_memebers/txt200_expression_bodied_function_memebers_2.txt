@@ -1,0 +1,40 @@
+Expression bodied member was introduced in c# 6.0 and enhanced in c# 7.0.
+
+Expression bodied is a new technique or implementation to make code concise and readable.
+
+Expression bodied makes the types members (constructors, destructors, methods, property, indexer) defined in a single expression.
+
+Expression bodied members can only be applied to the below list of type members
+	+ constructor introduced in c# 7.0
+	+ Destructor introduced in c# 7.0
+	+ Properties get accessor c# 6.0
+	+ Properties set accessor c# 7.0
+	+ Methods c# 6.0
+	+ Indexers c# 6.0
+	
+syntax -
+	member => expression
+	
+Where expression should be a valid expression and member can be any from the above list of type members.
+
+Suppose we have a method or constructor that contains a single expression or line of code. Then inspite of using the traditional
+way to write code inside a method or constructor code block, we can write them as a single syntax. Those members who can follow
+this approach are known as expression bodied members.
+
+Constructor with expression bodied members
+------------------------------------------
+
+Expression bodied technique can be achived to define a constructor in a single statement. This can only be achived if
+a constructor has only a single valid expression.
+Valid expression can be assignment or method call.
+
+class Operators
+{
+	public int num1 = 100;
+	public int num2 = 33;
+	
+	public Operators() => num1 = num1 + num2;
+}
+
+Expression or rigt side folowed with => must be valid and should be one statement. Only assignment, call, increment, decrement
+and new object expression can be used as statement.

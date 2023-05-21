@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Student
+{
+    public int StudentID { get; set; }
+    public string Name { get; set; }
+    public int TotalMarks { get; set; }
+
+    public static List<Student> GetAllStudents()
+    {
+        List<Student> lstStudents = new List<Student> 
+            { 
+                new Student { Name = "Tom", StudentID = 101, TotalMarks = 88},
+                new Student { Name = "Jack", StudentID = 102, TotalMarks = 98},
+                new Student { Name = "Sam", StudentID = 103, TotalMarks = 78},
+                new Student { Name = "Tim", StudentID = 104, TotalMarks = 68},
+            };
+
+        return lstStudents;
+    }
+}
+class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Student names before sorting");
+        List<Student> students = Student.GetAllStudents();
+
+        foreach (Student s in students)
+        {
+            Console.WriteLine(s.Name);
+        }
+
+        Console.WriteLine();
+        // in here we can use either IOrderedEnumerable or IEnumerable because IEnumerable is inheriting from IOrderedEnumerable
+        IOrderedEnumerable<Student> result1 = Student.GetAllStudents().OrderBy(s => s.Name);
+        Console.WriteLine("Student name after sorting");
+        foreach (Student s in result1)
+        {
+            Console.WriteLine(s.Name);
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Student name sorted from name in decending order");
+        IEnumerable<Student> result2 = Student.GetAllStudents().OrderByDescending(s => s.Name);
+        foreach (Student s in result2)
+        {
+            Console.WriteLine(s.Name);
+        }
+
+        Console.ReadLine();
+    }
+}

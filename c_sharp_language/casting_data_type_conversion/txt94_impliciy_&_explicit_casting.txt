@@ -1,0 +1,32 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        int n;
+        byte b;
+        n = 256;
+        checked // uncheck is also available
+        {
+            // checking arithmatic overflow or underflow
+        }
+        {
+            b = (byte)n;
+        }
+        
+        Console.WriteLine(b);
+
+        Console.WriteLine("-------------------------------------------------------------------------");
+
+        int k;
+
+        char c = 'A';
+        k = c; // Implicit Casting
+        Console.WriteLine(k);
+        c = (char)k;
+        Console.WriteLine(c);
+        Console.ReadLine();
+    }
+}
+/*C# Training for Beginners_ Implicit and Explicit Casting Part 2 by bestdotnettra.com*/

@@ -1,0 +1,102 @@
+/*using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Thread t1 = new Thread(PrintNumbers);
+            t1.Start();
+
+            Console.Read();
+        }
+
+        public static void PrintNumbers()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}*/
+
+//////////////////////////////////////////////////////////////////////
+//using thread start delegate//
+
+/*using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Thread t1 = new Thread(new ThreadStart(PrintNumbers));
+            t1.Start();
+
+            Console.Read();
+        }
+
+        public static void PrintNumbers()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+ * */
+
+/*
+ Why a delegate need to be passed as a parameter to the thread class constructor?
+ * 
+ * The purpose of creating a thread is to execute a function. A delegate is a type safe function pointner, meaning it points to a function
+ * that the thread has to execute. In short, all threads requires an entry point to start execution. Any thread you create will need an 
+ * explicitly defined entry point i.e a pointer to the function where they should begin execution. So threads always requires a delegate.
+ * 
+ * In the code above, we are not explicitly creating the ThreadStart delegate, then how is it working here?
+ *  Thread t1 = new Thread(PrintNumbers);\
+ *  
+ * It'w working in spite of not creating the ThreadStart delegate explicitly because the framework is doing it automatically for us.
+ */
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Thread t1 = new Thread(delegate() { PrintNumbers(); });
+            Thread t1 = new Thread(() => { PrintNumbers(); });
+            t1.Start();
+
+            Console.Read();
+        }
+
+        public static void PrintNumbers()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}

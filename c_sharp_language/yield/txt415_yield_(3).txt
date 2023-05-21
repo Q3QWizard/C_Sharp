@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    static List<int> myList = new List<int>();
+
+    static void fillValue()
+    {
+        myList.Add(1);
+        myList.Add(2);
+        myList.Add(3);
+        myList.Add(4);
+        myList.Add(5);
+        myList.Add(6);
+    }
+
+    public static void Main()
+    {
+        fillValue();
+
+        foreach (int i in filter())
+        {
+            Console.WriteLine(i);
+        }
+        Console.ReadLine();
+    }
+
+    static IEnumerable<int> filter()
+    {
+        foreach (int i in myList)
+        {
+            if (i > 3)
+            {
+                yield return i;
+            }
+
+        }
+    }

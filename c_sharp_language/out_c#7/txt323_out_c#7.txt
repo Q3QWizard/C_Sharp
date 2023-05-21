@@ -1,0 +1,33 @@
+using System;
+
+namespace c__7._0
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // old way 
+            /*
+            string firstName, lastName;
+
+            Names(out firstName, out lastName);
+            */
+            // old way
+            
+            Names(out string firstName, out string lastName);
+            
+
+            // Cc# 7 way
+
+
+
+            Console.WriteLine(firstName + "\n" + lastName);
+        }
+
+        private static void Names(out string firstName, out string lastName)
+        {
+            firstName = "Wasindu";
+            lastName = "Desitha";
+        }
+    }
+}

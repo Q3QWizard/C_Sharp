@@ -1,0 +1,65 @@
+using System;
+
+public class Customer
+{
+    protected int ID;   // Available with in the containing class and any classes that deriving from the containing class.
+}
+
+public class TempCustomer : Customer
+
+{
+    
+        
+    public void PrintId()
+    {
+        TempCustomer tc = new TempCustomer();
+        tc.ID=10;   // You can use derived class object to invoke the protected item in the base class.
+        Console.WriteLine(tc.ID);
+        base.ID = 102;
+        Console.WriteLine(base.ID); // You can use base keyword to invoke the protected items in the base class.
+        this.ID = 103;
+        Console.WriteLine(this.ID); // You can use this keyword to invoke the protected items in the base class.
+
+    }
+}
+
+public class Program 
+{
+    public static void Main()
+    {
+        TempCustomer t = new TempCustomer();
+        t.PrintId();
+
+        Console.ReadLine();
+
+        
+    }
+}
+
+/*
+Private, Public & Protected.
+
+There are 5 different access modifiers in C#
+
+	1. Private
+	2. Protected
+	3. Internal
+	4. Protected Internal
+	5. Public
+	
+Private members are available only with in the containing type, where as public members
+are available any where. There is no restriction.
+
+Protected members are available, with in the containing type and to the types that derive
+from the containing type.
+
+Access Modifiers		Accessibility																	
+
+																										
+Private 		-		Only with in the containing class.												
+
+public 			-		Any where, No restriction.														
+																										
+Protected		-		With in the containing types and the types derived from the containing type.	
+																										
+*/

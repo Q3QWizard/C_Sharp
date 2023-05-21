@@ -1,0 +1,89 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace DotNetCoreDemo
+{
+   
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Rectangle r1 = new Rectangle() { Width = 12.34, Height = 56.78 };
+            Rectangle r2 = new Rectangle() { Width = 56.34, Height = 56.34 };
+            Circle c = new Circle() { Radius = 64.25 };
+
+            PrintArea(r1);
+            PrintArea(r2);
+            PrintArea(c);
+            Console.WriteLine();
+            PrintArea_7(r1);
+            PrintArea_7(r2);
+            PrintArea_7(c);
+            Console.WriteLine();
+            PrintArea_Switch_7(r1);
+            PrintArea_Switch_7(r2);
+            PrintArea_Switch_7(c);
+            Console.Read();
+        }
+
+        public static void PrintArea(Figure f)
+        {
+            // before c# 7.0
+            if(f is Rectangle)
+            {
+                Rectangle rect = f as Rectangle;
+                Console.WriteLine("Area of rectangle: " + rect.Width * rect.Height);
+            }
+            else if(f is Circle)
+            {
+                Circle circ = f as Circle;
+                Console.WriteLine("Area of circle: " + Circle.Pi * circ.Radius * circ.Radius);
+            }
+        }
+
+        public static void PrintArea_7(Figure f)
+        {
+            if (f is Rectangle rect)
+            {
+                Console.WriteLine("Area of rectangle: " + rect.Width * rect.Height);
+            }
+            else if (f is Circle circ)
+            {
+                Console.WriteLine("Area of circle: " + Circle.Pi * circ.Radius * circ.Radius);
+            }
+        }
+
+        public static void PrintArea_Switch_7(Figure f)
+        {
+            switch(f)
+            {
+                case Rectangle rect when rect.Width == rect.Height: // this satement must come before "case Rectangle rect:" otherwise there will be a compile time error, unreachable code
+                    Console.WriteLine("Area of square: " + rect.Width * rect.Height);
+                    break;
+                case Rectangle rect:
+                    Console.WriteLine("Area of rectangle: " + rect.Width * rect.Height);
+                    break;
+                case Circle circ:
+                    Console.WriteLine("Area of circle: " + Circle.Pi * circ.Radius * circ.Radius);
+                    break;
+            }
+        }
+    }
+    
+    class Figure
+    {
+        public const float Pi = 3.15f;
+    }
+
+    class Rectangle : Figure
+    {
+        public double Width { get; set; }
+        public double Height { get; set; }
+    }
+
+    class Circle : Figure
+    {
+        public double Radius { get; set; }
+    }
+}

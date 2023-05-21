@@ -1,0 +1,25 @@
+using System;
+using System.Text;
+
+public class Program
+{
+    public static void Main()
+    {
+        string userString = "C#";
+        userString += " Video";
+        userString += " Tutorial";
+        userString += " Pragim";
+        userString += " Tech";
+
+        Console.WriteLine(userString);
+
+        StringBuilder userString1 = new StringBuilder("C#");
+        userString1.Append(" Video");
+        userString1.Append(" Tutorial");
+        userString1.Append(" Pragim");
+        userString1.Append(" Tech");
+
+        Console.WriteLine(userString1.ToString());
+        Console.ReadLine();
+    }
+}

@@ -1,0 +1,20 @@
+property set accessor
+---------------------
+
+The expression should assign a value back to the variable of datatype defined to property
+
+class Operation
+{
+	public int Num1 = 100;
+	public int Num2 = 33;
+	private string name;
+	
+	public string Name
+	{
+		get => name;
+		set => name = value;
+	}
+}
+
+Expression to right side followed with => must be valid single statement and must assign a value back to the variable of
+datatype defined to property.

@@ -1,0 +1,45 @@
+
+using System;
+class Program
+{
+
+    public int Prop1 { get; private set; }
+    private int Prop2 { get; set; }
+    protected int Prop3 { get; set; }
+    internal int Prop4 { get; set; }
+    public static void Main()
+    {
+
+
+        Console.Read();
+
+
+    }
+
+}
+
+/*
+ Properties can be marked as public, private, protected, internal. These access modifiers define how users of the class can access the property.
+ * 
+ * Why cant different access modifiers be specified for automatically implemented property in C#
+ * {
+
+        Because you already got to specify one of the modifiers first:
+
+        public int Number {public get;protected set; }
+        //^
+        //here
+        What would that modifier be modifying if you have modifiers on both accessors?
+
+        I.e. imagine an even odder example:
+
+        public int Number {protected get;protected set; }
+        Exactly what part or concept of Number is now public?
+
+        Per @dash's comments, from MSDN:
+
+        By default these accessors have the same visibility, or access level: that of the property or indexer to which they belong
+
+        You can use accessor modifiers only if the property or indexer has both set and get accessors. In this case, the modifier is permitted on one only of the two accessors.
+ * }
+ */

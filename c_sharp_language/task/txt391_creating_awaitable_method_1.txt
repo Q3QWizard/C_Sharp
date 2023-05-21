@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Call();
+
+            Console.ReadLine();
+        }
+
+        public static Task ExpensiveTaskAsync()
+        {
+            return Task.Run(() => ExpensiveTask());
+        }
+
+        private static void ExpensiveTask()
+        {
+            Task.Delay(100000);
+            Console.WriteLine("finish");
+        }
+
+        private static async void Call()
+        {
+            await ExpensiveTaskAsync();
+        }
+    }
+}

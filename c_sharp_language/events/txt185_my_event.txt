@@ -1,0 +1,63 @@
+using System;
+using System.Threading;
+
+public class TimeInfoEventArg
+{
+    public readonly int hours, minutes, seconds;
+
+    public TimeInfoEventArg(int _hours, int _minutes, int _seconds)
+    {
+        hours = _hours;
+        minutes = _minutes;
+        seconds = _seconds;
+    }
+}
+
+public class Clock
+{
+    public delegate void del_SecondChange(object clock, TimeInfoEventArg e);
+
+    public event del_SecondChange SecondChange;
+
+    public void fireTheEvent(object _clock, TimeInfoEventArg _e)
+    {
+        if (SecondChange != null)
+        {
+            SecondChange(_clock, _e);
+        }
+    }
+
+    public void Run()
+    {
+        int _seonds = -1;
+
+        for (;;)
+        {
+            Thread.Sleep(1000);
+
+            DateTime dt = DateTime.Now;
+
+            if (_seonds != dt.Second)
+            {
+                fireTheEvent(this, new TimeInfoEventArg(dt.Hour, dt.Minute, dt.Second));
+            }
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Clock theclock = new Clock();
+
+        theclock.SecondChange += Theclock_SecondChange;
+
+        theclock.Run();
+    }
+
+    private static void Theclock_SecondChange(object clock, TimeInfoEventArg e)
+    {
+        Console.WriteLine(e.hours.ToString() + ": " + e.minutes.ToString() + ": " + e.seconds.ToString());
+    }
+}

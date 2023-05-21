@@ -1,0 +1,29 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        var result = new ResultInt { Success = true, Data = 5 };
+
+        var result2 = new ResultString { Success = false, Data = "Des" };
+
+        Console.WriteLine(result.Success);
+        Console.WriteLine(result2.Data);
+
+        Console.ReadLine();
+    }
+}
+
+
+public class ResultInt
+{
+    public bool Success { get; set; }
+    public int Data { get; set; }
+}
+
+public class ResultString
+{
+    public bool Success { get; set; }
+    public string Data { get; set; }
+}

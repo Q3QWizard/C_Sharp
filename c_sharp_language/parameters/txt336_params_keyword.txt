@@ -1,0 +1,38 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        int [] numbers = new int [3];
+
+        ParamMethod(1, 2, numbers);
+        ParamMethod(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        ParamMethod();
+
+        Console.ReadLine();
+    }
+
+    public static void ParamMethod(params int [] numbers)
+    {
+        Console.WriteLine("ParamMethod1 called");
+    }
+
+    public static void ParamMethod(int a, int b, params int [] numbers)
+    {
+        Console.WriteLine("There are {0} elements ", numbers.Length);
+        foreach(int i in numbers)
+        {
+            Console.WriteLine(i);
+        }
+    }
+}
+
+/*
+Parameter array - params keyword let you specify a method parameter that takes multiple parameters
+
+You can only use one dimentioal array
+
+If you are using param keyword in the method parameter then it is not neccessay to put the arguments for it
+*/
+

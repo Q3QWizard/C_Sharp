@@ -1,0 +1,62 @@
+
+using System;
+class Program
+{
+    // var cannot be used as a field type at the class leve.
+    //var Test = 50;
+    public static void Main()
+    {
+        // Explicitly types variable
+        int i = 100;
+
+        // Implicitly typeed variable
+        var j = 200;
+
+        // var can have different type based on it's value
+
+        var k = "A";
+        Console.WriteLine(k.GetType().ToString());
+        var L = 10;
+        Console.WriteLine(L.GetType().ToString());
+        var M = 100.50d;
+        Console.WriteLine(M.GetType().ToString());
+        var N = true;
+        Console.WriteLine(N.GetType().ToString());
+
+        // var can be declared and initiallized in a single statement. Following is not valid
+
+        //var Z;
+        //Z = 5;
+
+        var T = 10;
+        T += 10;
+
+        Console.WriteLine(T);
+
+        // Multiple vars cannot be declared and initialized in single statement
+        int c = 10, b = 20;
+        // var c = 10, b = 20;
+
+
+        // Error cannot implicitly convert 'string' to 'int' but this can be done in dynamic
+        var val = 10;
+        // val = "A";
+
+        Console.Read();
+    }
+
+
+}
+
+
+/*
+  var - Implicitly typed local variable
+ * 
+ * c# 3.0 introduced the implicitly types local variable "var" var can only be defined in a method as a local variable
+ * 
+ * the compiler will infer its type based on the value to the right to the "=" operator
+ * 
+ * var is earlybounded and dynamic is latebounded
+ * 
+ * 
+ */

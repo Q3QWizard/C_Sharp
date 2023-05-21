@@ -1,0 +1,73 @@
+using System;
+
+class Student
+{
+    private int id;
+    private string name;
+    private int passMark=35;
+
+    public void setName(string _name)
+    {
+        if(String.IsNullOrEmpty(_name))
+        {
+            throw new Exception("Name cannot be null");
+        }
+
+        this.name = _name;
+    }
+
+    public void setId(int _id)
+    {
+        if(_id<=0)
+        {
+            throw new Exception("Id canno be be zero or negative");
+        }
+        this.id = _id;
+    }
+
+    public int getId()
+    {
+        return this.id;
+    }
+
+    public string getName()
+    {
+        if(String.IsNullOrEmpty(this.name))
+        {
+            return "No Name";
+        }
+
+        else
+        {
+            return this.name;
+        }
+    }
+
+    public int getPassMark()
+    {
+        return this.passMark;
+
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Student s1 = new Student();
+
+        s1.setId(101);
+        s1.setName("Desitha");
+
+
+
+        Console.WriteLine(s1.getId());
+        Console.WriteLine(s1.getName());
+        Console.WriteLine(s1.getPassMark());
+
+        //Console.WriteLine("Student Id is : {0}  Student Name is : {1}  Pass Mark is : {3}", s1.getId(), s1.getName(), s1.getPassMark());
+        //the above line does not work as usual
+        Console.ReadLine();
+        
+    }
+}

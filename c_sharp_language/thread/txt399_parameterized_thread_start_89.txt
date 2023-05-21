@@ -1,0 +1,93 @@
+using System;
+using System.Threading;
+
+public class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Please enter the targe number");
+        object targe = Console.ReadLine();
+
+        // public delegate void ParameterizedThreadStart(object obj);
+        ParameterizedThreadStart paramThreadStart = new ParameterizedThreadStart(PrintNumbers);
+
+        Thread t1 = new Thread(paramThreadStart);
+        t1.Start(targe);
+
+        Console.Read();
+    }
+
+    public static void PrintNumbers(object target)
+    {
+        int number = 0;
+
+        if (int.TryParse(target.ToString(), out number))
+        {
+            for (int i = 0; i < number; i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+
+
+/*
+ Use ParameterizedThreadStart delegate to pass data to the thread function.
+ * 
+ * 
+ */
+
+/*using System;
+using System.Threading;
+
+public class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Please enter the targe number");
+        object targe = Console.ReadLine();
+
+        // public delegate void ParameterizedThreadStart(object obj);
+
+        Thread t1 = new Thread(PrintNumbers);
+        t1.Start(targe);
+
+        Console.Read();
+    }
+
+    public static void PrintNumbers(object target)
+    {
+        int number = 0;
+
+        if (int.TryParse(target.ToString(), out number))
+        {
+            for (int i = 0; i < number; i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+ * */
+
+/*
+ Here we are not explicitly creating an instance of ParameterizedThreadStart delegate. Then how it is working?
+ * 
+ * It's working because, the compiler implicitly converts
+ * 
+ * new Thread(PrintNumbers); TO new Thread(new ParameterizedThreadStart(PrintNumbers))
+ * 
+ * When to use ParameterizedThreadStart over ThreadStart delegate?
+ * 
+ * Use ParameterizedThreadStart delegate if you have some data to pass to the Thread function, otherwise just use
+ * ThreadStart delegate.
+ */
+
+/*
+ Please note: Using ParameterizedThreadStart delegate and Thread.Start(Object) method to pass data to the Thread function if not
+ * type safe as they operate on Object data type and any type of data can be passed.
+ * 
+ * If you try to chnage the data type of the target parameter to PrintNumbers() function from object to int, a compiler error will
+ * be raised as the signature of PrintNumbers() function does not match with the signature of ParameterizedThreadStart delegate.
+ */

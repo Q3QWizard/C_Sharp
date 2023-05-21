@@ -1,0 +1,35 @@
+using System;
+using System.Collections;
+using static System.Console;
+
+public class Program
+{
+    public static void Main()
+    {
+        Writer w = new Writer();
+        w.TestMethod();
+        Read();
+    }
+}
+
+class Writer
+{
+    public void WriteLine()
+    {
+
+    }
+    public static void WriteLine()// if one of these method is overloaded with a parameter then it is ok
+    {
+        Console.WriteLine(statement);
+    }
+
+    public void TestMethod()
+    {
+        WriteLine("hello");
+    }
+}
+
+/*
+The compiler will alway choose an instance method before a static
+*/
+

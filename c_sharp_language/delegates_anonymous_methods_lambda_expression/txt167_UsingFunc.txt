@@ -1,0 +1,14 @@
+using System;
+
+
+public class Program
+{
+    public static void Main()
+    {
+        Func<Double, Double> cpointer = r => 3.12 * r * r;
+        double Area = cpointer(20);
+        Console.WriteLine(Area);
+
+        Console.ReadLine();
+    }
+}

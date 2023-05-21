@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Student
+{
+    public int StudentID { get; set; }
+    public string Name { get; set; }
+    public int TotalMarks { get; set; }
+
+    public static List<Student> GetAllStudents()
+    {
+        List<Student> lstStudents = new List<Student> 
+            { 
+                new Student { Name = "Tom", StudentID = 101, TotalMarks = 800},
+                new Student { Name = "Jack", StudentID = 102, TotalMarks = 800},
+                new Student { Name = "Sam", StudentID = 103, TotalMarks = 78},
+                new Student { Name = "Tim", StudentID = 104, TotalMarks = 68},
+                new Student { Name = "Jim", StudentID = 104, TotalMarks = 68},
+                new Student { Name = "Pim", StudentID = 104, TotalMarks = 68},
+            };
+
+        return lstStudents;
+    }
+}
+class Program
+{
+    public static void Main()
+    {
+        List<Student> students = Student.GetAllStudents();
+
+        IEnumerable<Student> result = students.Where(s => s.TotalMarks == 800).ToList(); ;
+
+        students.Add(new Student() { Name = "Helena", TotalMarks = 800, StudentID = 20 });
+
+        foreach (Student s in result)
+        {
+            Console.WriteLine(s.Name + "\t");
+        }
+
+        Console.ReadLine();
+    }
+}

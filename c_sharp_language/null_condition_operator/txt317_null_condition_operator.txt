@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+
+namespace MyConsole_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Employee> employees;
+            employees = new List<Employee>() { new Employee() { EmpID = 101, EmpName = "Wasindu" }, new Employee() { EmpID = 102, EmpName = "Vidura" }, new Employee() { EmpID = 103, EmpName = "Desitha" } };
+            employees = null;
+
+            // old approach
+            // if number is null then return null else return count
+            int? itemsCount = (employees == null) ? (int?)null : employees.Count;
+            Console.WriteLine(itemsCount);
+
+            //new apporach
+            int? itemsCount1 = employees?.Count; // if numbers is not null then return count other wise, if numbers is null statement will go no further to count itemsCount1 will remain null
+            Console.WriteLine(itemsCount1);
+
+            Employee firstEmployee = employees?[0];
+            Console.WriteLine($"First employee in list is { firstEmployee?.EmpName }");
+
+            if (employees?.Count > 1)
+            {
+                Console.WriteLine("Employee count is greater than 1");
+            }
+
+            int emplyeeCout2 = employees?.Count ?? 0;
+            Console.WriteLine(emplyeeCout2);
+
+            // null condition checking chanining
+            Console.WriteLine($"First employee is { employees?[0]?.EmpName }");
+
+            Console.Read();
+        }
+    }
+
+    class Employee
+    {
+        public int EmpID { get; set; }
+        public string EmpName { get; set; }
+    }
+}

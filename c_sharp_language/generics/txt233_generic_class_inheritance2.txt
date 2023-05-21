@@ -1,0 +1,21 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+
+    }
+}
+
+public class MyGenericClassA<T>
+{
+    
+}
+
+public class MyGenericClassB<U> : MyGenericClassA<T>
+{
+
+}
+//this will give you an error
+// if the child generic type if equals to the base class generic type then it is ok

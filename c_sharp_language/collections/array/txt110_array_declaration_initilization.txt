@@ -1,0 +1,37 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        int[] intArray;  // can store int values
+
+        bool[] boolArray; // can store boolean values
+
+        string[] stringArray; // can store string values
+
+        double[] doubleArray; // can store double values
+
+        byte[] byteArray; // can store byte values
+
+        Student[] customClassArray; // can store instances of Student class
+
+        // int[] intArray = new int[]; // compiler error: must give size of an array
+
+        // defining array with size 5. add values later on
+        int[] intArray1 = new int[5];
+
+        // defining array with size 5 and adding values at the same time
+        int[] intArray2 = new int[5] { 1, 2, 3, 4, 5 };
+
+        // defining array with 5 elements which indicates the size of an array
+        int[] intArray3 = { 1, 2, 3, 4, 5 };
+
+        Console.Read();
+    }
+}
+
+class Student
+{
+
+}

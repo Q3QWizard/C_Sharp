@@ -1,0 +1,48 @@
+using System;
+using System.Reflection;
+
+namespace Des
+{
+    public class Program
+    {
+        private static void Main()
+        {
+            #region latebinding
+            Assembly executingAssembly = Assembly.GetExecutingAssembly();
+
+            Type CustomerType = executingAssembly.GetType("Des.Customer");
+
+            object customerInstance = Activator.CreateInstance(CustomerType);
+
+            MethodInfo customerGetFullNameMethod = CustomerType.GetMethod("GetFullName");
+
+            string[] parameters = new string[2];
+            parameters[0] = "Wasindu";
+            parameters[1] = "Desitha";
+
+            string fullName1 = (string)customerGetFullNameMethod.Invoke(customerInstance, parameters);
+
+            Console.WriteLine(fullName1);
+
+            #endregion
+
+            #region latebinding
+            Customer c = new Customer();
+            string fullName = c.GetFullName("Wasindu", "Desitha");
+
+            Console.WriteLine("Full Name = {0}", fullName);
+
+            Console.ReadLine();
+            #endregion
+        }
+    }
+
+    public class Customer
+    {
+        public string GetFullName(string FirstName, string LastName)
+        {
+            return FirstName + " " + LastName;
+        }
+    }
+}
+

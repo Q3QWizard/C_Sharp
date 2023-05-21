@@ -1,0 +1,23 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        TestMethod(25, lname: "Desitha", fname: "Wasindu");
+
+        Console.Read();
+    }
+
+    public static void TestMethod(int id, string fname, string lname)
+    {
+        Console.WriteLine("ID " + id + " | First name " + fname + " | Last name " + lname);
+    }
+}
+
+/*
+ 
+1
+down vote
+All named arguments have to come after positional arguments; you can’t switch between the styles. Positional arguments always refer to the corresponding parameter in the method declaration. You can’t make positional arguments skip a parameter by specifying it later with a named argument. The compiler uses temporary local variables. It then reorders those locals in the argument slots, my guess is that the compiler binds by arguments by order until it finds a named argument then it discards the arguments that it has already bound without names and reordered as the compiler uses temporary local variables. The binds the rest by name, for instance it binds 25 with age then reordered firstname: "John", lastname: "Smith"
+ */

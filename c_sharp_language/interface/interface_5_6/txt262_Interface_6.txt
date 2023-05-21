@@ -1,0 +1,45 @@
+class Test
+{
+    static void Main()
+    {
+        // Call the Paint methods from Main.
+
+        SampleClass obj = new SampleClass();
+        //obj.Paint();  // Compiler error.
+
+        IControl c = (IControl)obj;
+        c.Paint();  // Calls IControl.Paint on SampleClass.
+
+        ISurface s = (ISurface)obj;
+        s.Paint(); // Calls ISurface.Paint on SampleClass. 
+
+        System.Console.ReadLine();
+
+        // Output: 
+        // IControl.Paint 
+        // ISurface.Paint
+
+
+    }
+}
+
+
+interface IControl
+{
+    void Paint();
+}
+interface ISurface
+{
+    void Paint();
+}
+public class SampleClass : IControl, ISurface
+{
+    void IControl.Paint()
+    {
+        System.Console.WriteLine("IControl.Paint");
+    }
+    void ISurface.Paint()
+    {
+        System.Console.WriteLine("ISurface.Paint");
+    }
+}

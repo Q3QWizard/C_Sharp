@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+
+namespace c__7._0
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Tuple<int, int> objTuple = Math(10, 50);
+            Console.WriteLine("Sum is : " + objTuple.Item1);
+            Console.WriteLine("Product is : " + objTuple.Item2);
+        }
+
+        static Tuple<int, int> Math(int a, int b)
+        {
+            int sum = a + b;
+            int product = a * b;
+
+            Tuple<int, int> t =Tuple.Create(sum, product); // more than 8 can not be return
+
+            return t;
+        }
+    }
+} 

@@ -1,0 +1,66 @@
+using System;
+
+public class Employee
+{
+    public string FirstName;
+    public string LastName;
+    String Emale;
+
+    public void PrintFulName()
+    {
+        Console.WriteLine(FirstName + " " + LastName);
+        Console.ReadLine();
+    }
+
+   
+}
+
+public class A : FullTimeEmployee
+{
+
+}
+
+
+public class FullTimeEmployee : Employee
+{
+    public float yearlySalary;
+}
+
+public class PartTmeEmployee : Employee
+{
+    public float HourlyRate;
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        FullTimeEmployee FTE = new FullTimeEmployee();
+        FTE.FirstName = "Wasindu";
+        FTE.LastName = "Desitha";
+        FTE.yearlySalary = 50000;
+        FTE.PrintFulName();
+
+        PartTmeEmployee PTE = new PartTmeEmployee();
+        PTE.FirstName = "Vidura";
+        PTE.LastName = "Bashana";
+        PTE.HourlyRate = 200;
+
+        //A a1 = new A();
+        //a1.PrintFulName(); //multilevel inheritance A inherit from FullTimeEmployee and FullTimeEmployee inherit from Employee
+
+
+
+
+
+
+    }
+}
+
+
+// In this example DerivedClass inherits from ParentClass.
+// C# support only single class inheritance.
+// C# supports multiple interface inheritance.
+// Child class is a specialization of base class.
+// base classes are automatically instantiated before derived classes.
+// Parent class constructor executes before ChildClass coustructor.

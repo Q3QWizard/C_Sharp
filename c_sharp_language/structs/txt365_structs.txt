@@ -1,0 +1,64 @@
+using System;
+
+public struct Customer  // to create a structure you have to use the struct keyword
+{
+    private int id;
+    private string name;
+
+    public string Name
+    {
+        set { this.name = value; }
+        get { return name; }
+    }
+
+    public int ID
+    {
+        get { return this.id; }
+        set { this.id = value; }
+    }
+
+    public Customer(int Id, string Name)    // Structures can also have methods
+    {
+        this.id = Id;
+        this.name = Name;
+    }
+
+    public void PrintDetails()
+    {
+        Console.WriteLine("Id = {0} && Name = {1}", this.id, this.name);
+    }
+}
+class Program
+{
+    public static void Main()
+    {
+        // using constructor to initilize the private variables
+        Customer c1 = new Customer(101, "Desitha");
+        c1.PrintDetails();
+
+        // using setter and getter methods to initilize private variables
+        Customer c2 = new Customer();
+        c2.ID = 102;
+        c2.Name = "Jhone";
+        c2.PrintDetails();
+
+        // Object initilization 
+        Customer c3 = new Customer { ID = 103, Name = "Rob"};
+        c3.PrintDetails();
+
+        Console.ReadLine();
+    }
+}
+/*
+ * Structs
+ * 
+ * Just like classes structs can have
+ *  1. Private Fields
+ *  2. Public Properties
+ *  3. Constructors
+ *  4. Methods
+ * 
+ * Object initializer syntax, introduced in C# 3.0 can be used to initialize either a struct or a class.
+ * 
+ * Note - There are several differnces between classes and structs which we will be looking at in a later session
+ */

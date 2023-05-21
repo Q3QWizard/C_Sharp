@@ -1,0 +1,30 @@
+using System;
+
+public class Student
+{
+    public int id;
+    public string name;
+    public int passMark = 35;
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Student s1 = new Student();
+        s1.id = -101;
+        s1.name = null;
+        s1.passMark = 0;
+
+        Console.WriteLine("ID = {0} || Name = {1} || Pass Mark = {2}", s1.id, s1.name, s1.passMark);
+        Console.ReadLine();
+    }
+}
+
+/*
+ * Problem with Public Fields
+ * 
+ * 1. ID should always be non negative number
+ * 2. Name cannot be set to NULL
+ * 3. If student Name is missing "No Name" should be returned
+ * 4. PassMark shoud be read only
+ */

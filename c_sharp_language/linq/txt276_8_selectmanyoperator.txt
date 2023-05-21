@@ -1,0 +1,143 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Linq_1_6v
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            IEnumerable<List<string>> subjects = Student.GetAllStudents().Select(s => s.Subjects);
+            foreach (List<string> lstStr in subjects)
+            {
+                foreach (string str in lstStr)
+                {
+                    Console.WriteLine(str);
+                }
+            }
+
+            Console.WriteLine();
+
+            // using SELECT MANY
+
+            Console.WriteLine();
+            IEnumerable<string> subjects1 = Student.GetAllStudents().SelectMany(s => s.Subjects);
+            foreach (string str in subjects1)
+            {
+                Console.WriteLine(str);
+            }
+
+            Console.WriteLine();
+            IEnumerable<string> subjects2 = from student in Student.GetAllStudents()
+                                            from subject in student.Subjects
+                                            select subject;
+
+            foreach (string str in subjects2)
+            {
+                Console.WriteLine(str);
+            }
+
+            // Example 02
+
+            string[] stringArray = { "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789" };
+            IEnumerable<Char> result = stringArray.SelectMany(str => str);
+            foreach (Char c in result)
+            {
+                Console.Write(c);
+            }
+            Console.WriteLine();
+            IEnumerable<Char> result1 = from s in stringArray
+                                        from c in s
+                                        select c;
+
+            foreach (Char c in result1)
+            {
+                Console.Write(c);
+            }
+
+            // Distinct operator
+
+            Console.WriteLine();
+            Console.WriteLine("USING DISCTINCT ON A LIST");
+            Console.WriteLine();
+            IEnumerable<string> subjects3 = Student.GetAllStudents().SelectMany(s => s.Subjects).Distinct();
+            foreach (string str in subjects3)
+            {
+                Console.WriteLine("\t" + str);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("USING DISCTINCT ON A LIST SQL LIKE");
+            Console.WriteLine();
+            IEnumerable<string> subjects4 = (from s in Student.GetAllStudents()
+                                             from c in s.Subjects
+                                             select c).Distinct();
+            foreach (string str in subjects4)
+            {
+                Console.WriteLine("\t" + str);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("STUDENT WITH SUBJECTS");
+            Console.WriteLine();
+
+            var subjects5 = Student.GetAllStudents().SelectMany(s => s.Subjects, (student, subject) => new { StudentName = student.Name, SubjectName = subject });
+            foreach (var v in subjects5)
+            {
+                Console.WriteLine(v.StudentName + " - " + v.SubjectName);
+            }
+
+            var subjects10 = Student.GetAllStudents().Select((s, index) => new { SS = s, Index = index }).SelectMany(myst => myst.SS.Subjects, (s1, sub1) => new { STName = s1.SS.Name, STIndex = s1.Index, STSub = sub1 });
+
+            var subjects11 = Student.GetAllStudents().Select((s, index) => new { SS = s, Index = index }).SelectMany(myst => myst.SS.Subjects, (s1, sub1) => new { SutName = s1.SS.Name, StSub = s1.SS.Subjects, StIndex = s1.Index });
+            foreach (var v in subjects5)
+            {
+                Console.WriteLine(v.StudentName + " - " + v.SubjectName);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("STUDENT WITH SUBJECTS SQL LIKE");
+            Console.WriteLine();
+
+            var subjects6 = from student in Student.GetAllStudents()
+                            from subj in student.Subjects
+                            select new { StudentName = student.Name, SubjectName = subj };
+            foreach (var str in subjects6)
+            {
+                Console.WriteLine(str.StudentName + " - " + str.SubjectName);
+            }
+
+            Console.Read();
+        }
+
+        public static bool IsEven(int x)
+        {
+            return x % 2 == 0;
+        }
+
+
+    }
+}
+
+
+class Student
+{
+    public string Name { get; set; }
+    public string Gender { get; set; }
+    public List<string> Subjects { get; set; }
+
+    public static List<Student> GetAllStudents()
+    {
+        List<Student> lstStudents = new List<Student>
+            {
+                new Student { Name = "Tom", Gender = "Male", Subjects = new List<string> { "ASP.NET", "C#" }},
+                new Student { Name =  "Mike", Gender = "Male", Subjects = new List<string> { "ADO.NET", "C#", "AJAX" }},
+                new Student { Name =  "Pam", Gender = "Female", Subjects = new List<string> { "WCF", "SQL Server", "C#" }},
+                new Student { Name =  "Mary", Gender = "Female", Subjects = new List<string> { "WPF", "LINQ", "ASP.NET" }},
+            };
+
+        return lstStudents;
+    }
+}

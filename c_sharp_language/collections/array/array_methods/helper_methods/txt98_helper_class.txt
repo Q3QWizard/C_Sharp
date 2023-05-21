@@ -1,0 +1,2 @@
+.NET provides as abstract class, Array, as a base class for all arrays. It provides static methods for creating manipulating, searching and sorting arrays.
+

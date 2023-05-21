@@ -1,0 +1,24 @@
+using System;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int Totals = 0;
+            int TotalM = 0;
+
+            Calculate(10, 20, out Totals, out TotalM);
+
+            Console.WriteLine("Sum = {0}, Multiply = {1}", Totals, TotalM);
+            Console.ReadLine();
+
+        }
+    public static void Calculate(int fn, int sn, out int sum, out int multiply)
+    {
+        sum = fn + sn;
+        multiply = fn*sn;
+    }
+
+    }
+

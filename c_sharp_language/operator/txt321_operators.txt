@@ -1,0 +1,56 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int numerator = 10;
+        int denominator = 2;
+
+        int result = numerator / denominator;
+        int remainder = numerator%denominator;
+        Console.WriteLine("Result = {0}", result);
+        Console.WriteLine("Remainder is {0}", remainder);
+        //_________________________________________________________________________________________
+
+        if (numerator == 10)    // check weather numerator equals to 10
+        {
+            Console.WriteLine("numerator is {0}", numerator);
+        }
+        //__________________________________________________________________________________________
+        if (numerator == 10 && denominator == 2) //if bothe are ture 
+        {
+            Console.WriteLine("numerator is {0} and denominator is {1}", numerator,denominator );
+        }
+        //___________________________________________________________________________________________
+        if (numerator == 10 || denominator == 3)    // if one of the conditon is true 
+        {
+            Console.WriteLine("numerator or denominator equals to 10");
+        }
+        //___________________________________________________________________________________
+        int number = 50;
+
+        bool Isnumber;
+        if (number == 50)
+        {
+            Isnumber = true;
+        }
+        else
+        {
+            Isnumber = false;
+        }
+        Console.WriteLine("Number == 50 is {0}", Isnumber);
+        //______________________________________________________________________________________
+        int num = 12;
+        bool Isnum = num == 12 ? true : false;
+        Console.WriteLine(Isnum);
+        Console.ReadLine();
+
+        //  Assignment Operator =
+        //Atrithmetic Operators like +,-,*,/,%
+        //Comparison Operator like ==,!=,>,>=,<,<=
+        //Conditional Operators like &&,||
+        //Ternary Operator ?:
+        //Not Coalescing Operator ??
+    }
+}

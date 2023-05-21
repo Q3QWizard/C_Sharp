@@ -1,0 +1,36 @@
+using System;
+
+class Program
+{
+    public static void Main()
+    {
+        Customer c = new Customer();
+        c.printICustomer();
+        c.printICustomer2();
+
+        Console.ReadLine();
+    }
+}
+
+interface ICustomer
+{
+    void printICustomer();
+}
+
+interface ICustomer2
+{
+    void printICustomer2();
+}
+
+public class Customer : ICustomer, ICustomer2
+{
+    public void printICustomer()
+    {
+        Console.WriteLine("ICustomer method");
+    }
+
+    public void printICustomer2()
+    {
+        Console.WriteLine("ICustomer2 method");
+    }
+}

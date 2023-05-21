@@ -1,0 +1,15 @@
+using System;
+class Program
+{
+    static void Main()
+    {
+        int i = 5;
+
+        Console.WriteLine(i.CompareTo(5)); // if equals then 0
+        Console.WriteLine(i.CompareTo(6)); // if i is less than 6 then -1
+        Console.WriteLine(i.CompareTo(4)); // if i is greater than 4 then 1
+
+        Console.Read();
+
+    }
+}

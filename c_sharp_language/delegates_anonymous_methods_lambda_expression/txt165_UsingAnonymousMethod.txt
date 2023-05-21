@@ -1,0 +1,22 @@
+using System;
+
+
+public class Program
+{
+    delegate double DelCalculatorArea(int r);
+    //static DelCalculatorArea cpointer = CalculatorArea;
+    
+    public static void Main()
+    {
+        DelCalculatorArea cpointer = new DelCalculatorArea( delegate(int r) { return 3.14 * r * r; });
+
+        double Area = cpointer(20);
+        Console.WriteLine(Area);
+        Console.ReadLine();
+    }
+
+    //static double CalculatorArea(int r)
+    //{
+    //    return 3.14 * r * r;
+    //}
+}
